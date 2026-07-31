@@ -12,7 +12,8 @@
     "verify": "node tools/check.mjs && node tools/smoke.mjs",
     "build:sitemap": "node tools/sitemap.mjs",
     "build:assets": "node tools/gen-assets.mjs",
-    "build": "node tools/build-data.mjs && node tools/gen-assets.mjs && node tools/sitemap.mjs && node tools/check.mjs && node tools/smoke.mjs"
+    "build": "node tools/build-data.mjs && node tools/gen-assets.mjs && node tools/sitemap.mjs && node tools/check.mjs && node tools/smoke.mjs",
+    "build:video": "node tools/gen-video.mjs"
   },
   "engines": {
     "node": ">=18"

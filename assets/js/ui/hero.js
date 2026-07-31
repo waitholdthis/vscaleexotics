@@ -15,6 +15,7 @@ import { renderScales, derivePhenotype, hashString } from './scales.js';
 import { GENES_BY_ID } from '../data/genes.js';
 import { SPECIES_BY_ID } from '../data/species.js';
 import { prefersReducedMotion, h, render } from '../core/dom.js';
+import { initHeroVideo } from './hero-video.js';
 
 const ROTATE_MS = 9000;
 const FADE_MS = 2200;
@@ -27,8 +28,17 @@ export function initHero(root, animals) {
   if (!stage) return;
 
   const reduced = prefersReducedMotion();
+
+  // The video is the primary backdrop. The procedural scale field stays as the
+  // layer underneath: it paints instantly, covers the window before the video
+  // is ready, and is the whole hero if the video is refused, unsupported or
+  // withheld on a metered connection.
+  const heroVideo = initHeroVideo(stage);
+  const videoActive = heroVideo.ok;
+
   const layers = [makeLayer(), makeLayer()];
   layers.forEach((c) => stage.appendChild(c));
+  if (videoActive) stage.classList.add('has-video');
 
   let index = 0;
   let front = 0;
@@ -69,6 +79,20 @@ export function initHero(root, animals) {
 
   function writeCaption(animal) {
     if (!caption) return;
+
+    // Caption what is actually on screen. Naming a generated pattern study
+    // while a film is playing would be straightforwardly untrue.
+    if (videoActive) {
+      render(
+        caption,
+        h('span', { class: 'hero-caption__sku', text: 'Malayopython reticulatus' }),
+        h('span', { class: 'hero-caption__sep', 'aria-hidden': 'true', text: '·' }),
+        h('span', { class: 'hero-caption__title', text: 'Lowland rainforest, Sumatra' })
+      );
+      caption.setAttribute('aria-label', 'Film: a reticulated python at rest in lowland rainforest.');
+      return;
+    }
+
     const sp = SPECIES_BY_ID[animal.species];
     render(
       caption,
@@ -101,7 +125,10 @@ export function initHero(root, animals) {
 
   show(0, true);
 
-  if (!reduced && animals.length > 1) {
+  // With the video running, the scale field is an invisible fallback layer.
+  // Rotating it would burn a full canvas repaint every nine seconds to redraw
+  // something nobody can see.
+  if (!videoActive && !reduced && animals.length > 1) {
     timer = setInterval(() => {
       index = (index + 1) % animals.length;
       show(index, false);

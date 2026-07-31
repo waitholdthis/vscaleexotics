@@ -13,6 +13,8 @@ Disallow: /*?status=
 Disallow: /*?price=
 Disallow: /*?sex=
 Disallow: /admin/
+Disallow: /videos/
+Disallow: /content/
 Disallow: /compare.html
 Disallow: /vault.html
 

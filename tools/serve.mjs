@@ -24,7 +24,12 @@ const TYPES = {
   '.png': 'image/png',
   '.ico': 'image/x-icon',
   '.txt': 'text/plain; charset=utf-8',
-  '.xml': 'application/xml; charset=utf-8'
+  '.xml': 'application/xml; charset=utf-8',
+  '.mp4': 'video/mp4',
+  '.webm': 'video/webm',
+  '.jpg': 'image/jpeg',
+  '.jpeg': 'image/jpeg',
+  '.webp': 'image/webp'
 };
 
 const CSP = [
@@ -41,6 +46,7 @@ const CSP = [
   "frame-src 'none'",
   "manifest-src 'self'",
   "worker-src 'self'",
+  "media-src 'self'",
   'upgrade-insecure-requests'
 ].join('; ');
 
@@ -111,9 +117,37 @@ const server = createServer(async (req, res) => {
 
     const body = await readFile(file);
     const type = TYPES[extname(file)] || 'application/octet-stream';
+
+    // Range support. Safari refuses to play media from a server that does not
+    // honour Range requests, so without this the hero video works everywhere
+    // except Safari — and only in development, which is the worst place to
+    // discover it.
+    const range = req.headers.range;
+    if (range && /^bytes=/.test(range)) {
+      const [startRaw, endRaw] = range.replace('bytes=', '').split('-');
+      const start = Number(startRaw) || 0;
+      const end = endRaw ? Math.min(Number(endRaw), body.length - 1) : body.length - 1;
+
+      if (start >= body.length || start > end) {
+        res.writeHead(416, { ...headersFor(pathname), 'Content-Range': `bytes */${body.length}` }).end();
+        return;
+      }
+      res.writeHead(206, {
+        ...headersFor(pathname),
+        'Content-Type': type,
+        'Content-Range': `bytes ${start}-${end}/${body.length}`,
+        'Accept-Ranges': 'bytes',
+        'Content-Length': end - start + 1,
+        'Cache-Control': 'no-store'
+      }).end(body.subarray(start, end + 1));
+      return;
+    }
+
     res.writeHead(200, {
       ...headersFor(pathname),
       'Content-Type': type,
+      'Accept-Ranges': 'bytes',
+      'Content-Length': body.length,
       'Cache-Control': 'no-store'
     }).end(body);
   } catch (err) {

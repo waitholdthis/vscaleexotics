@@ -30,6 +30,7 @@ controls are chosen accordingly.
 | Enquiry endpoint abuse | Rate limiting configured in `nginx.conf` (5/min per address, burst 3), 16 KB body cap, POST only. |
 | Stale availability data | The service worker is network-first for HTML and for `/assets/js/data/*`, so a sold animal never renders as available from cache. |
 | Invalid or impossible content reaching production | `tools/build-data.mjs` validates every referential and genetic constraint and refuses to write on failure; `tools/check.mjs` fails if the generated modules drift from `content/`. The CMS uses editorial workflow, so edits arrive as pull requests rather than direct commits to `main`. |
+| Autoplay policy blocking legitimate media | `Permissions-Policy` originally shipped `autoplay=()`, an empty allowlist that disables autoplay for every origin including self. Corrected to `autoplay=(self)` in all four production configs. |
 | Compromise of a CMS editor account | Editors authenticate through DecapBridge, not with GitHub credentials, and hold no repository access. Revoke a user from the DecapBridge dashboard. Editorial workflow means their changes are reviewable before merge. |
 
 ---

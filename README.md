@@ -93,6 +93,35 @@ The engine therefore:
   a conditional probability — which is where the familiar "66% possible het" actually comes from
 - refuses to run polygenic and locality traits through a punnett square at all
 
+### The hero film
+
+`videos/Snake_Hero_Video.mp4` is the source clip. `tools/gen-video.mjs` produces the served
+renditions in `assets/video/`, and makes two editorial decisions worth knowing about:
+
+- **Trimmed at 7.8s.** The source ends with the animal striking at the camera, mouth open. That is
+  the visual language of a reptile shock video and it contradicts the rest of the site, which is
+  deliberately calm and describes these animals as display animals handled with respect. It would
+  also jar on every loop. To ship the full clip, set `TRIM_TO = null` and re-run.
+- **Audio stripped.** Muted is a hard requirement for autoplay, so the track is removed rather than
+  shipped and ignored.
+
+The source is 12.3 Mbps — roughly thirty times what a muted background loop needs. The primary
+rendition is 88.5% smaller:
+
+| | size |
+| --- | --- |
+| source | 14.88 MB |
+| hero.webm / hero.mp4 | 1.41 / 1.72 MB |
+| hero-sm.webm / hero-sm.mp4 | 0.78 / 0.86 MB |
+| poster | 0.09 MB |
+
+Playback is deliberately conservative: no autoplay under `prefers-reduced-motion`, no download on
+Save-Data or 2g/3g (poster only), paused when offscreen or on a hidden tab, half-resolution on
+mobile, and it fades in only once it can play through. If any of that fails, the procedural scale
+field below it takes over, so the hero is never empty.
+
+Regenerate with `npm run build:video` — needs ffmpeg, which is why it is not in the default build.
+
 ### Portraits are generated from genetics
 
 `assets/js/ui/scales.js`. There is no photography in this repository. Rather than use placeholder

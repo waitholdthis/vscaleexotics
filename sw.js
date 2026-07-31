@@ -59,6 +59,12 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
 
+  // Never intercept media. Video is served over Range requests, and a 206
+  // Partial Content response cannot be stored with cache.put(); letting these
+  // through to the network also avoids putting megabytes of hero loop into
+  // the user's cache storage for a decorative background.
+  if (url.pathname.startsWith('/assets/video/') || request.headers.has('range')) return;
+
   // Availability data and documents: always try the network first.
   if (request.mode === 'navigate' || isData(url)) {
     event.respondWith(
