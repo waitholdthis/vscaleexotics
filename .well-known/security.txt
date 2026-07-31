@@ -1,0 +1,13 @@
+Contact: mailto:security@vscaleexotics.com
+Expires: 2027-07-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://vscaleexotics.com/.well-known/security.txt
+Policy: https://vscaleexotics.com/SECURITY.md
+
+# We will not pursue legal action against anyone who reports a vulnerability
+# in good faith, gives us reasonable time to fix it, and does not access,
+# modify or exfiltrate data belonging to anyone else.
+#
+# This site has no runtime dependencies and no third-party scripts, so the
+# interesting surface is our infrastructure and the enquiry endpoint rather
+# than the front end. Reports on either are welcome.

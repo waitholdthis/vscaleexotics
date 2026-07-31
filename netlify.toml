@@ -1,0 +1,23 @@
+# Netlify configuration. Header rules live in _headers.
+
+[build]
+  publish = "."
+  command = "node tools/check.mjs && node tools/sitemap.mjs && node tools/gen-assets.mjs"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/tools"
+  to = "/tools.html"
+  status = 301
+
+[[redirects]]
+  from = "/collection"
+  to = "/collection.html"
+  status = 301
+
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404

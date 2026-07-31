@@ -1,0 +1,19 @@
+{
+  "name": "vscaleexotics",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "VScale Exotics — rare serpent acquisition house. Static site, zero runtime dependencies.",
+  "scripts": {
+    "dev": "node tools/serve.mjs",
+    "check": "node tools/check.mjs",
+    "smoke": "node tools/smoke.mjs",
+    "verify": "node tools/check.mjs && node tools/smoke.mjs",
+    "build:sitemap": "node tools/sitemap.mjs",
+    "build:assets": "node tools/gen-assets.mjs",
+    "build": "node tools/gen-assets.mjs && node tools/sitemap.mjs && node tools/check.mjs && node tools/smoke.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

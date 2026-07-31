@@ -1,0 +1,111 @@
+/**
+ * Service worker.
+ *
+ * Deliberately conservative. Livestock availability changes, and a stale
+ * "Available" badge on an animal that sold last week is worse than a slower
+ * page — so HTML and the data modules are network-first, and only genuinely
+ * static assets are served cache-first.
+ *
+ * Scope is same-origin only; nothing cross-origin is ever cached, because
+ * nothing cross-origin is ever loaded.
+ */
+
+const VERSION = 'v1';
+const STATIC_CACHE = `vscale-static-${VERSION}`;
+const PAGE_CACHE = `vscale-pages-${VERSION}`;
+
+const PRECACHE = [
+  '/',
+  '/collection.html',
+  '/tools.html',
+  '/offline.html',
+  '/assets/css/core.css',
+  '/assets/css/components.css',
+  '/assets/css/pages.css',
+  '/assets/img/favicon.svg',
+  '/manifest.webmanifest'
+];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(STATIC_CACHE)
+      .then((cache) => cache.addAll(PRECACHE))
+      // A failed precache must not block activation — the site works without it.
+      .catch(() => undefined)
+      .then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys()
+      .then((keys) => Promise.all(
+        keys.filter((k) => k !== STATIC_CACHE && k !== PAGE_CACHE).map((k) => caches.delete(k))
+      ))
+      .then(() => self.clients.claim())
+  );
+});
+
+const isStatic = (url) =>
+  /\.(css|svg|png|ico|webmanifest|woff2?)$/.test(url.pathname) ||
+  url.pathname.startsWith('/assets/img/');
+
+const isData = (url) => url.pathname.startsWith('/assets/js/data/');
+
+self.addEventListener('fetch', (event) => {
+  const { request } = event;
+  if (request.method !== 'GET') return;
+
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+
+  // Availability data and documents: always try the network first.
+  if (request.mode === 'navigate' || isData(url)) {
+    event.respondWith(
+      fetch(request)
+        .then((response) => {
+          if (response.ok) {
+            const copy = response.clone();
+            caches.open(PAGE_CACHE).then((c) => c.put(request, copy)).catch(() => undefined);
+          }
+          return response;
+        })
+        .catch(() =>
+          caches.match(request).then((cached) => cached || caches.match('/offline.html'))
+        )
+    );
+    return;
+  }
+
+  // Static assets: cache first, refresh in the background.
+  if (isStatic(url)) {
+    event.respondWith(
+      caches.match(request).then((cached) => {
+        const network = fetch(request)
+          .then((response) => {
+            if (response.ok) {
+              const copy = response.clone();
+              caches.open(STATIC_CACHE).then((c) => c.put(request, copy)).catch(() => undefined);
+            }
+            return response;
+          })
+          .catch(() => cached);
+        return cached || network;
+      })
+    );
+    return;
+  }
+
+  // Everything else (application modules): network, falling back to cache.
+  event.respondWith(
+    fetch(request)
+      .then((response) => {
+        if (response.ok) {
+          const copy = response.clone();
+          caches.open(STATIC_CACHE).then((c) => c.put(request, copy)).catch(() => undefined);
+        }
+        return response;
+      })
+      .catch(() => caches.match(request))
+  );
+});

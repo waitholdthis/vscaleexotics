@@ -1,0 +1,18 @@
+# VScale Exotics
+# We want the collection and the tools indexed. Nothing here is private,
+# but there is no value in crawling parameterised filter permutations.
+
+User-agent: *
+Allow: /
+Disallow: /collection.html?*
+Disallow: /*?sort=
+Disallow: /*?gene=
+Disallow: /*?species=
+Disallow: /*?tier=
+Disallow: /*?status=
+Disallow: /*?price=
+Disallow: /*?sex=
+Disallow: /compare.html
+Disallow: /vault.html
+
+Sitemap: https://vscaleexotics.com/sitemap.xml

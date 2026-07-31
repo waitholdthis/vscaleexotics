@@ -1,0 +1,34 @@
+{
+  "name": "VScale Exotics — Rare Serpents",
+  "short_name": "VScale",
+  "description": "A private acquisition house for the world's rarest captive-bred serpents, with free genetics, husbandry and logistics tools.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#07080a",
+  "theme_color": "#07080a",
+  "orientation": "portrait-primary",
+  "categories": ["shopping", "education", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/assets/img/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/img/icon-512.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    { "name": "The Collection", "url": "/collection.html" },
+    { "name": "Gene Lab", "url": "/tools/gene-lab.html" },
+    { "name": "Ship Window", "url": "/tools/shipping.html" },
+    { "name": "Your Vault", "url": "/vault.html" }
+  ]
+}

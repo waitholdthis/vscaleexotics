@@ -1,0 +1,700 @@
+/**
+ * The application shell: header, mobile drawer, command palette, compare tray,
+ * toasts, footer, and the scroll-reveal observer.
+ *
+ * Rendered from JS so there is exactly one definition of the chrome rather than
+ * twenty drifting copies across the page set. Every page's substantive content
+ * is static HTML in the document; only the surrounding furniture is built here.
+ */
+
+import { h, icon, $, $$, render, on, trapFocus, prefersReducedMotion } from '../core/dom.js';
+import { SITE, NAV, LEGAL_NAV } from '../core/sitemap.js';
+import { vault, compare, prefs, subscribe } from '../core/store.js';
+import { INVENTORY, STATUS_LABEL } from '../data/inventory.js';
+import { GENES, GENES_BY_ID } from '../data/genes.js';
+import { SPECIES_BY_ID } from '../data/species.js';
+import { money } from '../core/format.js';
+import { makeAnimalCanvas, mountScaleCanvases } from './scales.js';
+
+const currentPage = () => document.body.dataset.page || '';
+
+/* ================================================================== *
+ * Brand mark — a stylised scale/serpent glyph, drawn inline.
+ * ================================================================== */
+
+function brandMark() {
+  const ns = 'http://www.w3.org/2000/svg';
+  const s = document.createElementNS(ns, 'svg');
+  s.setAttribute('viewBox', '0 0 40 40');
+  s.setAttribute('class', 'brand__mark');
+  s.setAttribute('aria-hidden', 'true');
+  s.setAttribute('fill', 'none');
+
+  const ring = document.createElementNS(ns, 'circle');
+  ring.setAttribute('cx', '20'); ring.setAttribute('cy', '20'); ring.setAttribute('r', '18.25');
+  ring.setAttribute('stroke', 'currentColor'); ring.setAttribute('stroke-width', '1'); ring.setAttribute('opacity', '.35');
+  s.appendChild(ring);
+
+  // Three nested scale arcs — the "V" of VScale read as a scale row.
+  for (const [i, d] of [
+    'M9 26c4.5 0 7.5-3.2 11-3.2S27.5 26 31 26',
+    'M11 20.5c3.6 0 6.2-3.1 9-3.1s5.4 3.1 9 3.1',
+    'M13.5 15c2.6 0 4.6-3 6.5-3s3.9 3 6.5 3'
+  ].entries()) {
+    const p = document.createElementNS(ns, 'path');
+    p.setAttribute('d', d);
+    p.setAttribute('stroke', 'currentColor');
+    p.setAttribute('stroke-width', '1.4');
+    p.setAttribute('stroke-linecap', 'round');
+    p.setAttribute('opacity', String(1 - i * 0.22));
+    s.appendChild(p);
+  }
+  return s;
+}
+
+/* ================================================================== *
+ * Header
+ * ================================================================== */
+
+function buildHeader() {
+  const page = currentPage();
+
+  const nav = h(
+    'nav',
+    { class: 'nav', 'aria-label': 'Primary' },
+    ...NAV.filter((n) => n.primary).map((n) =>
+      h('a', {
+        class: 'nav__link',
+        href: n.href,
+        text: n.label,
+        'aria-current': page === n.id || page.startsWith(`${n.id}-`) ? 'page' : null
+      })
+    )
+  );
+
+  const searchBtn = h(
+    'button',
+    {
+      class: 'icon-btn',
+      type: 'button',
+      'aria-label': 'Search the collection (press Command K)',
+      'data-cmdk-open': ''
+    },
+    icon('search')
+  );
+
+  const vaultBtn = h(
+    'a',
+    { class: 'icon-btn', href: '/vault.html', 'aria-label': 'Your Vault', 'data-vault-count': '' },
+    icon('bookmark')
+  );
+
+  const menuBtn = h(
+    'button',
+    { class: 'icon-btn', type: 'button', 'aria-label': 'Open menu', 'aria-expanded': 'false', 'data-drawer-open': '' },
+    icon('menu')
+  );
+  menuBtn.classList.add('nav-only-mobile');
+
+  const header = h(
+    'header',
+    { class: 'site-header', id: 'site-header' },
+    h(
+      'div',
+      { class: 'shell site-header__inner' },
+      h(
+        'a',
+        { class: 'brand', href: '/', 'aria-label': `${SITE.name} — home` },
+        brandMark(),
+        h(
+          'span',
+          { class: 'brand__text' },
+          h('span', { class: 'brand__name', text: 'VScale' }),
+          h('span', { class: 'brand__sub', text: 'Exotics' })
+        )
+      ),
+      nav,
+      h(
+        'div',
+        { class: 'header-actions' },
+        searchBtn,
+        vaultBtn,
+        h('a', { class: 'btn btn--sm btn--primary header-cta', href: '/concierge.html', text: 'Enquire' }),
+        menuBtn
+      )
+    )
+  );
+
+  return header;
+}
+
+function initStickyHeader(header) {
+  let ticking = false;
+  const update = () => {
+    header.classList.toggle('is-stuck', window.scrollY > 24);
+    ticking = false;
+  };
+  on(window, 'scroll', () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }, { passive: true });
+  update();
+}
+
+/* ================================================================== *
+ * Mobile drawer
+ * ================================================================== */
+
+function buildDrawer() {
+  const closeBtn = h(
+    'button',
+    { class: 'icon-btn', type: 'button', 'aria-label': 'Close menu', 'data-drawer-close': '' },
+    icon('close')
+  );
+
+  const groups = NAV.map((n) =>
+    h(
+      'div',
+      { class: 'drawer__group' },
+      h('p', { class: 'drawer__heading', text: n.label }),
+      h('a', { class: 'drawer__link', href: n.href, text: n.summary ? `All ${n.label}` : n.label }),
+      ...(n.children || []).map((c) => h('a', { class: 'drawer__link', href: c.href, text: c.label }))
+    )
+  );
+
+  return h(
+    'div',
+    { class: 'drawer', id: 'drawer', 'data-open': 'false', role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Site menu', inert: '' },
+    h(
+      'div',
+      { class: 'shell site-header__inner' },
+      h('span', { class: 'brand__name', text: 'Menu' }),
+      h('div', { class: 'header-actions' }, closeBtn)
+    ),
+    h(
+      'div',
+      { class: 'drawer__body' },
+      ...groups,
+      h(
+        'div',
+        { class: 'drawer__group' },
+        h('p', { class: 'drawer__heading', text: 'Contact' }),
+        h('a', { class: 'drawer__link', href: '/concierge.html', text: 'Private Concierge' }),
+        h('a', { class: 'drawer__link', href: `mailto:${SITE.email}`, text: SITE.email })
+      )
+    )
+  );
+}
+
+function initDrawer(drawer) {
+  let lastFocus = null;
+  let releaseTrap = null;
+
+  const open = () => {
+    lastFocus = document.activeElement;
+    drawer.dataset.open = 'true';
+    drawer.removeAttribute('inert');
+    document.body.style.setProperty('overflow', 'hidden');
+    $$('[data-drawer-open]').forEach((b) => b.setAttribute('aria-expanded', 'true'));
+    releaseTrap = trapFocus(drawer);
+    $('[data-drawer-close]', drawer)?.focus();
+  };
+  const close = () => {
+    drawer.dataset.open = 'false';
+    drawer.setAttribute('inert', '');
+    document.body.style.removeProperty('overflow');
+    $$('[data-drawer-open]').forEach((b) => b.setAttribute('aria-expanded', 'false'));
+    releaseTrap?.();
+    lastFocus?.focus();
+  };
+
+  on(document, 'click', (e) => {
+    if (e.target.closest('[data-drawer-open]')) { e.preventDefault(); open(); }
+    else if (e.target.closest('[data-drawer-close]')) { e.preventDefault(); close(); }
+    else if (drawer.dataset.open === 'true' && e.target.closest('.drawer__link')) close();
+  });
+  on(document, 'keydown', (e) => {
+    if (e.key === 'Escape' && drawer.dataset.open === 'true') close();
+  });
+}
+
+/* ================================================================== *
+ * Command palette
+ * ================================================================== */
+
+function buildPaletteIndex() {
+  const items = [];
+
+  for (const n of NAV) {
+    items.push({ group: 'Pages', title: n.label, meta: 'Page', href: n.href, icon: 'arrow', keywords: n.summary || '' });
+    for (const c of n.children || []) {
+      items.push({ group: n.id === 'tools' ? 'Tools' : 'Pages', title: c.label, meta: n.id === 'tools' ? 'Tool' : 'Page', href: c.href, icon: c.icon || 'arrow', keywords: c.blurb || '' });
+    }
+  }
+  for (const l of LEGAL_NAV) {
+    items.push({ group: 'Pages', title: l.label, meta: 'Policy', href: l.href, icon: 'book', keywords: '' });
+  }
+  for (const a of INVENTORY) {
+    const sp = SPECIES_BY_ID[a.species];
+    items.push({
+      group: 'Animals',
+      title: a.title,
+      meta: `${a.sku} · ${STATUS_LABEL[a.status]}`,
+      href: `/animal.html?id=${encodeURIComponent(a.id)}`,
+      icon: 'layers',
+      keywords: `${a.sku} ${sp?.common || ''} ${sp?.scientific || ''} ${a.sex} ${a.traits.map((t) => GENES_BY_ID[t.geneId]?.name || '').join(' ')}`
+    });
+  }
+  for (const g of GENES) {
+    const sp = SPECIES_BY_ID[g.species];
+    items.push({
+      group: 'Genetics',
+      title: g.name,
+      meta: `${sp?.common || ''} · ${g.inheritance}`,
+      href: `/tools/codex.html?gene=${encodeURIComponent(g.id)}`,
+      icon: 'dna',
+      keywords: `${(g.aliases || []).join(' ')} ${g.effect || ''} ${sp?.common || ''}`
+    });
+  }
+  return items;
+}
+
+function scoreMatch(item, q) {
+  const title = item.title.toLowerCase();
+  const kw = `${item.keywords} ${item.meta}`.toLowerCase();
+  if (title === q) return 1000;
+  if (title.startsWith(q)) return 500 - title.length;
+  if (title.includes(q)) return 300 - title.length;
+  if (kw.includes(q)) return 100;
+  // Subsequence match, so "gtp" finds "Green Tree Python".
+  let i = 0;
+  for (const ch of title) if (ch === q[i]) i++;
+  return i === q.length ? 40 : -1;
+}
+
+function buildPalette() {
+  const input = h('input', {
+    class: 'cmdk__input',
+    type: 'search',
+    placeholder: 'Search animals, genes, tools…',
+    'aria-label': 'Search',
+    autocomplete: 'off',
+    autocapitalize: 'off',
+    spellcheck: 'false',
+    role: 'combobox',
+    'aria-expanded': 'true',
+    'aria-controls': 'cmdk-results',
+    'aria-autocomplete': 'list'
+  });
+
+  const results = h('div', { class: 'cmdk__results', id: 'cmdk-results', role: 'listbox', 'aria-label': 'Search results' });
+
+  const panel = h(
+    'div',
+    { class: 'cmdk__panel', role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Search' },
+    h('div', { class: 'cmdk__search' }, icon('search'), input),
+    results,
+    h(
+      'div',
+      { class: 'cmdk__foot' },
+      h('span', {}, h('kbd', { text: '↑↓' }), ' navigate'),
+      h('span', {}, h('kbd', { text: '↵' }), ' open'),
+      h('span', {}, h('kbd', { text: 'esc' }), ' close')
+    )
+  );
+
+  const root = h('div', { class: 'cmdk', 'data-open': 'false', inert: '' }, panel);
+  return { root, input, results, panel };
+}
+
+function initPalette() {
+  const { root, input, results, panel } = buildPalette();
+  document.body.appendChild(root);
+
+  const index = buildPaletteIndex();
+  let active = 0;
+  let visible = [];
+  let lastFocus = null;
+  let releaseTrap = null;
+
+  const DEFAULT = [
+    { group: 'Start here', title: 'Browse the collection', meta: 'Page', href: '/collection.html', icon: 'grid', keywords: '' },
+    { group: 'Start here', title: 'Gene Lab', meta: 'Tool', href: '/tools/gene-lab.html', icon: 'dna', keywords: '' },
+    { group: 'Start here', title: 'Ship Window', meta: 'Tool', href: '/tools/shipping.html', icon: 'truck', keywords: '' },
+    { group: 'Start here', title: 'Private Concierge', meta: 'Page', href: '/concierge.html', icon: 'arrow', keywords: '' }
+  ];
+
+  function draw(list) {
+    visible = list.slice(0, 30);
+    render(results);
+    if (!visible.length) {
+      results.appendChild(h('p', { class: 'cmdk__empty', text: 'Nothing matched. Try a morph name, a species, or an SKU.' }));
+      return;
+    }
+    let group = null;
+    visible.forEach((item, i) => {
+      if (item.group !== group) {
+        group = item.group;
+        results.appendChild(h('p', { class: 'cmdk__group', text: group }));
+      }
+      const a = h(
+        'a',
+        {
+          class: 'cmdk__item',
+          href: item.href,
+          role: 'option',
+          id: `cmdk-opt-${i}`,
+          'aria-selected': i === active ? 'true' : 'false',
+          dataset: { active: i === active ? 'true' : 'false', index: i }
+        },
+        icon(item.icon || 'arrow'),
+        h('span', { class: 'cmdk__item-title', text: item.title }),
+        h('span', { class: 'cmdk__item-meta', text: item.meta })
+      );
+      results.appendChild(a);
+    });
+    syncActive();
+  }
+
+  function syncActive() {
+    $$('.cmdk__item', results).forEach((el, i) => {
+      const on_ = i === active;
+      el.dataset.active = on_ ? 'true' : 'false';
+      el.setAttribute('aria-selected', on_ ? 'true' : 'false');
+      if (on_) {
+        el.scrollIntoView({ block: 'nearest' });
+        input.setAttribute('aria-activedescendant', el.id);
+      }
+    });
+  }
+
+  function search(raw) {
+    const q = raw.trim().toLowerCase();
+    if (!q) { active = 0; draw(DEFAULT); return; }
+    const scored = index
+      .map((item) => ({ item, score: scoreMatch(item, q) }))
+      .filter((x) => x.score > 0)
+      .sort((a, b) => b.score - a.score || a.item.title.localeCompare(b.item.title))
+      .map((x) => x.item);
+    // Stable group order regardless of score interleaving.
+    const order = ['Tools', 'Animals', 'Genetics', 'Pages'];
+    scored.sort((a, b) => order.indexOf(a.group) - order.indexOf(b.group));
+    active = 0;
+    draw(scored);
+  }
+
+  const open = () => {
+    lastFocus = document.activeElement;
+    root.dataset.open = 'true';
+    root.removeAttribute('inert');
+    document.body.style.setProperty('overflow', 'hidden');
+    input.value = '';
+    search('');
+    releaseTrap = trapFocus(panel);
+    setTimeout(() => input.focus(), 30);
+  };
+  const close = () => {
+    root.dataset.open = 'false';
+    root.setAttribute('inert', '');
+    document.body.style.removeProperty('overflow');
+    releaseTrap?.();
+    lastFocus?.focus();
+  };
+
+  on(document, 'click', (e) => {
+    if (e.target.closest('[data-cmdk-open]')) { e.preventDefault(); open(); }
+  });
+  on(root, 'click', (e) => { if (e.target === root) close(); });
+  on(input, 'input', () => search(input.value));
+
+  on(document, 'keydown', (e) => {
+    const isOpen = root.dataset.open === 'true';
+    const mod = e.metaKey || e.ctrlKey;
+    if (mod && e.key.toLowerCase() === 'k') { e.preventDefault(); isOpen ? close() : open(); return; }
+    if (!isOpen && e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement?.tagName || '')) {
+      e.preventDefault(); open(); return;
+    }
+    if (!isOpen) return;
+    if (e.key === 'Escape') { e.preventDefault(); close(); }
+    else if (e.key === 'ArrowDown') { e.preventDefault(); active = Math.min(active + 1, visible.length - 1); syncActive(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); active = Math.max(active - 1, 0); syncActive(); }
+    else if (e.key === 'Enter') {
+      const target = visible[active];
+      if (target) { e.preventDefault(); window.location.href = target.href; }
+    }
+  });
+}
+
+/* ================================================================== *
+ * Compare tray
+ * ================================================================== */
+
+function initCompareTray() {
+  const slots = h('div', { class: 'compare-tray__slots' });
+  const tray = h(
+    'div',
+    { class: 'compare-tray', 'data-open': 'false', role: 'region', 'aria-label': 'Comparison tray' },
+    slots,
+    h('a', { class: 'btn btn--sm btn--primary', href: '/compare.html', text: 'Compare' }),
+    h('button', { class: 'icon-btn', type: 'button', 'aria-label': 'Clear comparison', on: { click: () => compare.clear() } }, icon('close'))
+  );
+  document.body.appendChild(tray);
+
+  const paint = (ids) => {
+    render(slots);
+    tray.dataset.open = ids.length ? 'true' : 'false';
+    for (const id of ids) {
+      const animal = INVENTORY.find((a) => a.id === id);
+      if (!animal) { compare.remove(id); continue; }
+      const sp = SPECIES_BY_ID[animal.species];
+      const canvas = makeAnimalCanvas(animal, sp, GENES_BY_ID, { width: 96, height: 96, detail: 'thumb' });
+      slots.appendChild(
+        h(
+          'div',
+          { class: 'compare-slot' },
+          canvas,
+          h('span', { class: 'compare-slot__name', text: animal.title }),
+          h(
+            'button',
+            {
+              class: 'compare-slot__remove',
+              type: 'button',
+              'aria-label': `Remove ${animal.title} from comparison`,
+              on: { click: () => compare.remove(id) }
+            },
+            icon('close')
+          )
+        )
+      );
+    }
+    mountScaleCanvases(slots);
+  };
+
+  subscribe('compare', paint);
+  paint(compare.list());
+}
+
+/* ================================================================== *
+ * Toasts
+ * ================================================================== */
+
+let toastHost = null;
+
+export function toast(message, kind = 'info') {
+  if (!toastHost) {
+    toastHost = h('div', { class: 'toasts', role: 'status', 'aria-live': 'polite' });
+    document.body.appendChild(toastHost);
+  }
+  const el = h('div', { class: `toast toast--${kind}` }, icon(kind === 'error' ? 'alert' : kind === 'success' ? 'check' : 'info'), h('span', { text: message }));
+  toastHost.appendChild(el);
+  setTimeout(() => {
+    el.classList.add('is-leaving');
+    setTimeout(() => el.remove(), 260);
+  }, 3600);
+}
+
+/* ================================================================== *
+ * Vault badge
+ * ================================================================== */
+
+function initVaultBadge() {
+  const paint = (ids) => {
+    $$('[data-vault-count]').forEach((el) => {
+      el.dataset.count = String(ids.length);
+      el.setAttribute('aria-label', ids.length ? `Your Vault, ${ids.length} saved` : 'Your Vault, empty');
+    });
+  };
+  subscribe('vault', paint);
+  paint(vault.list());
+}
+
+/* ================================================================== *
+ * Footer
+ * ================================================================== */
+
+function buildFooter() {
+  const col = (heading, links) =>
+    h(
+      'div',
+      {},
+      h('p', { class: 'footer-heading', text: heading }),
+      h('ul', { class: 'footer-list' }, ...links.map((l) => h('li', {}, h('a', { href: l.href, text: l.label }))))
+    );
+
+  const tools = NAV.find((n) => n.id === 'tools').children;
+
+  return h(
+    'footer',
+    { class: 'site-footer', id: 'site-footer' },
+    h(
+      'div',
+      { class: 'shell' },
+      h(
+        'div',
+        { class: 'site-footer__grid' },
+        h(
+          'div',
+          { class: 'site-footer__brand' },
+          h('div', { class: 'brand' }, brandMark(), h('span', { class: 'brand__text' }, h('span', { class: 'brand__name', text: 'VScale' }), h('span', { class: 'brand__sub', text: 'Exotics' }))),
+          h('p', { class: 'text-muted', style: { 'margin-top': '1.25rem', 'max-width': '26rem', 'font-size': 'var(--t-sm)' },
+            text: 'A private acquisition house for rare serpents, operating from Chatham County, North Carolina since 2009. Viewing strictly by appointment.' }),
+          h('p', { class: 'mono text-muted', style: { 'margin-top': '1rem', 'font-size': 'var(--t-xs)' } },
+            h('a', { class: 'link', href: `mailto:${SITE.email}`, text: SITE.email })),
+          h('p', { class: 'mono text-muted', style: { 'font-size': 'var(--t-xs)' }, text: SITE.hours })
+        ),
+        col('Collection', [
+          { label: 'All Available', href: '/collection.html' },
+          { label: 'Flagship Animals', href: '/collection.html?tier=flagship' },
+          { label: 'Ball Pythons', href: '/collection.html?species=ball-python' },
+          { label: 'Reticulated Pythons', href: '/collection.html?species=reticulated-python' },
+          { label: 'Green Tree Pythons', href: '/collection.html?species=green-tree-python' }
+        ]),
+        col('Tools', tools.slice(0, 6).map((t) => ({ label: t.label, href: t.href }))),
+        col('House', [
+          { label: 'Provenance', href: '/provenance.html' },
+          { label: 'How to Acquire', href: '/acquire.html' },
+          { label: 'Private Concierge', href: '/concierge.html' },
+          { label: 'Journal', href: '/journal.html' },
+          { label: 'Your Vault', href: '/vault.html' }
+        ]),
+        col('Policies', LEGAL_NAV.map((l) => ({ label: l.label, href: l.href })))
+      ),
+      h(
+        'div',
+        { class: 'site-footer__bar' },
+        h('p', { text: `© ${new Date().getFullYear()} ${SITE.legalName}. All animals captive-bred.` }),
+        h(
+          'div',
+          { class: 'cluster cluster--tight' },
+          buildPrefControl('currency', 'Currency', [['USD', 'USD'], ['EUR', 'EUR'], ['GBP', 'GBP'], ['CAD', 'CAD'], ['AUD', 'AUD'], ['JPY', 'JPY'], ['AED', 'AED']]),
+          buildPrefControl('units', 'Units', [['imperial', 'in / lb / °F'], ['metric', 'cm / kg / °C']])
+        )
+      )
+    )
+  );
+}
+
+function buildPrefControl(key, label, options) {
+  const id = `pref-${key}`;
+  const select = h(
+    'select',
+    {
+      class: 'select',
+      id,
+      style: { 'font-size': 'var(--t-xs)', padding: '.35rem 1.9rem .35rem .6rem', width: 'auto' },
+      on: {
+        change: (e) => {
+          prefs.set(key, e.target.value);
+          // Formatting is baked into rendered nodes, so a reload is the honest
+          // way to apply it everywhere rather than partially re-rendering.
+          window.location.reload();
+        }
+      }
+    },
+    ...options.map(([value, text]) => h('option', { value, text, selected: prefs.get(key) === value ? '' : null }))
+  );
+  return h('span', { class: 'cluster cluster--tight' }, h('label', { class: 'visually-hidden', for: id, text: label }), select);
+}
+
+/* ================================================================== *
+ * Scroll reveal
+ * ================================================================== */
+
+function initReveal() {
+  const targets = $$('[data-reveal], [data-reveal-group]');
+  if (!targets.length) return;
+  if (prefersReducedMotion() || !('IntersectionObserver' in window)) {
+    targets.forEach((t) => t.classList.add('is-revealed'));
+    return;
+  }
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-revealed');
+          io.unobserve(e.target);
+        }
+      }
+    },
+    { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }
+  );
+  targets.forEach((t) => io.observe(t));
+}
+
+/* ================================================================== *
+ * Boot
+ * ================================================================== */
+
+export function initShell() {
+  document.body.prepend(h('div', { class: 'vignette', 'aria-hidden': 'true' }));
+  document.body.prepend(h('div', { class: 'grain', 'aria-hidden': 'true' }));
+
+  const headerHost = $('#site-header-host');
+  const header = buildHeader();
+  if (headerHost) headerHost.replaceWith(header);
+  else document.body.prepend(header);
+  initStickyHeader(header);
+
+  const drawer = buildDrawer();
+  document.body.appendChild(drawer);
+  initDrawer(drawer);
+
+  initPalette();
+  initVaultBadge();
+  initCompareTray();
+
+  const footerHost = $('#site-footer-host');
+  const footer = buildFooter();
+  if (footerHost) footerHost.replaceWith(footer);
+  else document.body.appendChild(footer);
+
+  initReveal();
+  mountScaleCanvases();
+
+  // Vault toggles anywhere on the page.
+  on(document, 'click', (e) => {
+    const btn = e.target.closest('[data-vault-toggle]');
+    if (!btn) return;
+    e.preventDefault();
+    const id = btn.dataset.vaultToggle;
+    const added = vault.toggle(id);
+    btn.setAttribute('aria-pressed', String(added));
+    const animal = INVENTORY.find((a) => a.id === id);
+    toast(added ? `${animal ? animal.title : 'Animal'} saved to your Vault.` : 'Removed from your Vault.', added ? 'success' : 'info');
+  });
+
+  on(document, 'click', (e) => {
+    const btn = e.target.closest('[data-compare-toggle]');
+    if (!btn) return;
+    e.preventDefault();
+    const id = btn.dataset.compareToggle;
+    if (compare.has(id)) {
+      compare.remove(id);
+      btn.setAttribute('aria-pressed', 'false');
+      return;
+    }
+    const res = compare.add(id);
+    if (!res.ok && res.reason === 'full') {
+      toast(`Comparison holds ${compare.max} animals. Remove one first.`, 'error');
+      return;
+    }
+    btn.setAttribute('aria-pressed', 'true');
+  });
+
+  registerServiceWorker();
+}
+
+/**
+ * Registered only over HTTPS or on localhost — a service worker on an insecure
+ * origin is both refused by the browser and a bad idea. Failure is silent
+ * because offline support is an enhancement, not a requirement.
+ */
+function registerServiceWorker() {
+  if (!('serviceWorker' in navigator)) return;
+  const secure = location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname);
+  if (!secure) return;
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => undefined);
+  });
+}
+
+export { money };
