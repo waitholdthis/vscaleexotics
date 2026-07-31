@@ -1,0 +1,18 @@
+{
+  "order": 38,
+  "id": "bamboo",
+  "name": "Bamboo",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bamboo",
+  "inheritance": "incdom",
+  "superName": "Super Bamboo",
+  "rarity": 5,
+  "mult": 2.4,
+  "year": 2011,
+  "originator": "Kinova",
+  "effect": "Muted platinum-grey with a soft pattern break. Super form is a clean white-grey animal.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

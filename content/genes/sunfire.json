@@ -1,0 +1,18 @@
+{
+  "order": 57,
+  "id": "sunfire",
+  "name": "Sunfire",
+  "aliases": [],
+  "species": "reticulated-python",
+  "locus": "sunfire",
+  "inheritance": "incdom",
+  "superName": "Super Sunfire",
+  "rarity": 4,
+  "mult": 2.2,
+  "year": 2006,
+  "originator": "Multiple",
+  "effect": "Adds strong orange fire and heightens iridescence across the whole animal.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

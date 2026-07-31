@@ -1,0 +1,20 @@
+{
+  "order": 4,
+  "id": "albino",
+  "name": "Albino",
+  "aliases": [
+    "T-negative Albino"
+  ],
+  "species": "ball-python",
+  "locus": "bp-albino",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 3,
+  "mult": 2,
+  "year": 1992,
+  "originator": "Bob Clark",
+  "effect": "Complete absence of melanin. White ground with yellow blotching and pink-red eyes. The original ball python recessive.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

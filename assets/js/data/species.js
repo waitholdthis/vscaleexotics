@@ -1,9 +1,15 @@
 /**
- * Species reference data.
+ * GENERATED FILE — DO NOT EDIT.
  *
- * Husbandry figures are expressed as ranges and are intended as a starting
- * specification, not veterinary advice. Temperatures are Fahrenheit, lengths
- * are inches, weights are grams unless a field name says otherwise.
+ * Compiled from content/species/*.json by tools/build-data.mjs.
+ * Edit the content through the CMS at /admin/, or edit the JSON directly, then
+ * run `node tools/build-data.mjs`. Hand edits here are overwritten and
+ * tools/check.mjs will fail while this file is out of sync with content/.
+ */
+
+/**
+ * Husbandry figures are a starting specification, not veterinary advice.
+ * Temperatures are Fahrenheit, lengths inches, weights grams.
  */
 
 export const SPECIES = [
@@ -24,8 +30,7 @@ export const SPECIES = [
     cites: 'Appendix II',
     lacey: false,
     basePrice: 400,
-    blurb:
-      'The most genetically documented snake on earth. Four decades of selective work have produced a morph library deeper than any other reptile, which is precisely why the top of this market is so difficult to reach.',
+    blurb: 'The most genetically documented snake on earth. Four decades of selective work have produced a morph library deeper than any other reptile, which is precisely why the top of this market is so difficult to reach.',
     care: {
       enclosureMin: [48, 24, 18],
       warmSide: [88, 92],
@@ -38,8 +43,7 @@ export const SPECIES = [
       water: 'Bowl large enough to submerge; changed every 48h',
       hides: 2,
       feedingAdult: 'One appropriately sized rodent every 10–14 days',
-      notes:
-        'Chronic refusal in winter months is normal for mature males. Do not chase feeding response with heat increases.'
+      notes: 'Chronic refusal in winter months is normal for mature males. Do not chase feeding response with heat increases.'
     },
     palette: { base: '#3B2A18', mid: '#8A6A34', high: '#D8B368', dark: '#161009' },
     pattern: 'alien-head'
@@ -61,8 +65,7 @@ export const SPECIES = [
     cites: 'Appendix II',
     lacey: false,
     basePrice: 900,
-    blurb:
-      'The longest snake in the world and, in the right hands, the most rewarding. Dwarf and super-dwarf localities have made retics genuinely keepable — the giant genetics remain a specialist discipline.',
+    blurb: 'The longest snake in the world and, in the right hands, the most rewarding. Dwarf and super-dwarf localities have made retics genuinely keepable — the giant genetics remain a specialist discipline.',
     care: {
       enclosureMin: [96, 36, 36],
       warmSide: [88, 92],
@@ -75,8 +78,7 @@ export const SPECIES = [
       water: 'Large basin, secured; retics will soak',
       hides: 1,
       feedingAdult: 'One large prey item every 14–21 days for adults',
-      notes:
-        'Two-person handling protocol above 12 feet. Hook-train from hatchling. Never free-handle around food scent.'
+      notes: 'Two-person handling protocol above 12 feet. Hook-train from hatchling. Never free-handle around food scent.'
     },
     palette: { base: '#1A1A16', mid: '#B9A87A', high: '#F0E6CE', dark: '#0A0A08' },
     pattern: 'reticulate'
@@ -98,8 +100,7 @@ export const SPECIES = [
     cites: 'Appendix II',
     lacey: false,
     basePrice: 1400,
-    blurb:
-      'Locality is everything. Biak, Sorong, Aru, Manokwari and Cyclops lines each carry a distinct adult expression, and a proven high-blue animal is among the most valuable serpents ever sold.',
+    blurb: 'Locality is everything. Biak, Sorong, Aru, Manokwari and Cyclops lines each carry a distinct adult expression, and a proven high-blue animal is among the most valuable serpents ever sold.',
     care: {
       enclosureMin: [24, 24, 36],
       warmSide: [86, 88],
@@ -112,8 +113,7 @@ export const SPECIES = [
       water: 'Bowl plus daily misting cycle',
       hides: 0,
       feedingAdult: 'One small rodent every 14–21 days; do not overfeed',
-      notes:
-        'Perch diameter must match body girth. Ontogenetic colour change from neonate yellow or red to adult green completes between 6 and 14 months.'
+      notes: 'Perch diameter must match body girth. Ontogenetic colour change from neonate yellow or red to adult green completes between 6 and 14 months.'
     },
     palette: { base: '#123A22', mid: '#2E8B57', high: '#8FE3B0', dark: '#06170D' },
     pattern: 'dorsal-stripe'
@@ -135,8 +135,7 @@ export const SPECIES = [
     cites: 'Appendix II',
     lacey: false,
     basePrice: 500,
-    blurb:
-      'The connoisseur\'s constrictor. Anerythrism, hypomelanism and the IMG complex layer into adult animals that improve for a decade rather than fading after their first shed.',
+    blurb: 'The connoisseur\'s constrictor. Anerythrism, hypomelanism and the IMG complex layer into adult animals that improve for a decade rather than fading after their first shed.',
     care: {
       enclosureMin: [72, 30, 24],
       warmSide: [88, 92],
@@ -149,8 +148,7 @@ export const SPECIES = [
       water: 'Large bowl; boas soak before shed',
       hides: 2,
       feedingAdult: 'One rodent every 14–21 days; obesity is the primary welfare failure',
-      notes:
-        'Power-feeding shortens lifespan measurably. Target a slow, structural growth curve over the first four years.'
+      notes: 'Power-feeding shortens lifespan measurably. Target a slow, structural growth curve over the first four years.'
     },
     palette: { base: '#2A1D16', mid: '#9C7B5E', high: '#E4CBB2', dark: '#120C08' },
     pattern: 'saddle'
@@ -172,8 +170,7 @@ export const SPECIES = [
     cites: 'Appendix II',
     lacey: false,
     basePrice: 650,
-    blurb:
-      'Colour that behaves like weather. A high-red brongersmai will shift through orange, oxblood and near-black across a single season, and no two sheds present the same animal.',
+    blurb: 'Colour that behaves like weather. A high-red brongersmai will shift through orange, oxblood and near-black across a single season, and no two sheds present the same animal.',
     care: {
       enclosureMin: [48, 24, 16],
       warmSide: [86, 88],
@@ -186,8 +183,7 @@ export const SPECIES = [
       water: 'Large bowl, humid hide mandatory',
       hides: 2,
       feedingAdult: 'One rodent every 14–21 days',
-      notes:
-        'Sensitive to sustained temperatures above 90°F. Respiratory issues follow dry, over-warm setups more than any other cause.'
+      notes: 'Sensitive to sustained temperatures above 90°F. Respiratory issues follow dry, over-warm setups more than any other cause.'
     },
     palette: { base: '#3A1210', mid: '#A33427', high: '#E0873F', dark: '#1A0705' },
     pattern: 'blotch'
@@ -209,8 +205,7 @@ export const SPECIES = [
     cites: 'Not listed',
     lacey: false,
     basePrice: 450,
-    blurb:
-      'Six subspecies, each with a following. Irian Jaya, Jungle, Coastal and Diamond lines cross into designer combinations that hold pattern integrity better than almost any python.',
+    blurb: 'Six subspecies, each with a following. Irian Jaya, Jungle, Coastal and Diamond lines cross into designer combinations that hold pattern integrity better than almost any python.',
     care: {
       enclosureMin: [72, 24, 30],
       warmSide: [88, 90],
@@ -223,8 +218,7 @@ export const SPECIES = [
       water: 'Standard bowl',
       hides: 2,
       feedingAdult: 'One rodent every 10–14 days',
-      notes:
-        'Provide substantial climbing furniture. A winter cooling period improves long-term breeding outcomes.'
+      notes: 'Provide substantial climbing furniture. A winter cooling period improves long-term breeding outcomes.'
     },
     palette: { base: '#1C1608', mid: '#C9A227', high: '#F5E39A', dark: '#0B0904' },
     pattern: 'banded'
@@ -246,8 +240,7 @@ export const SPECIES = [
     cites: 'Appendix II',
     lacey: false,
     basePrice: 3000,
-    blurb:
-      'Amazon Basin animals — the true caninus — carry the white dorsal blaze and a green so saturated it reads as artificial. The single most demanding species we place, and the one clients return for.',
+    blurb: 'Amazon Basin animals — the true caninus — carry the white dorsal blaze and a green so saturated it reads as artificial. The single most demanding species we place, and the one clients return for.',
     care: {
       enclosureMin: [24, 24, 36],
       warmSide: [84, 86],
@@ -260,8 +253,7 @@ export const SPECIES = [
       water: 'Drip system or heavy nightly misting',
       hides: 0,
       feedingAdult: 'One small rodent every 21–30 days',
-      notes:
-        'Regurgitation risk is the defining husbandry hazard. Never handle within 96 hours of feeding, and never exceed prey width of the animal\'s girth.'
+      notes: 'Regurgitation risk is the defining husbandry hazard. Never handle within 96 hours of feeding, and never exceed prey width of the animal\'s girth.'
     },
     palette: { base: '#0E3A24', mid: '#1F8B4C', high: '#F2FBF4', dark: '#04150C' },
     pattern: 'lightning'
@@ -283,8 +275,7 @@ export const SPECIES = [
     cites: 'Appendix II',
     lacey: false,
     basePrice: 1100,
-    blurb:
-      'Structural iridescence, not pigment. Microscopic ridges on each scale diffract light into a full spectrum — the effect cannot be photographed accurately and has to be seen moving.',
+    blurb: 'Structural iridescence, not pigment. Microscopic ridges on each scale diffract light into a full spectrum — the effect cannot be photographed accurately and has to be seen moving.',
     care: {
       enclosureMin: [48, 24, 18],
       warmSide: [84, 88],
@@ -297,8 +288,7 @@ export const SPECIES = [
       water: 'Large bowl plus humid hide',
       hides: 2,
       feedingAdult: 'One rodent every 14–21 days',
-      notes:
-        'Humidity below 70% produces retained sheds and eye caps within a single cycle. Ventilation must be balanced against moisture.'
+      notes: 'Humidity below 70% produces retained sheds and eye caps within a single cycle. Ventilation must be balanced against moisture.'
     },
     palette: { base: '#2A1520', mid: '#B4553E', high: '#E8B7C8', dark: '#100610' },
     pattern: 'ocelli'
@@ -320,8 +310,7 @@ export const SPECIES = [
     cites: 'Not listed',
     lacey: false,
     basePrice: 1600,
-    blurb:
-      'A python that abandoned heat pits and hunts other reptiles underground. Sand-gold banding over a fine, almost polished scale surface. Rarely available, never in volume.',
+    blurb: 'A python that abandoned heat pits and hunts other reptiles underground. Sand-gold banding over a fine, almost polished scale surface. Rarely available, never in volume.',
     care: {
       enclosureMin: [48, 24, 16],
       warmSide: [90, 95],
@@ -334,8 +323,7 @@ export const SPECIES = [
       water: 'Modest bowl; keep substrate dry',
       hides: 2,
       feedingAdult: 'One rodent every 10–14 days',
-      notes:
-        'House individually without exception. Womas are ophiophagous and will consume cage mates.'
+      notes: 'House individually without exception. Womas are ophiophagous and will consume cage mates.'
     },
     palette: { base: '#4A3418', mid: '#D9A441', high: '#F7E4B0', dark: '#1E1408' },
     pattern: 'banded'
@@ -358,8 +346,7 @@ export const SPECIES = [
     cites: 'Not listed',
     lacey: false,
     basePrice: 250,
-    blurb:
-      'The most expressive small snake in the trade. Superconda, lavender and axanthic lines stack into animals that punch far above their footprint.',
+    blurb: 'The most expressive small snake in the trade. Superconda, lavender and axanthic lines stack into animals that punch far above their footprint.',
     care: {
       enclosureMin: [36, 18, 12],
       warmSide: [88, 92],
@@ -372,8 +359,7 @@ export const SPECIES = [
       water: 'Small bowl',
       hides: 2,
       feedingAdult: 'One small rodent every 7–10 days',
-      notes:
-        'Females substantially outgrow males. Watch for obesity — the species will eat well past need.'
+      notes: 'Females substantially outgrow males. Watch for obesity — the species will eat well past need.'
     },
     palette: { base: '#4A3E28', mid: '#B79B62', high: '#E9DDBE', dark: '#1C1710' },
     pattern: 'blotch'

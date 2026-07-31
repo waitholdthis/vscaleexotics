@@ -1,0 +1,18 @@
+{
+  "order": 15,
+  "id": "orangeghost",
+  "name": "Orange Ghost",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-hypo",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 4,
+  "mult": 2.1,
+  "year": 1996,
+  "originator": "Multiple",
+  "effect": "Hypomelanistic line skewed strongly toward orange rather than grey.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

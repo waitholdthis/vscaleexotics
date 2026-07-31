@@ -1,0 +1,60 @@
+{
+  "order": 22,
+  "id": "vs-bc-0088",
+  "sku": "VS-BC-0088",
+  "species": "boa-constrictor",
+  "quality": "strong",
+  "title": "Super IMG Kahl Albino",
+  "traits": [
+    {
+      "geneId": "img",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "kahl",
+      "zygosity": "homo"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2025-04-26",
+  "weight": 1650,
+  "price": 6400,
+  "status": "available",
+  "tier": "flagship",
+  "featured": false,
+  "lineage": {
+    "sire": "IMG het Kahl",
+    "dam": "Super IMG het Kahl",
+    "generation": "F3",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-06-01",
+      "grams": 120
+    },
+    {
+      "date": "2025-10-01",
+      "grams": 560
+    },
+    {
+      "date": "2026-02-01",
+      "grams": 1120
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 1650
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Medium",
+    "interval": 14,
+    "lastFed": "2026-07-21",
+    "consecutive": 23,
+    "refusals": 0
+  },
+  "story": "Super IMG is a pearl-lavender animal that continues to develop for years after it stops growing. Layered over Kahl albinism, the result is a pale opalescent boa that looks nothing like either parent gene alone.",
+  "provenance": "In-house. Kahl line verified — not compatible with Sharp albino stock.",
+  "notes": "A significant foundation female. Every offspring inherits one IMG allele and one Kahl allele."
+}

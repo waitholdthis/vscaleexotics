@@ -1,0 +1,30 @@
+{
+  "order": 1,
+  "id": "bp-cinnamon",
+  "species": "ball-python",
+  "name": "Cinnamon / Black Pastel complex",
+  "note": "Cinnamon and Black Pastel are allelic; their super forms are darkening and carry known kink risk.",
+  "combos": [
+    {
+      "alleles": [
+        "cinnamon",
+        "cinnamon"
+      ],
+      "name": "Super Cinnamon"
+    },
+    {
+      "alleles": [
+        "blackpastel",
+        "blackpastel"
+      ],
+      "name": "Super Black Pastel"
+    },
+    {
+      "alleles": [
+        "blackpastel",
+        "cinnamon"
+      ],
+      "name": "Super Cinnamon / Black Pastel"
+    }
+  ]
+}

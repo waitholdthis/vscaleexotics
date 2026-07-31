@@ -1,0 +1,18 @@
+{
+  "order": 6,
+  "id": "toffee",
+  "name": "Toffee",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-albino",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 7,
+  "mult": 4.2,
+  "year": 2008,
+  "originator": "NERD",
+  "effect": "Allelic T-positive line producing caramel and butterscotch tones with dark eyes.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

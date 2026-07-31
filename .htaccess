@@ -35,6 +35,16 @@
   </If>
 </IfModule>
 
+# Admin panel — Decap CMS is a third-party React app and needs a looser policy.
+# Scoped to /admin/ only; every other path keeps default-src 'self'.
+<IfModule mod_headers.c>
+  <If "%{REQUEST_URI} =~ m#^/admin(/|$)#">
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://avatars.githubusercontent.com; font-src 'self' data:; connect-src 'self' https://auth.decapbridge.com https://gateway.decapbridge.com https://api.github.com; frame-ancestors 'none'; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests"
+    Header always set X-Robots-Tag "noindex, nofollow"
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </If>
+</IfModule>
+
 <IfModule mod_mime.c>
   AddType application/manifest+json .webmanifest
   AddType text/javascript .js .mjs

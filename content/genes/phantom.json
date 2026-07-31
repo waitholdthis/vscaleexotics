@@ -1,0 +1,18 @@
+{
+  "order": 21,
+  "id": "phantom",
+  "name": "Phantom",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-bel",
+  "inheritance": "incdom",
+  "superName": "Super Phantom",
+  "rarity": 3,
+  "mult": 1.6,
+  "year": 2003,
+  "originator": "Reptile Industries",
+  "effect": "Muted, dusky expression with a smoky wash. Pairs with Mystic to produce Mystic Potion.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

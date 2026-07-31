@@ -1,0 +1,56 @@
+{
+  "order": 21,
+  "id": "vs-gt-0047",
+  "sku": "VS-GT-0047",
+  "species": "green-tree-python",
+  "quality": "strong",
+  "title": "Cyclops",
+  "traits": [
+    {
+      "geneId": "cyclops",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-03-22",
+  "weight": 440,
+  "price": 5900,
+  "status": "available",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Cyclops",
+    "dam": "Cyclops",
+    "generation": "F2",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-06-01",
+      "grams": 86
+    },
+    {
+      "date": "2025-12-01",
+      "grams": 240
+    },
+    {
+      "date": "2026-06-01",
+      "grams": 412
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 440
+    }
+  ],
+  "feeding": {
+    "prey": "Mouse",
+    "size": "Adult",
+    "interval": 18,
+    "lastFed": "2026-07-20",
+    "consecutive": 15,
+    "refusals": 2
+  },
+  "story": "The Cyclops mountains produce animals with pronounced blue development and markedly reduced yellow. Rarely offered outside specialist collections; this is the first Cyclops male we have released in three years.",
+  "provenance": "In-house, from imported founder stock documented 2019.",
+  "notes": "Slower feeder than our Biak animals, which is normal for the locality. Established on adult mice at consistent intervals."
+}

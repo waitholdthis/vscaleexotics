@@ -1,0 +1,60 @@
+{
+  "order": 12,
+  "id": "vs-rt-0044",
+  "sku": "VS-RT-0044",
+  "species": "reticulated-python",
+  "quality": "strong",
+  "title": "Titanium",
+  "traits": [
+    {
+      "geneId": "platinum",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "superdwarf",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2025-04-12",
+  "weight": 3400,
+  "price": 12500,
+  "status": "available",
+  "tier": "flagship",
+  "featured": true,
+  "lineage": {
+    "sire": "Platinum 75% SD",
+    "dam": "Platinum 100% SD",
+    "generation": "F3",
+    "dwarfPercent": 87
+  },
+  "weights": [
+    {
+      "date": "2025-06-01",
+      "grams": 240
+    },
+    {
+      "date": "2025-10-01",
+      "grams": 980
+    },
+    {
+      "date": "2026-02-01",
+      "grams": 2100
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 3400
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Large",
+    "interval": 14,
+    "lastFed": "2026-07-19",
+    "consecutive": 24,
+    "refusals": 0
+  },
+  "story": "Titanium is the homozygous form of Platinum — a near-patternless silver-white animal with faint ghosting where the reticulation used to be. At 87% super dwarf she will mature around seven feet, which is what makes a retic of this calibre genuinely keepable.",
+  "provenance": "In-house. Dwarf percentage verified against four generations of records.",
+  "notes": "Hook-trained from hatchling and consistently level-headed. Ships with full lineage and dwarf-percentage documentation."
+}

@@ -1,0 +1,60 @@
+{
+  "order": 34,
+  "id": "vs-bl-0030",
+  "sku": "VS-BL-0030",
+  "species": "blood-python",
+  "quality": "typical",
+  "title": "Albino Batik",
+  "traits": [
+    {
+      "geneId": "blood-albino",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "batik",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-06-16",
+  "weight": 1540,
+  "price": 2600,
+  "status": "available",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Batik het Albino",
+    "dam": "Albino",
+    "generation": "F2",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-08-01",
+      "grams": 145
+    },
+    {
+      "date": "2025-12-01",
+      "grams": 700
+    },
+    {
+      "date": "2026-04-01",
+      "grams": 1280
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 1540
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Medium",
+    "interval": 16,
+    "lastFed": "2026-07-24",
+    "consecutive": 19,
+    "refusals": 0
+  },
+  "story": "White ground with intense orange-red blotching and pink eyes. Batik connects the blotches into flowing bands along the dorsum, which on an albino base produces something closer to marbling than pattern.",
+  "provenance": "In-house.",
+  "notes": "Requires a humid hide at all times — this species is unforgiving of dry, over-warm setups."
+}

@@ -1,0 +1,18 @@
+{
+  "order": 12,
+  "id": "geneticstripe",
+  "name": "Genetic Stripe",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "geneticstripe",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 4,
+  "mult": 2.2,
+  "year": 1999,
+  "originator": "NERD",
+  "effect": "A clean, unbroken dorsal stripe running the full body length over a reduced flank pattern.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

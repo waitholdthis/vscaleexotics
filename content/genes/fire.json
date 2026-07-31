@@ -1,0 +1,18 @@
+{
+  "order": 27,
+  "id": "fire",
+  "name": "Fire",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-fire",
+  "inheritance": "incdom",
+  "superName": "Black-Eyed Leucistic",
+  "rarity": 2,
+  "mult": 1.25,
+  "year": 2003,
+  "originator": "Rich Ihle",
+  "effect": "Brightens overall tone and lifts contrast. Super form is a pure white animal with black eyes.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

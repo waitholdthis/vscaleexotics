@@ -1,0 +1,30 @@
+{
+  "order": 6,
+  "id": "bp-hypo",
+  "species": "ball-python",
+  "name": "Hypo / Ghost complex",
+  "note": "",
+  "combos": [
+    {
+      "alleles": [
+        "hypo",
+        "hypo"
+      ],
+      "name": "Hypo"
+    },
+    {
+      "alleles": [
+        "orangeghost",
+        "orangeghost"
+      ],
+      "name": "Orange Ghost"
+    },
+    {
+      "alleles": [
+        "hypo",
+        "orangeghost"
+      ],
+      "name": "Ghost Combo"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "order": 16,
+  "id": "axanthic",
+  "name": "Axanthic (VPI)",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "axanthic-vpi",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 5,
+  "mult": 4.5,
+  "year": 1997,
+  "originator": "VPI",
+  "effect": "Removes red and yellow pigment entirely, producing a silver-to-charcoal greyscale animal. VPI, MJ, TSK and Jolliff lines are not compatible with one another.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

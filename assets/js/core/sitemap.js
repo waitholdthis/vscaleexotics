@@ -6,20 +6,9 @@
  * place makes it discoverable everywhere.
  */
 
-export const SITE = {
-  name: 'VScale Exotics',
-  tagline: 'Rare Serpents — Private Acquisition',
-  legalName: 'VScale Exotics LLC',
-  origin: 'https://vscaleexotics.com',
-  locality: 'Pittsboro',
-  region: 'North Carolina',
-  regionCode: 'NC',
-  country: 'US',
-  founded: 2009,
-  email: 'office@vscaleexotics.com',
-  phone: '+1-919-555-0142',
-  hours: 'By appointment only, Monday to Friday'
-};
+// Site constants are CMS-editable; see content/settings/site.json.
+export { SITE } from '../data/site.js';
+import { SITE } from '../data/site.js';
 
 /** `id` doubles as the body[data-page] value used to mark the active nav item. */
 export const NAV = [

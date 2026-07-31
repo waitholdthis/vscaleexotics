@@ -1,0 +1,18 @@
+{
+  "order": 20,
+  "id": "russo",
+  "name": "Russo",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-bel",
+  "inheritance": "incdom",
+  "superName": "Blue-Eyed Leucistic",
+  "rarity": 4,
+  "mult": 1.8,
+  "year": 2005,
+  "originator": "Anthony Russo",
+  "effect": "BEL-complex allele producing heavy flank clearing and a strongly reduced pattern.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

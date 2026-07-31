@@ -1,0 +1,18 @@
+{
+  "order": 73,
+  "id": "carpet-axanthic",
+  "name": "Axanthic",
+  "aliases": [],
+  "species": "carpet-python",
+  "locus": "carpet-axanthic",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 6,
+  "mult": 3,
+  "year": null,
+  "originator": "",
+  "effect": "Silver-and-charcoal greyscale expression with no yellow retention.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

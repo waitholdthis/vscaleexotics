@@ -1,0 +1,18 @@
+{
+  "order": 9,
+  "id": "monsoon",
+  "name": "Monsoon",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "monsoon",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 10,
+  "mult": 45,
+  "year": 2014,
+  "originator": "Justin Kobylka",
+  "effect": "Fractures the pattern into fine speckled static across the entire animal. Among the rarest and most valuable recessives in the species.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

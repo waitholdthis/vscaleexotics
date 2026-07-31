@@ -1,0 +1,18 @@
+{
+  "order": 35,
+  "id": "ghi",
+  "name": "GHI",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "ghi",
+  "inheritance": "incdom",
+  "superName": "Super GHI",
+  "rarity": 4,
+  "mult": 2,
+  "year": 2007,
+  "originator": "Gulf Coast Reptiles",
+  "effect": "Dramatic darkening with a distinctive gold-green iridescence. One of the strongest single-gene visual impacts available.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

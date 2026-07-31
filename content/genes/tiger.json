@@ -1,0 +1,18 @@
+{
+  "order": 55,
+  "id": "tiger",
+  "name": "Tiger",
+  "aliases": [],
+  "species": "reticulated-python",
+  "locus": "tiger",
+  "inheritance": "incdom",
+  "superName": "Super Tiger",
+  "rarity": 3,
+  "mult": 1.8,
+  "year": 2000,
+  "originator": "Multiple",
+  "effect": "Stretches the pattern into longitudinal striping. Super Tiger approaches a clean, near-patternless gold.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

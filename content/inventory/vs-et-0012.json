@@ -1,0 +1,51 @@
+{
+  "order": 26,
+  "id": "vs-et-0012",
+  "sku": "VS-ET-0012",
+  "species": "emerald-tree-boa",
+  "quality": "exceptional",
+  "title": "Amazon Basin Emerald",
+  "traits": [],
+  "sex": "female",
+  "hatched": "2024-10-04",
+  "weight": 1420,
+  "price": 7500,
+  "status": "available",
+  "tier": "flagship",
+  "featured": true,
+  "lineage": {
+    "sire": "Amazon Basin",
+    "dam": "Amazon Basin",
+    "generation": "F2",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-01-01",
+      "grams": 180
+    },
+    {
+      "date": "2025-07-01",
+      "grams": 620
+    },
+    {
+      "date": "2026-01-01",
+      "grams": 1120
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 1420
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 24,
+    "lastFed": "2026-07-12",
+    "consecutive": 14,
+    "refusals": 1
+  },
+  "story": "True Amazon Basin caninus — the full white dorsal blaze running unbroken from neck to vent over a green so saturated it reads as artificial in person. The Basin form is a different animal entirely from the northern Guiana Shield type, and the difference is obvious the moment you see them side by side.",
+  "provenance": "Second-generation captive from documented Basin founder stock. Import documentation and CITES paperwork on file.",
+  "notes": "A display animal. Handling should be rare, brief and never within ninety-six hours of a feed."
+}

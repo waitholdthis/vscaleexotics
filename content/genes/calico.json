@@ -1,0 +1,18 @@
+{
+  "order": 68,
+  "id": "calico",
+  "name": "Calico",
+  "aliases": [],
+  "species": "green-tree-python",
+  "locus": "calico",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 7,
+  "mult": 4,
+  "year": null,
+  "originator": "",
+  "effect": "Irregular patches of unpigmented white scales distributed across the body.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

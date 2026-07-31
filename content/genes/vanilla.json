@@ -1,0 +1,18 @@
+{
+  "order": 28,
+  "id": "vanilla",
+  "name": "Vanilla",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-fire",
+  "inheritance": "incdom",
+  "superName": "Super Vanilla",
+  "rarity": 3,
+  "mult": 1.5,
+  "year": 2005,
+  "originator": "BHB Reptiles",
+  "effect": "Subtle brightening with a cream cast; allelic to Fire.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

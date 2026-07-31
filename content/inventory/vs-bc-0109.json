@@ -1,0 +1,64 @@
+{
+  "order": 25,
+  "id": "vs-bc-0109",
+  "sku": "VS-BC-0109",
+  "species": "boa-constrictor",
+  "quality": "typical",
+  "title": "Super Hypo Jungle het Kahl",
+  "traits": [
+    {
+      "geneId": "boa-hypo",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "boa-jungle",
+      "zygosity": "het"
+    },
+    {
+      "geneId": "kahl",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-08-03",
+  "weight": 840,
+  "price": 1900,
+  "status": "available",
+  "tier": "foundation",
+  "featured": false,
+  "lineage": {
+    "sire": "Hypo Jungle het Kahl",
+    "dam": "Super Hypo het Kahl",
+    "generation": "F2",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-10-01",
+      "grams": 104
+    },
+    {
+      "date": "2026-02-01",
+      "grams": 430
+    },
+    {
+      "date": "2026-06-01",
+      "grams": 730
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 840
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 14,
+    "lastFed": "2026-07-26",
+    "consecutive": 17,
+    "refusals": 0
+  },
+  "story": "Super Hypo strips melanin hard enough that the salmon and orange underneath dominate entirely, and Jungle throws the saddles into an aberrant, asymmetric arrangement unique to each animal.",
+  "provenance": "In-house.",
+  "notes": "An efficient breeding male — homozygous Hypo, visual Jungle and carrying Kahl albino."
+}

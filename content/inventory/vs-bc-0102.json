@@ -1,0 +1,60 @@
+{
+  "order": 24,
+  "id": "vs-bc-0102",
+  "sku": "VS-BC-0102",
+  "species": "boa-constrictor",
+  "quality": "typical",
+  "title": "Leopard Motley",
+  "traits": [
+    {
+      "geneId": "boa-leopard",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "boa-motley",
+      "zygosity": "homo"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2025-06-09",
+  "weight": 1320,
+  "price": 4100,
+  "status": "available",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Leopard het Motley",
+    "dam": "Motley het Leopard",
+    "generation": "F2",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-08-01",
+      "grams": 116
+    },
+    {
+      "date": "2025-12-01",
+      "grams": 520
+    },
+    {
+      "date": "2026-04-01",
+      "grams": 1010
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 1320
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Medium",
+    "interval": 14,
+    "lastFed": "2026-07-22",
+    "consecutive": 19,
+    "refusals": 0
+  },
+  "story": "Leopard is one of the most unusual boa recessives — a spotted pattern reduction that develops an unexpected slate-blue cast as the animal matures. Motley connects the saddles into a continuous dorsal band.",
+  "provenance": "In-house.",
+  "notes": "The blue cast is already visible at fourteen months and will strengthen through year four."
+}

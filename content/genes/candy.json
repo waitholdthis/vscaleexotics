@@ -1,0 +1,18 @@
+{
+  "order": 5,
+  "id": "candy",
+  "name": "Candy",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-albino",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 7,
+  "mult": 4.5,
+  "year": 2007,
+  "originator": "NERD",
+  "effect": "A T-positive albino allelic to Albino. Retains lavender and pink tones the classic Albino loses.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

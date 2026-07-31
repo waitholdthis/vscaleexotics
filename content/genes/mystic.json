@@ -1,0 +1,18 @@
+{
+  "order": 22,
+  "id": "mystic",
+  "name": "Mystic",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-bel",
+  "inheritance": "incdom",
+  "superName": "Super Mystic",
+  "rarity": 3,
+  "mult": 1.6,
+  "year": 2003,
+  "originator": "NERD",
+  "effect": "Purple-grey wash with softened pattern borders.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

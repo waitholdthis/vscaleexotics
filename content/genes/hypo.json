@@ -1,0 +1,21 @@
+{
+  "order": 14,
+  "id": "hypo",
+  "name": "Hypo",
+  "aliases": [
+    "Ghost",
+    "Orange Ghost Hypo"
+  ],
+  "species": "ball-python",
+  "locus": "bp-hypo",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 3,
+  "mult": 1.8,
+  "year": 1994,
+  "originator": "Multiple",
+  "effect": "Reduced melanin producing a soft, hazed appearance. Combines exceptionally with almost every dominant gene.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

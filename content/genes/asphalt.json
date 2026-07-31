@@ -1,0 +1,18 @@
+{
+  "order": 30,
+  "id": "asphalt",
+  "name": "Asphalt",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-yellowbelly",
+  "inheritance": "incdom",
+  "superName": "Super Asphalt",
+  "rarity": 3,
+  "mult": 1.6,
+  "year": 2007,
+  "originator": "Ozzy Boids",
+  "effect": "Strong grey darkening with tight banding; allelic to Yellow Belly.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

@@ -1,0 +1,18 @@
+{
+  "order": 53,
+  "id": "anthrax",
+  "name": "Anthrax",
+  "aliases": [],
+  "species": "reticulated-python",
+  "locus": "anthrax",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 8,
+  "mult": 3.5,
+  "year": 2010,
+  "originator": "Prehistoric Pets",
+  "effect": "Fractures the reticulation into fine black speckling over a clean ground. One of the defining modern retic recessives.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

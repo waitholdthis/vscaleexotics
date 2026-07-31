@@ -1,0 +1,64 @@
+{
+  "order": 13,
+  "id": "vs-rt-0051",
+  "sku": "VS-RT-0051",
+  "species": "reticulated-python",
+  "quality": "strong",
+  "title": "Anthrax Sunfire",
+  "traits": [
+    {
+      "geneId": "anthrax",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "sunfire",
+      "zygosity": "het"
+    },
+    {
+      "geneId": "superdwarf",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-05-30",
+  "weight": 2100,
+  "price": 9200,
+  "status": "available",
+  "tier": "flagship",
+  "featured": false,
+  "lineage": {
+    "sire": "Sunfire het Anthrax 100% SD",
+    "dam": "Anthrax 75% SD",
+    "generation": "F2",
+    "dwarfPercent": 75
+  },
+  "weights": [
+    {
+      "date": "2025-07-01",
+      "grams": 220
+    },
+    {
+      "date": "2025-11-01",
+      "grams": 820
+    },
+    {
+      "date": "2026-03-01",
+      "grams": 1560
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 2100
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Medium",
+    "interval": 14,
+    "lastFed": "2026-07-22",
+    "consecutive": 20,
+    "refusals": 0
+  },
+  "story": "Anthrax shatters the reticulation into fine black speckling scattered over a clean ground. Sunfire adds orange fire and lifts the iridescence, which on a retic is already the strongest in the family. Under directional light this animal is genuinely difficult to photograph.",
+  "provenance": "In-house, from Prehistoric Pets Anthrax line.",
+  "notes": "Superb feeding response — standard hook-and-tap protocol applies."
+}

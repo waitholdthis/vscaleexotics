@@ -1,0 +1,51 @@
+{
+  "order": 5,
+  "id": "bp-albino",
+  "species": "ball-python",
+  "name": "Albino / Candy complex",
+  "note": "Candy and Toffee are allelic to Albino; pairing them produces the Candino and Toffino combinations.",
+  "combos": [
+    {
+      "alleles": [
+        "albino",
+        "albino"
+      ],
+      "name": "Albino"
+    },
+    {
+      "alleles": [
+        "candy",
+        "candy"
+      ],
+      "name": "Candy"
+    },
+    {
+      "alleles": [
+        "toffee",
+        "toffee"
+      ],
+      "name": "Toffee"
+    },
+    {
+      "alleles": [
+        "albino",
+        "candy"
+      ],
+      "name": "Candino"
+    },
+    {
+      "alleles": [
+        "albino",
+        "toffee"
+      ],
+      "name": "Toffino"
+    },
+    {
+      "alleles": [
+        "candy",
+        "toffee"
+      ],
+      "name": "Candy Toffee"
+    }
+  ]
+}

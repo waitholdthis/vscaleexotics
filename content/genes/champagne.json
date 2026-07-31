@@ -1,0 +1,18 @@
+{
+  "order": 40,
+  "id": "champagne",
+  "name": "Champagne",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-spider",
+  "inheritance": "dominant",
+  "superName": "",
+  "rarity": 3,
+  "mult": 1,
+  "year": 2005,
+  "originator": "Amir Soleymani",
+  "effect": "Near-patternless tan with a fine dorsal line.",
+  "lethality": "wobble",
+  "lethalityNote": "Allelic to Spider; carries wobble and a non-viable homozygous form.",
+  "restricted": true
+}

@@ -1,0 +1,18 @@
+{
+  "order": 10,
+  "id": "sunset",
+  "name": "Sunset",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "sunset",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 10,
+  "mult": 38,
+  "year": 2012,
+  "originator": "Ozzy Boids",
+  "effect": "Deep mahogany-red saturation with near-total pattern loss in adults. Fewer than a few hundred exist worldwide.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

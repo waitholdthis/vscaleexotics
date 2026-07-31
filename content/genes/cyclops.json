@@ -1,0 +1,18 @@
+{
+  "order": 65,
+  "id": "cyclops",
+  "name": "Cyclops",
+  "aliases": [],
+  "species": "green-tree-python",
+  "locus": "gtp-locality",
+  "inheritance": "locality",
+  "superName": "",
+  "rarity": 6,
+  "mult": 3.6,
+  "year": null,
+  "originator": "",
+  "effect": "Rare mountain locality with pronounced blue development and reduced yellow.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

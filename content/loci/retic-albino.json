@@ -1,0 +1,51 @@
+{
+  "order": 8,
+  "id": "retic-albino",
+  "species": "reticulated-python",
+  "name": "Albino complex",
+  "note": "",
+  "combos": [
+    {
+      "alleles": [
+        "purplealbino",
+        "purplealbino"
+      ],
+      "name": "Purple Albino"
+    },
+    {
+      "alleles": [
+        "lavenderalbino-r",
+        "lavenderalbino-r"
+      ],
+      "name": "Lavender Albino"
+    },
+    {
+      "alleles": [
+        "whitealbino",
+        "whitealbino"
+      ],
+      "name": "White Albino"
+    },
+    {
+      "alleles": [
+        "lavenderalbino-r",
+        "purplealbino"
+      ],
+      "name": "Purple/Lavender Albino"
+    },
+    {
+      "alleles": [
+        "purplealbino",
+        "whitealbino"
+      ],
+      "name": "Purple/White Albino"
+    },
+    {
+      "alleles": [
+        "lavenderalbino-r",
+        "whitealbino"
+      ],
+      "name": "Lavender/White Albino"
+    }
+  ]
+}

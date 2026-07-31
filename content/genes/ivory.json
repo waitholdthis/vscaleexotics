@@ -1,0 +1,18 @@
+{
+  "order": 79,
+  "id": "ivory",
+  "name": "Ivory",
+  "aliases": [],
+  "species": "blood-python",
+  "locus": "ivory",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 6,
+  "mult": 3,
+  "year": null,
+  "originator": "",
+  "effect": "Near-patternless cream animal with dark eyes.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

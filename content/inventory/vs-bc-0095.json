@@ -1,0 +1,64 @@
+{
+  "order": 23,
+  "id": "vs-bc-0095",
+  "sku": "VS-BC-0095",
+  "species": "boa-constrictor",
+  "quality": "strong",
+  "title": "Moonglow",
+  "traits": [
+    {
+      "geneId": "kahl",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "boa-anery",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "boa-hypo",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-05-18",
+  "weight": 1180,
+  "price": 3800,
+  "status": "available",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Snow het Hypo",
+    "dam": "Sunglow het Anery",
+    "generation": "F3",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-07-01",
+      "grams": 110
+    },
+    {
+      "date": "2025-11-01",
+      "grams": 480
+    },
+    {
+      "date": "2026-03-01",
+      "grams": 900
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 1180
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Medium",
+    "interval": 14,
+    "lastFed": "2026-07-24",
+    "consecutive": 20,
+    "refusals": 0
+  },
+  "story": "Three genes stacked to remove pigment from three different directions — albinism, anerythrism and hypomelanism. The endpoint is a near-white boa with the faintest pink cast and no pattern definition at all.",
+  "provenance": "In-house.",
+  "notes": "Moonglow is a combination name, not a gene. The underlying genetics are documented on the pedigree sheet."
+}

@@ -1,0 +1,20 @@
+{
+  "order": 41,
+  "id": "hgw",
+  "name": "Hidden Gene Woma",
+  "aliases": [
+    "HGW"
+  ],
+  "species": "ball-python",
+  "locus": "bp-spider",
+  "inheritance": "dominant",
+  "superName": "",
+  "rarity": 3,
+  "mult": 1,
+  "year": 2004,
+  "originator": "NERD",
+  "effect": "Reduced pattern with woma-like banding.",
+  "lethality": "wobble",
+  "lethalityNote": "Allelic to Spider; carries wobble and a non-viable homozygous form.",
+  "restricted": true
+}

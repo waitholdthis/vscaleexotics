@@ -1,0 +1,18 @@
+{
+  "order": 32,
+  "id": "specter",
+  "name": "Specter",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-yellowbelly",
+  "inheritance": "incdom",
+  "superName": "Super Specter",
+  "rarity": 4,
+  "mult": 1.9,
+  "year": 2008,
+  "originator": "Ozzy Boids",
+  "effect": "Pale, washed expression; forms Highway with Gravel and Motorway with Asphalt.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

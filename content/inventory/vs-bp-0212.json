@@ -1,0 +1,60 @@
+{
+  "order": 9,
+  "id": "vs-bp-0212",
+  "sku": "VS-BP-0212",
+  "species": "ball-python",
+  "quality": "typical",
+  "title": "Lavender Albino Pinstripe",
+  "traits": [
+    {
+      "geneId": "lavenderalbino",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "pinstripe",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2025-08-07",
+  "weight": 700,
+  "price": 2400,
+  "status": "sold",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Pinstripe het Lavender",
+    "dam": "Lavender Albino",
+    "generation": "F3",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-09-01",
+      "grams": 86
+    },
+    {
+      "date": "2025-12-01",
+      "grams": 292
+    },
+    {
+      "date": "2026-03-01",
+      "grams": 508
+    },
+    {
+      "date": "2026-06-01",
+      "grams": 648
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 10,
+    "lastFed": "2026-06-28",
+    "consecutive": 18,
+    "refusals": 0
+  },
+  "story": "Lavender Albino replaces the usual albino white with a genuine lilac ground and ruby eyes. Pinstripe reduces the flanks to a clean sheet crossed by hairline dorsal striping.",
+  "provenance": "In-house.",
+  "notes": "Sold March 2026. Shown for reference; a repeat pairing is scheduled for the 2027 season."
+}

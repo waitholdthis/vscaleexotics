@@ -1,0 +1,18 @@
+{
+  "order": 87,
+  "id": "toffeebelly",
+  "name": "Toffeebelly",
+  "aliases": [],
+  "species": "western-hognose",
+  "locus": "toffeebelly",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 4,
+  "mult": 2.1,
+  "year": null,
+  "originator": "",
+  "effect": "Warm caramel tones with a distinctive clean ventral surface.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

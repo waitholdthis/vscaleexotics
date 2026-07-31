@@ -1,0 +1,18 @@
+{
+  "order": 66,
+  "id": "blueline",
+  "name": "Blue Line",
+  "aliases": [],
+  "species": "green-tree-python",
+  "locus": "gtp-blue",
+  "inheritance": "polygenic",
+  "superName": "",
+  "rarity": 9,
+  "mult": 5.5,
+  "year": null,
+  "originator": "",
+  "effect": "Selectively intensified blue expression across generations. High-blue adults are the single most valuable serpents ever sold at auction.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

@@ -1,0 +1,60 @@
+{
+  "order": 0,
+  "id": "vs-bp-0141",
+  "sku": "VS-BP-0141",
+  "species": "ball-python",
+  "quality": "exceptional",
+  "title": "Monsoon",
+  "traits": [
+    {
+      "geneId": "monsoon",
+      "zygosity": "homo"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-08-14",
+  "weight": 810,
+  "price": 28500,
+  "status": "available",
+  "tier": "flagship",
+  "featured": true,
+  "lineage": {
+    "sire": "Monsoon — Kobylka line",
+    "dam": "het Monsoon — VS-BP-0088",
+    "generation": "F3",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-09-01",
+      "grams": 96
+    },
+    {
+      "date": "2025-12-01",
+      "grams": 288
+    },
+    {
+      "date": "2026-03-01",
+      "grams": 540
+    },
+    {
+      "date": "2026-06-01",
+      "grams": 722
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 810
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 10,
+    "lastFed": "2026-07-24",
+    "consecutive": 22,
+    "refusals": 0
+  },
+  "story": "Monsoon fractures the pattern into a fine granular static that no other gene reproduces. Fewer than four hundred visual animals are believed to exist. This male is the cleanest expression we have produced in six seasons of working the line — dense speckling with almost no residual blotching along the dorsum.",
+  "provenance": "Produced in-house from a Kobylka-line sire acquired 2021. Full clutch documentation and both parent photographs transfer with the animal.",
+  "notes": "Feeding on small rats without a single refusal since establishment. Exceptional temperament for the line."
+}

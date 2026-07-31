@@ -1,0 +1,18 @@
+{
+  "order": 84,
+  "id": "hog-axanthic",
+  "name": "Axanthic",
+  "aliases": [],
+  "species": "western-hognose",
+  "locus": "hog-axanthic",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 4,
+  "mult": 2.2,
+  "year": null,
+  "originator": "",
+  "effect": "Full greyscale; combines with Albino to produce Snow.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

@@ -1,0 +1,64 @@
+{
+  "order": 11,
+  "id": "vs-bp-0226",
+  "sku": "VS-BP-0226",
+  "species": "ball-python",
+  "quality": "exceptional",
+  "title": "Stranger het Sunset",
+  "traits": [
+    {
+      "geneId": "stranger",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "sunset",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2025-05-16",
+  "weight": 1240,
+  "price": null,
+  "status": "hold",
+  "tier": "flagship",
+  "featured": true,
+  "lineage": {
+    "sire": "Stranger",
+    "dam": "het Stranger het Sunset",
+    "generation": "F2",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-07-01",
+      "grams": 94
+    },
+    {
+      "date": "2025-10-01",
+      "grams": 368
+    },
+    {
+      "date": "2026-01-01",
+      "grams": 690
+    },
+    {
+      "date": "2026-04-01",
+      "grams": 1010
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 1240
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Medium",
+    "interval": 12,
+    "lastFed": "2026-07-20",
+    "consecutive": 26,
+    "refusals": 0
+  },
+  "story": "Stranger is the most valuable recessive in the species and one of the least understood — extreme pattern aberrancy with a lavender wash that no other gene reproduces. Carrying Sunset, this female is the single most important animal in our collection.",
+  "provenance": "Acquired 2025 from the originating collection with full documentation.",
+  "notes": "Currently on breeding hold. Registered interest only; she may be released after the 2027 season."
+}

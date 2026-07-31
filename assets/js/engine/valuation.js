@@ -53,6 +53,52 @@ export function traitMultiplier(trait) {
   }
 }
 
+/**
+ * Two different alleles at one locus are a *compound heterozygote* — a visual
+ * animal, not two hidden carriers. A Candino is albino/candy; a Blue-Eyed
+ * Leucistic is mojave/lesser. Valuing those as two invisible hets understates
+ * them by an order of magnitude, so they are collapsed into a single visual
+ * contribution before the decay is applied.
+ */
+function collapseCompounds(traits) {
+  const byLocus = new Map();
+  const out = [];
+
+  for (const t of traits) {
+    const gene = GENES_BY_ID[t.geneId];
+    if (!gene || gene.inheritance === 'polygenic' || gene.inheritance === 'locality') {
+      out.push(t);
+      continue;
+    }
+    if (!byLocus.has(gene.locus)) byLocus.set(gene.locus, []);
+    byLocus.get(gene.locus).push({ trait: t, gene });
+  }
+
+  for (const entries of byLocus.values()) {
+    if (entries.length < 2) {
+      out.push(entries[0].trait);
+      continue;
+    }
+    // Two single copies of different alleles: visual compound.
+    const singles = entries.filter((e) => e.trait.zygosity === 'het');
+    if (singles.length === 2) {
+      const best = singles.reduce((a, b) => ((a.gene.mult || 1) >= (b.gene.mult || 1) ? a : b));
+      out.push({
+        __compound: true,
+        multiplier: (best.gene.mult || 1) * 1.15,
+        label: `${singles[0].gene.name} / ${singles[1].gene.name}`,
+        kind: 'compound heterozygote'
+      });
+      continue;
+    }
+    // Anything else at one locus is genetically impossible; value the strongest
+    // and let the content validator or the gene lab report the real problem.
+    for (const e of entries) out.push(e.trait);
+  }
+
+  return out;
+}
+
 export function sexFactor(speciesId, sex) {
   // Females carry a premium in every species we handle — they are the
   // production bottleneck and mature to a larger, more valuable animal.
@@ -92,8 +138,8 @@ export function valuate(input) {
   if (!sp) throw new Error(`Unknown species "${input.species}".`);
 
   const base = sp.basePrice;
-  const contributions = (input.traits || [])
-    .map(traitMultiplier)
+  const contributions = collapseCompounds(input.traits || [])
+    .map((t) => (t.__compound ? t : traitMultiplier(t)))
     .filter(Boolean)
     .sort((a, b) => b.multiplier - a.multiplier);
 

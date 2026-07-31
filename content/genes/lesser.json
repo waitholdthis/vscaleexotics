@@ -1,0 +1,18 @@
+{
+  "order": 18,
+  "id": "lesser",
+  "name": "Lesser",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-bel",
+  "inheritance": "incdom",
+  "superName": "Blue-Eyed Leucistic",
+  "rarity": 2,
+  "mult": 1.4,
+  "year": 2001,
+  "originator": "Ralph Davis",
+  "effect": "Lightens the ground to cream-tan with faded pattern edges and a clean head.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

@@ -1,0 +1,18 @@
+{
+  "order": 56,
+  "id": "goldenchild",
+  "name": "Golden Child",
+  "aliases": [],
+  "species": "reticulated-python",
+  "locus": "goldenchild",
+  "inheritance": "incdom",
+  "superName": "Super Golden Child",
+  "rarity": 5,
+  "mult": 2,
+  "year": 2005,
+  "originator": "Multiple",
+  "effect": "Intensifies gold saturation and cleans the flanks dramatically.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

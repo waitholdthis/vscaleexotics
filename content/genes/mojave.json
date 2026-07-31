@@ -1,0 +1,18 @@
+{
+  "order": 17,
+  "id": "mojave",
+  "name": "Mojave",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-bel",
+  "inheritance": "incdom",
+  "superName": "Blue-Eyed Leucistic",
+  "rarity": 2,
+  "mult": 1.35,
+  "year": 2000,
+  "originator": "The Snake Keeper",
+  "effect": "Darkens and cleans the flanks with distinctive alien-head outlining. The most widely used BEL-complex allele.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

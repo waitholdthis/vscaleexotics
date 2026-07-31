@@ -1,0 +1,60 @@
+{
+  "order": 19,
+  "id": "vs-gt-0033",
+  "sku": "VS-GT-0033",
+  "species": "green-tree-python",
+  "quality": "typical",
+  "title": "Biak High Yellow",
+  "traits": [
+    {
+      "geneId": "biak",
+      "zygosity": "het"
+    },
+    {
+      "geneId": "gtp-highyellow",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-02-28",
+  "weight": 470,
+  "price": 2800,
+  "status": "available",
+  "tier": "foundation",
+  "featured": false,
+  "lineage": {
+    "sire": "Biak high yellow",
+    "dam": "Biak",
+    "generation": "F3",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-05-01",
+      "grams": 84
+    },
+    {
+      "date": "2025-11-01",
+      "grams": 236
+    },
+    {
+      "date": "2026-05-01",
+      "grams": 410
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 470
+    }
+  ],
+  "feeding": {
+    "prey": "Mouse",
+    "size": "Adult",
+    "interval": 18,
+    "lastFed": "2026-07-21",
+    "consecutive": 17,
+    "refusals": 3
+  },
+  "story": "Biak animals retain scattered yellow scaling into adulthood rather than converting fully to green, and selectively bred high-yellow lines push that retention much further. Larger and more assertive than the mainland localities.",
+  "provenance": "In-house.",
+  "notes": "Typical Biak temperament — a display animal first. Handling should be purposeful and brief."
+}

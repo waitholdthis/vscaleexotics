@@ -1,0 +1,18 @@
+{
+  "order": 70,
+  "id": "zebra-c",
+  "name": "Zebra",
+  "aliases": [],
+  "species": "carpet-python",
+  "locus": "zebra-c",
+  "inheritance": "incdom",
+  "superName": "Super Zebra",
+  "rarity": 5,
+  "mult": 3.4,
+  "year": null,
+  "originator": "",
+  "effect": "Longitudinal striping replacing the banded pattern.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

@@ -1,0 +1,18 @@
+{
+  "order": 19,
+  "id": "butter",
+  "name": "Butter",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-bel",
+  "inheritance": "incdom",
+  "superName": "Blue-Eyed Leucistic",
+  "rarity": 2,
+  "mult": 1.35,
+  "year": 2001,
+  "originator": "Reptile Industries",
+  "effect": "Similar in effect to Lesser with a warmer, more golden cast.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

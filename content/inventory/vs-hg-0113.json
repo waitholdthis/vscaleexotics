@@ -1,0 +1,60 @@
+{
+  "order": 36,
+  "id": "vs-hg-0113",
+  "sku": "VS-HG-0113",
+  "species": "western-hognose",
+  "quality": "strong",
+  "title": "Superconda Lavender",
+  "traits": [
+    {
+      "geneId": "anaconda",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "lavender",
+      "zygosity": "homo"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2025-09-02",
+  "weight": 180,
+  "price": 3400,
+  "status": "available",
+  "tier": "collector",
+  "featured": true,
+  "lineage": {
+    "sire": "Anaconda het Lavender",
+    "dam": "Superconda het Lavender",
+    "generation": "F3",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-10-01",
+      "grams": 22
+    },
+    {
+      "date": "2026-01-01",
+      "grams": 74
+    },
+    {
+      "date": "2026-04-01",
+      "grams": 132
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 180
+    }
+  ],
+  "feeding": {
+    "prey": "Mouse",
+    "size": "Hopper",
+    "interval": 7,
+    "lastFed": "2026-07-27",
+    "consecutive": 30,
+    "refusals": 0
+  },
+  "story": "Superconda removes the dorsal blotching almost entirely; Lavender replaces what pigment remains with a soft lilac-grey over pink undertones. The combination is close to patternless in an intensely subtle colour.",
+  "provenance": "In-house.",
+  "notes": "Females substantially outgrow males in this species. Watch the feeding schedule — hognose will eat far past need."
+}

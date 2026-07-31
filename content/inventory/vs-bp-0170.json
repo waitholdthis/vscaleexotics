@@ -1,0 +1,56 @@
+{
+  "order": 3,
+  "id": "vs-bp-0170",
+  "sku": "VS-BP-0170",
+  "species": "ball-python",
+  "quality": "exceptional",
+  "title": "Piebald",
+  "traits": [
+    {
+      "geneId": "piebald",
+      "zygosity": "homo"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2025-09-08",
+  "weight": 560,
+  "price": 3200,
+  "status": "available",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Pied",
+    "dam": "het Pied",
+    "generation": "F5",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-10-01",
+      "grams": 78
+    },
+    {
+      "date": "2026-01-01",
+      "grams": 226
+    },
+    {
+      "date": "2026-04-01",
+      "grams": 398
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 560
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 10,
+    "lastFed": "2026-07-23",
+    "consecutive": 17,
+    "refusals": 0
+  },
+  "story": "Approximately ninety percent white expression with three tightly defined pattern islands and a fully unpigmented head — a distribution that occurs in perhaps one hatchling in forty. Piebald is stochastic, not heritable in its degree, so a high-white animal cannot be reproduced to order.",
+  "provenance": "In-house. Clutchmates ranged from 20% to this animal's 90% white.",
+  "notes": "Head is fully white with dark eyes retained. Photographs do not do the contrast justice."
+}

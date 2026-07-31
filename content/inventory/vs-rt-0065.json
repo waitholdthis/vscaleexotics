@@ -1,0 +1,64 @@
+{
+  "order": 15,
+  "id": "vs-rt-0065",
+  "sku": "VS-RT-0065",
+  "species": "reticulated-python",
+  "quality": "typical",
+  "title": "Purple Albino Motley",
+  "traits": [
+    {
+      "geneId": "purplealbino",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "motley-r",
+      "zygosity": "het"
+    },
+    {
+      "geneId": "superdwarf",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-06-14",
+  "weight": 1850,
+  "price": 5600,
+  "status": "reserved",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Purple Albino 100% SD",
+    "dam": "Motley het Purple Albino 75% SD",
+    "generation": "F3",
+    "dwarfPercent": 87
+  },
+  "weights": [
+    {
+      "date": "2025-08-01",
+      "grams": 210
+    },
+    {
+      "date": "2025-12-01",
+      "grams": 760
+    },
+    {
+      "date": "2026-04-01",
+      "grams": 1420
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 1850
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Medium",
+    "interval": 14,
+    "lastFed": "2026-07-23",
+    "consecutive": 18,
+    "refusals": 0
+  },
+  "story": "The purple albino strain keeps a violet cast in the ground colour that the white strain loses entirely. Motley connects the dorsal elements into a continuous chain running the length of the animal.",
+  "provenance": "In-house.",
+  "notes": "Reserved. A full sibling male is expected from the repeat pairing in early 2027."
+}

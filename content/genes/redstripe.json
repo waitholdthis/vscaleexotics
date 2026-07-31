@@ -1,0 +1,18 @@
+{
+  "order": 37,
+  "id": "redstripe",
+  "name": "Red Stripe",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "redstripe",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 6,
+  "mult": 3.2,
+  "year": 2003,
+  "originator": "Multiple",
+  "effect": "Reduced pattern with a distinct red-orange dorsal stripe. Notoriously difficult to work with due to small clutch sizes.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

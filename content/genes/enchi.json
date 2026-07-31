@@ -1,0 +1,18 @@
+{
+  "order": 1,
+  "id": "enchi",
+  "name": "Enchi",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "enchi",
+  "inheritance": "incdom",
+  "superName": "Super Enchi",
+  "rarity": 2,
+  "mult": 1.3,
+  "year": 2002,
+  "originator": "Lars Brandell",
+  "effect": "Compresses and elongates the pattern, intensifies orange saturation along the flanks. Improves almost every combination it enters.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

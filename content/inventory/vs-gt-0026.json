@@ -1,0 +1,56 @@
+{
+  "order": 18,
+  "id": "vs-gt-0026",
+  "sku": "VS-GT-0026",
+  "species": "green-tree-python",
+  "quality": "typical",
+  "title": "Manokwari",
+  "traits": [
+    {
+      "geneId": "manokwari",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2025-01-15",
+  "weight": 520,
+  "price": 4600,
+  "status": "available",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Manokwari",
+    "dam": "Manokwari",
+    "generation": "F3",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-04-01",
+      "grams": 88
+    },
+    {
+      "date": "2025-10-01",
+      "grams": 250
+    },
+    {
+      "date": "2026-04-01",
+      "grams": 440
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 520
+    }
+  ],
+  "feeding": {
+    "prey": "Mouse",
+    "size": "Adult",
+    "interval": 18,
+    "lastFed": "2026-07-19",
+    "consecutive": 19,
+    "refusals": 1
+  },
+  "story": "Heavy white and blue dorsal marking over a dark forest green — the Manokwari signature. Pure locality on both sides with no outcrossing anywhere in the documented pedigree.",
+  "provenance": "In-house, pure Manokwari line.",
+  "notes": "Completed colour change at eleven months from neonate yellow."
+}

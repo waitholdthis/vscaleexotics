@@ -1,0 +1,18 @@
+{
+  "order": 2,
+  "id": "clown",
+  "name": "Clown",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "clown",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 5,
+  "mult": 3.2,
+  "year": 1999,
+  "originator": "Dave & Tracy Barker",
+  "effect": "Reduces the pattern to a solid dorsal stripe with clean, washed flanks and a distinctive teardrop facial marking. One of the two most transformative recessives.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

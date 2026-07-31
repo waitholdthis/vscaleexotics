@@ -1,0 +1,18 @@
+{
+  "order": 45,
+  "id": "boa-hypo",
+  "name": "Hypo (Salmon)",
+  "aliases": [],
+  "species": "boa-constrictor",
+  "locus": "boa-hypo",
+  "inheritance": "incdom",
+  "superName": "Super Hypo",
+  "rarity": 2,
+  "mult": 1.5,
+  "year": 1988,
+  "originator": "Rich Ihle",
+  "effect": "Reduces melanin, intensifying salmon and orange tones. Super form approaches full pattern reduction.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

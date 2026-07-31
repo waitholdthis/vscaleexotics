@@ -1,0 +1,51 @@
+{
+  "order": 2,
+  "id": "bp-spider",
+  "species": "ball-python",
+  "name": "Spider / Champagne / Woma complex",
+  "note": "All three alleles carry neurological \"wobble\" to varying degrees and no homozygous form has ever been produced viably. VScale does not breed or place animals from this locus.",
+  "combos": [
+    {
+      "alleles": [
+        "spider",
+        "spider"
+      ],
+      "name": "Non-viable"
+    },
+    {
+      "alleles": [
+        "champagne",
+        "champagne"
+      ],
+      "name": "Non-viable"
+    },
+    {
+      "alleles": [
+        "hgw",
+        "hgw"
+      ],
+      "name": "Non-viable"
+    },
+    {
+      "alleles": [
+        "champagne",
+        "spider"
+      ],
+      "name": "Champagne Spider"
+    },
+    {
+      "alleles": [
+        "hgw",
+        "spider"
+      ],
+      "name": "Woma Spider"
+    },
+    {
+      "alleles": [
+        "champagne",
+        "hgw"
+      ],
+      "name": "Champagne Woma"
+    }
+  ]
+}

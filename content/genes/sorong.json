@@ -1,0 +1,18 @@
+{
+  "order": 62,
+  "id": "sorong",
+  "name": "Sorong",
+  "aliases": [],
+  "species": "green-tree-python",
+  "locus": "gtp-locality",
+  "inheritance": "locality",
+  "superName": "",
+  "rarity": 4,
+  "mult": 1.8,
+  "year": null,
+  "originator": "",
+  "effect": "Mainland locality prized for the deep blue-green ground and heavy white dorsal markings.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

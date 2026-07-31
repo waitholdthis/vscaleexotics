@@ -1,0 +1,51 @@
+{
+  "order": 27,
+  "id": "vs-et-0015",
+  "sku": "VS-ET-0015",
+  "species": "emerald-tree-boa",
+  "quality": "strong",
+  "title": "Amazon Basin Emerald",
+  "traits": [],
+  "sex": "male",
+  "hatched": "2024-10-04",
+  "weight": 1080,
+  "price": 5200,
+  "status": "reserved",
+  "tier": "flagship",
+  "featured": false,
+  "lineage": {
+    "sire": "Amazon Basin",
+    "dam": "Amazon Basin",
+    "generation": "F2",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-01-01",
+      "grams": 170
+    },
+    {
+      "date": "2025-07-01",
+      "grams": 540
+    },
+    {
+      "date": "2026-01-01",
+      "grams": 880
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 1080
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 24,
+    "lastFed": "2026-07-14",
+    "consecutive": 13,
+    "refusals": 2
+  },
+  "story": "Full sibling to VS-ET-0012 and an equally strong expression of the Basin phenotype. Offered as a pair with his sister at a reduced combined figure.",
+  "provenance": "As VS-ET-0012.",
+  "notes": "Reserved as part of a pair enquiry. Contact the office regarding availability."
+}

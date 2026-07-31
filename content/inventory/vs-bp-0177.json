@@ -1,0 +1,64 @@
+{
+  "order": 4,
+  "id": "vs-bp-0177",
+  "sku": "VS-BP-0177",
+  "species": "ball-python",
+  "quality": "strong",
+  "title": "GHI Leopard Clown",
+  "traits": [
+    {
+      "geneId": "ghi",
+      "zygosity": "het"
+    },
+    {
+      "geneId": "leopard",
+      "zygosity": "het"
+    },
+    {
+      "geneId": "clown",
+      "zygosity": "homo"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-08-30",
+  "weight": 640,
+  "price": 5400,
+  "status": "reserved",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "GHI Leopard het Clown",
+    "dam": "Clown",
+    "generation": "F2",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-10-01",
+      "grams": 84
+    },
+    {
+      "date": "2026-01-01",
+      "grams": 264
+    },
+    {
+      "date": "2026-04-01",
+      "grams": 470
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 640
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 10,
+    "lastFed": "2026-07-24",
+    "consecutive": 18,
+    "refusals": 0
+  },
+  "story": "Three genes that each attack the pattern from a different direction: GHI darkens and adds a gold-green iridescence, Leopard breaks the blotching into discrete spots, Clown removes the flanks entirely. The result holds contrast that most triple combinations lose.",
+  "provenance": "In-house.",
+  "notes": "Reserved pending final payment. Contact the office to be placed on the waiting list for the repeat pairing."
+}

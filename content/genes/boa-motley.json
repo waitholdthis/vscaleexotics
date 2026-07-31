@@ -1,0 +1,18 @@
+{
+  "order": 47,
+  "id": "boa-motley",
+  "name": "Motley",
+  "aliases": [],
+  "species": "boa-constrictor",
+  "locus": "boa-motley",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 4,
+  "mult": 2.1,
+  "year": 1998,
+  "originator": "Multiple",
+  "effect": "Connects the saddles into a continuous dorsal band with clean flanks.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

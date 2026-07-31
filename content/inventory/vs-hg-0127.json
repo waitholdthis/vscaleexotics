@@ -1,0 +1,64 @@
+{
+  "order": 38,
+  "id": "vs-hg-0127",
+  "sku": "VS-HG-0127",
+  "species": "western-hognose",
+  "quality": "typical",
+  "title": "Sable Anaconda het Axanthic",
+  "traits": [
+    {
+      "geneId": "sable",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "anaconda",
+      "zygosity": "het"
+    },
+    {
+      "geneId": "hog-axanthic",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2025-10-01",
+  "weight": 128,
+  "price": 1200,
+  "status": "available",
+  "tier": "foundation",
+  "featured": false,
+  "lineage": {
+    "sire": "Sable Anaconda",
+    "dam": "Sable het Axanthic",
+    "generation": "F2",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-11-01",
+      "grams": 20
+    },
+    {
+      "date": "2026-02-01",
+      "grams": 58
+    },
+    {
+      "date": "2026-05-01",
+      "grams": 98
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 128
+    }
+  ],
+  "feeding": {
+    "prey": "Mouse",
+    "size": "Hopper",
+    "interval": 7,
+    "lastFed": "2026-07-27",
+    "consecutive": 26,
+    "refusals": 0
+  },
+  "story": "Sable pushes the whole animal toward deep chocolate with softened pattern edges. Anaconda thins the blotching further. Carrying Axanthic, she is one pairing away from a Sable Superconda Snow.",
+  "provenance": "In-house.",
+  "notes": "A genuinely good project female at an accessible figure."
+}

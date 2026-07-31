@@ -1,0 +1,18 @@
+{
+  "order": 63,
+  "id": "aru",
+  "name": "Aru",
+  "aliases": [],
+  "species": "green-tree-python",
+  "locus": "gtp-locality",
+  "inheritance": "locality",
+  "superName": "",
+  "rarity": 4,
+  "mult": 1.9,
+  "year": null,
+  "originator": "",
+  "effect": "Compact, deep-bodied animals with a striking blue-tinged green and clean dorsal line.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>VScale Exotics — Content</title>
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+
+<!--
+  This page intentionally runs under a LOOSER Content Security Policy than the
+  rest of the site. Decap CMS is a third-party React application: it injects its
+  own styles at runtime and talks to DecapBridge and the GitHub API.
+
+  The relaxation is scoped to /admin/ only — every other page on this origin
+  keeps `default-src 'self'` with no external origins at all. See SECURITY.md.
+
+  The version below is pinned deliberately. Do not float it to `latest`:
+  the admin panel has write access to the repository, so an unreviewed bundle
+  update is a supply-chain change to your content.
+-->
+<meta http-equiv="Content-Security-Policy" content="
+  default-src 'self';
+  script-src 'self' https://unpkg.com;
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: blob: https://avatars.githubusercontent.com;
+  font-src 'self' data:;
+  connect-src 'self' https://auth.decapbridge.com https://gateway.decapbridge.com https://api.github.com;
+  frame-src 'self';
+  object-src 'none';
+  base-uri 'none';
+  form-action 'self';
+  upgrade-insecure-requests">
+</head>
+<body>
+<script src="https://unpkg.com/decap-cms@3.8.4/dist/decap-cms.js"></script>
+<script src="/admin/preview.js" type="module"></script>
+</body>
+</html>

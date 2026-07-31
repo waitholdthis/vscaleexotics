@@ -1,0 +1,18 @@
+{
+  "order": 58,
+  "id": "motley-r",
+  "name": "Motley",
+  "aliases": [],
+  "species": "reticulated-python",
+  "locus": "retic-motley",
+  "inheritance": "incdom",
+  "superName": "Super Motley",
+  "rarity": 4,
+  "mult": 2,
+  "year": 2004,
+  "originator": "Multiple",
+  "effect": "Aberrant pattern with connected dorsal elements.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

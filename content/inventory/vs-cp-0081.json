@@ -1,0 +1,60 @@
+{
+  "order": 32,
+  "id": "vs-cp-0081",
+  "sku": "VS-CP-0081",
+  "species": "carpet-python",
+  "quality": "typical",
+  "title": "Granite Axanthic",
+  "traits": [
+    {
+      "geneId": "granite",
+      "zygosity": "het"
+    },
+    {
+      "geneId": "carpet-axanthic",
+      "zygosity": "homo"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-08-19",
+  "weight": 520,
+  "price": 2100,
+  "status": "available",
+  "tier": "foundation",
+  "featured": false,
+  "lineage": {
+    "sire": "Granite het Axanthic",
+    "dam": "Axanthic",
+    "generation": "F2",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-10-01",
+      "grams": 82
+    },
+    {
+      "date": "2026-02-01",
+      "grams": 268
+    },
+    {
+      "date": "2026-06-01",
+      "grams": 456
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 520
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 12,
+    "lastFed": "2026-07-26",
+    "consecutive": 16,
+    "refusals": 0
+  },
+  "story": "Axanthic removes every trace of yellow from a species defined by black and gold, leaving pure silver over charcoal. Granite adds a fine speckled break that gives the whole animal a worked-stone texture.",
+  "provenance": "In-house.",
+  "notes": "Strong climber — furnish the enclosure vertically."
+}

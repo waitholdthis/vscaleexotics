@@ -2,7 +2,7 @@
 
 [build]
   publish = "."
-  command = "node tools/check.mjs && node tools/sitemap.mjs && node tools/gen-assets.mjs"
+  command = "node tools/build-data.mjs && node tools/gen-assets.mjs && node tools/sitemap.mjs && node tools/check.mjs && node tools/smoke.mjs"
 
 [build.environment]
   NODE_VERSION = "20"

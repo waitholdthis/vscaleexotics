@@ -1,0 +1,64 @@
+{
+  "order": 14,
+  "id": "vs-rt-0058",
+  "sku": "VS-RT-0058",
+  "species": "reticulated-python",
+  "quality": "typical",
+  "title": "Super Tiger Golden Child",
+  "traits": [
+    {
+      "geneId": "tiger",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "goldenchild",
+      "zygosity": "het"
+    },
+    {
+      "geneId": "dwarf",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2025-03-08",
+  "weight": 4200,
+  "price": 4800,
+  "status": "available",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Tiger Golden Child 50% D",
+    "dam": "Tiger 50% D",
+    "generation": "F2",
+    "dwarfPercent": 50
+  },
+  "weights": [
+    {
+      "date": "2025-05-01",
+      "grams": 280
+    },
+    {
+      "date": "2025-09-01",
+      "grams": 1240
+    },
+    {
+      "date": "2026-01-01",
+      "grams": 2600
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 4200
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Large",
+    "interval": 14,
+    "lastFed": "2026-07-18",
+    "consecutive": 26,
+    "refusals": 0
+  },
+  "story": "Super Tiger stretches the pattern into longitudinal bands until the reticulation nearly disappears; Golden Child floods what remains with saturated gold. A large, confident animal for an experienced keeper.",
+  "provenance": "In-house.",
+  "notes": "50% dwarf — expect a mature length in the eleven to thirteen foot range. Two-person handling protocol recommended from twelve feet."
+}

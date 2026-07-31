@@ -1,0 +1,18 @@
+{
+  "order": 13,
+  "id": "ultramel",
+  "name": "Ultramel",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "ultramel",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 6,
+  "mult": 3.4,
+  "year": 2013,
+  "originator": "Outback Reptiles",
+  "effect": "Intermediate melanin reduction — softer than Albino, with orange-caramel tones and dark red eyes.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

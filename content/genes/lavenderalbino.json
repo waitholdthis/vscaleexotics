@@ -1,0 +1,18 @@
+{
+  "order": 7,
+  "id": "lavenderalbino",
+  "name": "Lavender Albino",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "lavenderalbino",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 6,
+  "mult": 3.6,
+  "year": 2001,
+  "originator": "Ralph Davis",
+  "effect": "Albinism over a lavender-grey ground rather than white. Ruby eyes. Independent of the Albino locus.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

@@ -1,0 +1,18 @@
+{
+  "order": 72,
+  "id": "carpet-albino",
+  "name": "Albino",
+  "aliases": [],
+  "species": "carpet-python",
+  "locus": "carpet-albino",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 5,
+  "mult": 2.6,
+  "year": null,
+  "originator": "",
+  "effect": "Full melanin absence over the banded carpet pattern.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

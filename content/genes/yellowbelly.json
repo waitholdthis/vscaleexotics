@@ -1,0 +1,18 @@
+{
+  "order": 29,
+  "id": "yellowbelly",
+  "name": "Yellow Belly",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-yellowbelly",
+  "inheritance": "incdom",
+  "superName": "Ivory",
+  "rarity": 1,
+  "mult": 1.2,
+  "year": 2002,
+  "originator": "Amir Soleymani",
+  "effect": "Subtle flank speckling and a distinctive belly pattern. Super form is the near-patternless Ivory.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

@@ -1,0 +1,18 @@
+{
+  "order": 0,
+  "id": "pastel",
+  "name": "Pastel",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "pastel",
+  "inheritance": "incdom",
+  "superName": "Super Pastel",
+  "rarity": 1,
+  "mult": 1.15,
+  "year": 1997,
+  "originator": "Graziani Reptiles",
+  "effect": "Lightens ground colour, blushes the dorsal blotches and brightens the head. The workhorse of designer ball python breeding.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

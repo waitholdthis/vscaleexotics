@@ -1,0 +1,56 @@
+{
+  "order": 33,
+  "id": "vs-bl-0023",
+  "sku": "VS-BL-0023",
+  "species": "blood-python",
+  "quality": "strong",
+  "title": "Goldeneye",
+  "traits": [
+    {
+      "geneId": "matrix",
+      "zygosity": "homo"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2025-05-04",
+  "weight": 1900,
+  "price": 3300,
+  "status": "available",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Matrix",
+    "dam": "Matrix",
+    "generation": "F3",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-07-01",
+      "grams": 150
+    },
+    {
+      "date": "2025-11-01",
+      "grams": 780
+    },
+    {
+      "date": "2026-03-01",
+      "grams": 1440
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 1900
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Medium",
+    "interval": 16,
+    "lastFed": "2026-07-22",
+    "consecutive": 21,
+    "refusals": 0
+  },
+  "story": "The homozygous Matrix form: a pale, heavily fractured animal with gold irises that catch light from across a room. Blood pythons shift colour dramatically between sheds, and this line runs from near-white through apricot to deep rust across a season.",
+  "provenance": "In-house.",
+  "notes": "Modern captive-bred brongersmai are a world away from the imported animals that gave the species its reputation. This female is entirely tractable."
+}

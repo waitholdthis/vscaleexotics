@@ -1,0 +1,18 @@
+{
+  "order": 86,
+  "id": "sable",
+  "name": "Sable",
+  "aliases": [],
+  "species": "western-hognose",
+  "locus": "sable",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 5,
+  "mult": 2.6,
+  "year": null,
+  "originator": "",
+  "effect": "Deep chocolate-brown darkening with reduced pattern definition.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

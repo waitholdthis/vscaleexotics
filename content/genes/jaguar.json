@@ -1,0 +1,18 @@
+{
+  "order": 69,
+  "id": "jaguar",
+  "name": "Jaguar",
+  "aliases": [],
+  "species": "carpet-python",
+  "locus": "jaguar",
+  "inheritance": "incdom",
+  "superName": "Non-viable",
+  "rarity": 3,
+  "mult": 1.7,
+  "year": 1998,
+  "originator": "Multiple",
+  "effect": "Reduced, high-contrast pattern with a golden ground.",
+  "lethality": "super-lethal",
+  "lethalityNote": "The homozygous form is not viable. Jaguar also carries a variable neurological wobble.",
+  "restricted": false
+}

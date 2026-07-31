@@ -1,0 +1,18 @@
+{
+  "order": 82,
+  "id": "arctic",
+  "name": "Arctic",
+  "aliases": [],
+  "species": "western-hognose",
+  "locus": "arctic",
+  "inheritance": "incdom",
+  "superName": "Super Arctic",
+  "rarity": 3,
+  "mult": 1.8,
+  "year": null,
+  "originator": "",
+  "effect": "High-contrast greyscale expression that intensifies with age.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

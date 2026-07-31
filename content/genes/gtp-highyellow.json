@@ -1,0 +1,18 @@
+{
+  "order": 67,
+  "id": "gtp-highyellow",
+  "name": "High Yellow",
+  "aliases": [],
+  "species": "green-tree-python",
+  "locus": "gtp-yellow",
+  "inheritance": "polygenic",
+  "superName": "",
+  "rarity": 5,
+  "mult": 2,
+  "year": null,
+  "originator": "",
+  "effect": "Line-bred retention of neonate yellow into the adult phase.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

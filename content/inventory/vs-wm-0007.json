@@ -1,0 +1,51 @@
+{
+  "order": 35,
+  "id": "vs-wm-0007",
+  "sku": "VS-WM-0007",
+  "species": "woma-python",
+  "quality": "strong",
+  "title": "Woma Python",
+  "traits": [],
+  "sex": "female",
+  "hatched": "2025-04-30",
+  "weight": 1100,
+  "price": 2400,
+  "status": "available",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Woma",
+    "dam": "Woma",
+    "generation": "F4",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-07-01",
+      "grams": 110
+    },
+    {
+      "date": "2025-11-01",
+      "grams": 460
+    },
+    {
+      "date": "2026-03-01",
+      "grams": 850
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 1100
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 10,
+    "lastFed": "2026-07-25",
+    "consecutive": 24,
+    "refusals": 0
+  },
+  "story": "A python that gave up heat pits entirely and hunts reptiles underground instead. Sand-gold banding over a fine, almost polished scale surface, and an inquisitive temperament that is unusual for the family.",
+  "provenance": "In-house, fourth generation.",
+  "notes": "Must be housed alone without exception — womas are ophiophagous and will consume a cage mate."
+}

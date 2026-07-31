@@ -1,0 +1,23 @@
+{
+  "order": 7,
+  "id": "boa-albino",
+  "species": "boa-constrictor",
+  "name": "Albino complex",
+  "note": "Kahl and Sharp albino strains are NOT compatible — pairing them yields all normal-looking double hets.",
+  "combos": [
+    {
+      "alleles": [
+        "kahl",
+        "kahl"
+      ],
+      "name": "Kahl Albino"
+    },
+    {
+      "alleles": [
+        "sharp",
+        "sharp"
+      ],
+      "name": "Sharp Albino"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "order": 49,
+  "id": "boa-jungle",
+  "name": "Jungle",
+  "aliases": [],
+  "species": "boa-constrictor",
+  "locus": "boa-jungle",
+  "inheritance": "incdom",
+  "superName": "Super Jungle",
+  "rarity": 3,
+  "mult": 1.7,
+  "year": 1993,
+  "originator": "Multiple",
+  "effect": "Aberrant, high-contrast pattern with irregular saddles. No two animals are alike.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

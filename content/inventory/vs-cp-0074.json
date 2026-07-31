@@ -1,0 +1,60 @@
+{
+  "order": 31,
+  "id": "vs-cp-0074",
+  "sku": "VS-CP-0074",
+  "species": "carpet-python",
+  "quality": "strong",
+  "title": "Caramel Albino Irian Jaya",
+  "traits": [
+    {
+      "geneId": "caramel",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "irianjaya",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2025-07-15",
+  "weight": 640,
+  "price": 2700,
+  "status": "available",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Caramel IJ",
+    "dam": "het Caramel IJ",
+    "generation": "F3",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-09-01",
+      "grams": 84
+    },
+    {
+      "date": "2026-01-01",
+      "grams": 300
+    },
+    {
+      "date": "2026-05-01",
+      "grams": 530
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 640
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 12,
+    "lastFed": "2026-07-25",
+    "consecutive": 18,
+    "refusals": 0
+  },
+  "story": "Caramel swaps black pigment for warm brown, and the effect strengthens for the first three years. Irian Jaya keeps the adult footprint modest — this is the carpet python for keepers who want the pattern without the six-foot enclosure.",
+  "provenance": "In-house.",
+  "notes": "Expected mature length around five feet."
+}

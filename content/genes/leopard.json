@@ -1,0 +1,18 @@
+{
+  "order": 34,
+  "id": "leopard",
+  "name": "Leopard",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "leopard",
+  "inheritance": "incdom",
+  "superName": "Super Leopard",
+  "rarity": 3,
+  "mult": 1.7,
+  "year": 2005,
+  "originator": "Kevin McCurley",
+  "effect": "Breaks the pattern into discrete spots with a heavily reduced dorsal. Super form approaches full pattern loss.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

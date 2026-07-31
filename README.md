@@ -6,10 +6,14 @@ Static site. **Zero runtime dependencies.** No npm packages, no CDN, no fonts, n
 trackers, no build step required to run it.
 
 ```bash
+node tools/build-data.mjs # compile content/ → assets/js/data/ (validates genetics)
 node tools/serve.mjs      # http://localhost:4173, with production security headers
-node tools/check.mjs      # static checks — fails on CSP violations, broken links, missing meta
+node tools/check.mjs      # static checks — CSP violations, broken links, stale generated data
 node tools/smoke.mjs      # runtime checks — loads every page module against a DOM shim
 ```
+
+Content is edited through **Decap CMS at `/admin/`**, authenticated by DecapBridge — see
+[CMS.md](CMS.md).
 
 ---
 
@@ -41,6 +45,11 @@ journal.html  vault.html  compare.html
 legal/*.html                policies
 404.html  offline.html
 
+content/                    CMS-owned source of truth (JSON)
+  inventory/ species/ genes/ loci/ journal/ settings/
+admin/                      Decap CMS — config.yml, index.html
+                            NOTE: runs under a scoped, looser CSP. See CMS.md.
+
 assets/css/
   core.css                  tokens, reset, typography, layout, motion
   components.css            buttons, cards, forms, tables, header, palette, tray
@@ -48,12 +57,13 @@ assets/css/
 
 assets/js/
   core/    dom.js store.js format.js sitemap.js
-  data/    species.js genes.js inventory.js journal.js
+  data/    GENERATED from content/ — species, genes, inventory, journal, site
   engine/  genetics.js valuation.js shipping.js husbandry.js incubation.js legality.js
   ui/      shell.js scales.js hero.js animal-card.js controls.js
   pages/   one entry point per page
 
 tools/
+  build-data.mjs content/ → assets/js/data/, with genetics validation
   serve.mjs      dev server with production headers
   check.mjs      static verification
   smoke.mjs      runtime verification
@@ -128,15 +138,20 @@ Vault, comparison tray and quarantine checklist use `localStorage` and are valid
 
 ## Content is data, not markup
 
-Adding an animal means adding one record to `assets/js/data/inventory.js`. Its `traits` array is the
-source of record — the title, valuation, rarity index, portrait, husbandry figures, structured data
-and the "load into Gene Lab" action are all derived from it, so a listing cannot drift from its
-genetics. Then run `node tools/sitemap.mjs`.
+Content lives in `content/` as JSON and is edited through the CMS. `tools/build-data.mjs` compiles
+it into `assets/js/data/*.js` — **those files are generated; do not edit them.**
 
-Adding a gene means adding one record to `assets/js/data/genes.js`, with its `locus`. If it is
-allelic with existing genes, give it their locus id and add the combination names to that locus's
-`combos` map. The Gene Lab, the Codex, the valuation model and the portrait renderer all pick it up
-without further changes.
+Adding an animal means one record in `content/inventory/`. Its `traits` array is the source of
+record: the title, valuation, rarity index, portrait, husbandry figures, structured data and the
+"load into Gene Lab" action are all derived from it, so a listing cannot drift from its genetics.
+
+Adding a gene means one record in `content/genes/`, with its `locus`. If it is allelic with
+existing genes, give it their locus id and add the combination names to that locus in
+`content/loci/`. The Gene Lab, the Codex, the valuation model and the portrait renderer all pick it
+up without further changes.
+
+The build refuses to write if the result would be genetically impossible — more than two alleles at
+one locus, a gene attached to the wrong species, a combination spanning two loci. See [CMS.md](CMS.md).
 
 ---
 

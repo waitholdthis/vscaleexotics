@@ -12,7 +12,7 @@ import { INVENTORY, INVENTORY_BY_ID, TIER_LABEL } from '../data/inventory.js';
 import { SPECIES_BY_ID } from '../data/species.js';
 import { GENES_BY_ID } from '../data/genes.js';
 import { makeAnimalCanvas, mountScaleCanvases } from '../ui/scales.js';
-import { geneChips, statusBadge, rarityMeter, animalCard } from '../ui/animal-card.js';
+import { geneChips, statusBadge, rarityMeter, animalCard, animalMedia } from '../ui/animal-card.js';
 import { money, weight, weightBoth, date, ageFrom, sexSymbol, lengthRange, tempRange, dimensions } from '../core/format.js';
 import { enclosureSpec, feedingPlan, growthProjection } from '../engine/husbandry.js';
 import { vault, compare, recent } from '../core/store.js';
@@ -112,25 +112,48 @@ function pageHead(a, sp) {
 /* ---------- portrait ---------- */
 
 function portrait(a, sp) {
-  const canvas = makeAnimalCanvas(a, sp, GENES_BY_ID, { width: 1000, height: 750, detail: 'card' });
+  const hasPhoto = Array.isArray(a.images) && a.images.length > 0;
+  const media = animalMedia(a, sp, { width: 1000, height: 750, detail: 'card', priority: true });
+
+  const gallery = hasPhoto && a.images.length > 1
+    ? h(
+        'div',
+        { class: 'grid grid--4', style: { 'margin-top': '.75rem' } },
+        ...a.images.slice(1, 5).map((src, i) =>
+          h('img', {
+            src,
+            alt: `${a.title}, photograph ${i + 2}`,
+            loading: 'lazy',
+            decoding: 'async',
+            style: { 'aspect-ratio': '4 / 3', 'object-fit': 'cover', 'border-radius': 'var(--radius)' }
+          })
+        )
+      )
+    : null;
+
   return h(
     'div',
     {},
     h(
       'figure',
       { class: 'animal-portrait' },
-      canvas,
-      h('figcaption', {
-        class: 'animal-portrait__note',
-        text:
-          'Generated pattern study, derived from this animal\'s recorded genetics — not a photograph. ' +
-          'Full photography and video are supplied on request before any deposit is taken.'
-      })
+      media,
+      // The disclaimer belongs on generated art only. Leaving it under a real
+      // photograph would be actively misleading.
+      hasPhoto
+        ? null
+        : h('figcaption', {
+            class: 'animal-portrait__note',
+            text:
+              'Generated pattern study, derived from this animal\'s recorded genetics — not a photograph. ' +
+              'Full photography and video are supplied on request before any deposit is taken.'
+          })
     ),
+    gallery,
     h(
       'div',
       { class: 'cluster', style: { 'margin-top': '1rem' } },
-      h('a', { class: 'btn btn--sm', href: '/concierge.html', text: 'Request photographs' }),
+      h('a', { class: 'btn btn--sm', href: '/concierge.html', text: hasPhoto ? 'Request video' : 'Request photographs' }),
       h('a', { class: 'btn btn--sm', href: `/tools/gene-lab.html?sire=${encodeURIComponent(a.id)}`, text: 'Load into Gene Lab' })
     )
   );

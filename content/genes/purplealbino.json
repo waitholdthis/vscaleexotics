@@ -1,0 +1,18 @@
+{
+  "order": 50,
+  "id": "purplealbino",
+  "name": "Purple Albino",
+  "aliases": [],
+  "species": "reticulated-python",
+  "locus": "retic-albino",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 4,
+  "mult": 2.3,
+  "year": 1997,
+  "originator": "Bob Clark",
+  "effect": "Albino strain retaining a violet cast in the ground colour.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

@@ -8,7 +8,7 @@ initShell();
 
 const DETAIL = {
   'gene-lab': 'Models loci rather than genes, so Mojave × Lesser resolves to a Blue-Eyed Leucistic. Removes non-viable genotypes from the live clutch, separates genotype from visual result, and derives possible-het percentages instead of hard-coding them.',
-  codex: 'Ninety-one genes across ten species with inheritance mode, originating breeder, year proven, rarity index and — the part usually missing — which locus each occupies and what it is allelic with.',
+  codex: 'Every gene we work with, indexed by species and inheritance mode: the originating breeder, year proven, rarity index and — the part usually missing — which locus each occupies and what it is allelic with.',
   valuation: 'Applies a decaying weight to each successive gene rather than multiplying them all together, which is why it does not value a five-gene animal at ten times what anyone would pay. Returns a band and a liquidity assessment.',
   clutch: 'Temperature-dependent incubation for oviparous species, gestation windows for live-bearers. Candling dates, pip window, when cutting is justified, first shed and first feed.',
   husbandry: 'Sizes the enclosure to the animal in front of you rather than to an adult of the species, and produces a build checklist with the critical items marked.',

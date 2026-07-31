@@ -171,7 +171,7 @@ const PAGES = [
     title: 'Morph Codex — Snake Gene Encyclopedia | VScale Exotics',
     description: 'Every gene we work with, indexed by species and inheritance mode: what it does visually, who produced it and when, how rare it is, which locus it belongs to, and which other genes it is allelic with.',
     h1: 'Morph Codex', eyebrow: 'Gene reference',
-    lede: 'Ninety-one genes across ten species, with the inheritance mode, the originating breeder, the year it was proven, and — critically — which locus each one occupies.',
+    lede: 'Every gene we work with, with the inheritance mode, the originating breeder, the year it was proven, and — critically — which locus each one occupies.',
     body: simpleBody(`      <div class="tool-layout">
         <aside class="tool-controls" data-codex-controls aria-label="Filter genes"></aside>
         <div class="tool-output"><div data-codex-results></div></div>

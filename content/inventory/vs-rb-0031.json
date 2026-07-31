@@ -1,0 +1,51 @@
+{
+  "order": 28,
+  "id": "vs-rb-0031",
+  "sku": "VS-RB-0031",
+  "species": "brazilian-rainbow-boa",
+  "quality": "strong",
+  "title": "Brazilian Rainbow Boa",
+  "traits": [],
+  "sex": "female",
+  "hatched": "2025-05-11",
+  "weight": 720,
+  "price": 2200,
+  "status": "available",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "High-red line",
+    "dam": "High-red line",
+    "generation": "F6",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-07-01",
+      "grams": 96
+    },
+    {
+      "date": "2025-11-01",
+      "grams": 320
+    },
+    {
+      "date": "2026-03-01",
+      "grams": 560
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 720
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 16,
+    "lastFed": "2026-07-23",
+    "consecutive": 18,
+    "refusals": 0
+  },
+  "story": "The iridescence is structural, not pigmentary — microscopic ridges on every scale diffract light into a full spectrum. It cannot be photographed accurately and has to be seen moving under a directional source. Six generations of selection for red saturation underneath it.",
+  "provenance": "In-house high-red line.",
+  "notes": "Humidity below 70% will produce retained sheds within a single cycle. Review the husbandry specification before ordering."
+}

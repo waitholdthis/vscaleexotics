@@ -1,0 +1,18 @@
+{
+  "order": 31,
+  "id": "gravel",
+  "name": "Gravel",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "bp-yellowbelly",
+  "inheritance": "incdom",
+  "superName": "Super Gravel",
+  "rarity": 3,
+  "mult": 1.6,
+  "year": 2004,
+  "originator": "Mike Wilbanks",
+  "effect": "Speckled grey expression. With Specter produces the Highway combination.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

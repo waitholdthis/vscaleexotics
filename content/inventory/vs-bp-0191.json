@@ -1,0 +1,56 @@
+{
+  "order": 6,
+  "id": "vs-bp-0191",
+  "sku": "VS-BP-0191",
+  "species": "ball-python",
+  "quality": "typical",
+  "title": "Blue-Eyed Leucistic",
+  "traits": [
+    {
+      "geneId": "mojave",
+      "zygosity": "homo"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-10-11",
+  "weight": 430,
+  "price": 950,
+  "status": "available",
+  "tier": "foundation",
+  "featured": false,
+  "lineage": {
+    "sire": "Mojave",
+    "dam": "Lesser",
+    "generation": "F3",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-11-01",
+      "grams": 76
+    },
+    {
+      "date": "2026-02-01",
+      "grams": 208
+    },
+    {
+      "date": "2026-05-01",
+      "grams": 348
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 430
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 10,
+    "lastFed": "2026-07-25",
+    "consecutive": 15,
+    "refusals": 1
+  },
+  "story": "A pure white animal with pale blue eyes and no residual pigment anywhere on the body. The BEL is the classic demonstration of allelic complexes — nine different genes at one locus, any two of which produce this.",
+  "provenance": "In-house.",
+  "notes": "Homozygous Mojave, so every offspring from this male carries a Mojave-complex allele. An efficient foundation animal."
+}

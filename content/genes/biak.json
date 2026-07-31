@@ -1,0 +1,18 @@
+{
+  "order": 61,
+  "id": "biak",
+  "name": "Biak",
+  "aliases": [],
+  "species": "green-tree-python",
+  "locus": "gtp-locality",
+  "inheritance": "locality",
+  "superName": "",
+  "rarity": 3,
+  "mult": 1.4,
+  "year": null,
+  "originator": "",
+  "effect": "Island locality. Retains high yellow scattering into adulthood, larger and more assertive than mainland lines.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

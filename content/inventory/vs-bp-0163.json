@@ -1,0 +1,64 @@
+{
+  "order": 2,
+  "id": "vs-bp-0163",
+  "sku": "VS-BP-0163",
+  "species": "ball-python",
+  "quality": "strong",
+  "title": "Desert Ghost Clown",
+  "traits": [
+    {
+      "geneId": "desertghost",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "clown",
+      "zygosity": "homo"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-07-19",
+  "weight": 690,
+  "price": 6800,
+  "status": "available",
+  "tier": "collector",
+  "featured": true,
+  "lineage": {
+    "sire": "DG Clown",
+    "dam": "Clown het DG",
+    "generation": "F4",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-08-15",
+      "grams": 82
+    },
+    {
+      "date": "2025-11-15",
+      "grams": 268
+    },
+    {
+      "date": "2026-02-15",
+      "grams": 452
+    },
+    {
+      "date": "2026-05-15",
+      "grams": 604
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 690
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 10,
+    "lastFed": "2026-07-25",
+    "consecutive": 19,
+    "refusals": 0
+  },
+  "story": "Desert Ghost is a gene you buy on the parents, not the hatchling — it brightens for three full years into deep gold and copper with the black almost entirely withdrawn. Paired with Clown's pattern reduction, the adult animal reads as a single sheet of beaten metal.",
+  "provenance": "In-house, from a proven DG line established 2018.",
+  "notes": "Already showing significant lightening at eleven months, which is early and a strong indicator for the adult expression."
+}

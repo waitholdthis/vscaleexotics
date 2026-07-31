@@ -1,0 +1,68 @@
+{
+  "order": 5,
+  "id": "vs-bp-0184",
+  "sku": "VS-BP-0184",
+  "species": "ball-python",
+  "quality": "typical",
+  "title": "Candino Enchi",
+  "traits": [
+    {
+      "geneId": "albino",
+      "zygosity": "het"
+    },
+    {
+      "geneId": "candy",
+      "zygosity": "het"
+    },
+    {
+      "geneId": "enchi",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2025-07-04",
+  "weight": 780,
+  "price": 3900,
+  "status": "available",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Candy het Albino",
+    "dam": "Albino Enchi",
+    "generation": "F2",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-08-01",
+      "grams": 90
+    },
+    {
+      "date": "2025-11-01",
+      "grams": 302
+    },
+    {
+      "date": "2026-02-01",
+      "grams": 520
+    },
+    {
+      "date": "2026-05-01",
+      "grams": 682
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 780
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 10,
+    "lastFed": "2026-07-26",
+    "consecutive": 21,
+    "refusals": 0
+  },
+  "story": "Candino is the compound heterozygote of two alleles at the albino locus — not a double-recessive stack, which is why it cannot be produced by simply combining two albinos. Enchi tightens the pattern and drives the orange saturation to a level the plain Candino never reaches.",
+  "provenance": "In-house.",
+  "notes": "Excellent feeder, notably calm. A strong foundation female for an albino-complex project."
+}

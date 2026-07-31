@@ -1,0 +1,18 @@
+{
+  "order": 44,
+  "id": "boa-anery",
+  "name": "Anerythristic",
+  "aliases": [],
+  "species": "boa-constrictor",
+  "locus": "boa-anery",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 3,
+  "mult": 1.9,
+  "year": 1990,
+  "originator": "Multiple",
+  "effect": "Removes red pigment, producing a black, silver and brown animal. Combines with Albino to make Snow.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

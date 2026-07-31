@@ -1,0 +1,149 @@
+{
+  "order": 0,
+  "id": "bp-bel",
+  "species": "ball-python",
+  "name": "Blue-Eyed Leucistic complex",
+  "note": "Nine alleles at one locus. Any two of them together produce a leucistic or near-leucistic animal — this is why \"Mojave x Lesser\" makes a BEL and not a Mojave Lesser.",
+  "combos": [
+    {
+      "alleles": [
+        "mojave",
+        "mojave"
+      ],
+      "name": "Blue-Eyed Leucistic"
+    },
+    {
+      "alleles": [
+        "lesser",
+        "lesser"
+      ],
+      "name": "Blue-Eyed Leucistic"
+    },
+    {
+      "alleles": [
+        "butter",
+        "butter"
+      ],
+      "name": "Blue-Eyed Leucistic"
+    },
+    {
+      "alleles": [
+        "lesser",
+        "mojave"
+      ],
+      "name": "Blue-Eyed Leucistic"
+    },
+    {
+      "alleles": [
+        "butter",
+        "mojave"
+      ],
+      "name": "Blue-Eyed Leucistic"
+    },
+    {
+      "alleles": [
+        "butter",
+        "lesser"
+      ],
+      "name": "Blue-Eyed Leucistic"
+    },
+    {
+      "alleles": [
+        "mojave",
+        "russo"
+      ],
+      "name": "Blue-Eyed Leucistic"
+    },
+    {
+      "alleles": [
+        "lesser",
+        "russo"
+      ],
+      "name": "Blue-Eyed Leucistic"
+    },
+    {
+      "alleles": [
+        "russo",
+        "russo"
+      ],
+      "name": "Blue-Eyed Leucistic"
+    },
+    {
+      "alleles": [
+        "mystic",
+        "phantom"
+      ],
+      "name": "Mystic Potion"
+    },
+    {
+      "alleles": [
+        "phantom",
+        "phantom"
+      ],
+      "name": "Super Phantom"
+    },
+    {
+      "alleles": [
+        "mystic",
+        "mystic"
+      ],
+      "name": "Super Mystic"
+    },
+    {
+      "alleles": [
+        "mojave",
+        "phantom"
+      ],
+      "name": "Sulfur"
+    },
+    {
+      "alleles": [
+        "mojave",
+        "mystic"
+      ],
+      "name": "Mystic Mojave"
+    },
+    {
+      "alleles": [
+        "lesser",
+        "phantom"
+      ],
+      "name": "Phantom Lesser"
+    },
+    {
+      "alleles": [
+        "special",
+        "special"
+      ],
+      "name": "Super Special"
+    },
+    {
+      "alleles": [
+        "lesser",
+        "special"
+      ],
+      "name": "Super Special-type Leucistic"
+    },
+    {
+      "alleles": [
+        "daddy",
+        "daddy"
+      ],
+      "name": "Super Daddy"
+    },
+    {
+      "alleles": [
+        "daddy",
+        "lesser"
+      ],
+      "name": "Blue-Eyed Leucistic"
+    },
+    {
+      "alleles": [
+        "daddy",
+        "mojave"
+      ],
+      "name": "Blue-Eyed Leucistic"
+    }
+  ]
+}

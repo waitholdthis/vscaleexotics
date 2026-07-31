@@ -1,0 +1,18 @@
+{
+  "order": 46,
+  "id": "img",
+  "name": "IMG",
+  "aliases": [],
+  "species": "boa-constrictor",
+  "locus": "img",
+  "inheritance": "incdom",
+  "superName": "Super IMG",
+  "rarity": 5,
+  "mult": 3.4,
+  "year": 2004,
+  "originator": "Multiple",
+  "effect": "Increasing Melanin Gene. Heterozygous animals darken progressively with age; the super form is a striking pearl-lavender.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

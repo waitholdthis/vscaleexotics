@@ -1,0 +1,56 @@
+{
+  "order": 20,
+  "id": "vs-gt-0040",
+  "sku": "VS-GT-0040",
+  "species": "green-tree-python",
+  "quality": "typical",
+  "title": "Aru",
+  "traits": [
+    {
+      "geneId": "aru",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2024-12-09",
+  "weight": 610,
+  "price": 3200,
+  "status": "sold",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Aru",
+    "dam": "Aru",
+    "generation": "F5",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-03-01",
+      "grams": 90
+    },
+    {
+      "date": "2025-09-01",
+      "grams": 300
+    },
+    {
+      "date": "2026-03-01",
+      "grams": 520
+    },
+    {
+      "date": "2026-06-01",
+      "grams": 610
+    }
+  ],
+  "feeding": {
+    "prey": "Mouse",
+    "size": "Adult",
+    "interval": 18,
+    "lastFed": "2026-06-24",
+    "consecutive": 21,
+    "refusals": 0
+  },
+  "story": "Compact, deep-bodied and blue-tinged, with the clean unbroken dorsal line the Aru locality is known for. Fifth-generation captive with no wild-caught animal in the recorded pedigree.",
+  "provenance": "In-house.",
+  "notes": "Sold May 2026."
+}

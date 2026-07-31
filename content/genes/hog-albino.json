@@ -1,0 +1,18 @@
+{
+  "order": 83,
+  "id": "hog-albino",
+  "name": "Albino",
+  "aliases": [],
+  "species": "western-hognose",
+  "locus": "hog-albino",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 2,
+  "mult": 1.6,
+  "year": null,
+  "originator": "",
+  "effect": "Melanin absence producing pink, orange and white with red eyes.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

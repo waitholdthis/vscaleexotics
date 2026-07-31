@@ -1,0 +1,18 @@
+{
+  "order": 81,
+  "id": "anaconda",
+  "name": "Anaconda",
+  "aliases": [],
+  "species": "western-hognose",
+  "locus": "anaconda",
+  "inheritance": "incdom",
+  "superName": "Superconda",
+  "rarity": 2,
+  "mult": 1.5,
+  "year": null,
+  "originator": "",
+  "effect": "Reduces dorsal blotching; the Superconda form is nearly patternless.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

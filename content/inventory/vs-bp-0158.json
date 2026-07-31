@@ -1,0 +1,64 @@
+{
+  "order": 1,
+  "id": "vs-bp-0158",
+  "sku": "VS-BP-0158",
+  "species": "ball-python",
+  "quality": "exceptional",
+  "title": "Sunset Clown",
+  "traits": [
+    {
+      "geneId": "sunset",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "clown",
+      "zygosity": "homo"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2025-06-02",
+  "weight": 1140,
+  "price": null,
+  "status": "available",
+  "tier": "flagship",
+  "featured": true,
+  "lineage": {
+    "sire": "Sunset het Clown",
+    "dam": "Clown het Sunset",
+    "generation": "F2",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-07-01",
+      "grams": 88
+    },
+    {
+      "date": "2025-10-01",
+      "grams": 340
+    },
+    {
+      "date": "2026-01-01",
+      "grams": 640
+    },
+    {
+      "date": "2026-04-01",
+      "grams": 920
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 1140
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Medium",
+    "interval": 12,
+    "lastFed": "2026-07-22",
+    "consecutive": 28,
+    "refusals": 1
+  },
+  "story": "The combination the Sunset gene was always pointing toward. Clown strips the pattern to a clean dorsal band; Sunset floods what remains with mahogany and oxblood that deepens through every shed. We believe this is one of fewer than a dozen visual Sunset Clown females on the planet.",
+  "provenance": "Third-generation in-house line. Both grandparents remain in our breeding collection and are available for viewing by appointment.",
+  "notes": "Price on application. Serious enquiries will be asked to complete a keeper profile before we discuss terms."
+}

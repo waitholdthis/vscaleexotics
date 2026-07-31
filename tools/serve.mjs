@@ -44,8 +44,32 @@ const CSP = [
   'upgrade-insecure-requests'
 ].join('; ');
 
-const SECURITY_HEADERS = {
-  'Content-Security-Policy': CSP,
+/**
+ * The admin panel runs a third-party React application that injects its own
+ * styles and talks to DecapBridge and the GitHub API. It therefore needs a
+ * looser policy than the rest of the site — scoped to /admin/ and nowhere else.
+ *
+ * Note that a page's meta CSP and its header CSP are BOTH enforced, as an
+ * intersection. Relaxing only the meta tag in admin/index.html would achieve
+ * nothing while the server still sent the strict header, which is why this
+ * branch has to exist in every server config.
+ */
+const ADMIN_CSP = [
+  "default-src 'self'",
+  "script-src 'self' https://unpkg.com",
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https://avatars.githubusercontent.com",
+  "font-src 'self' data:",
+  "connect-src 'self' https://auth.decapbridge.com https://gateway.decapbridge.com https://api.github.com",
+  "frame-ancestors 'none'",
+  "frame-src 'self'",
+  "object-src 'none'",
+  "base-uri 'none'",
+  "form-action 'self'",
+  'upgrade-insecure-requests'
+].join('; ');
+
+const baseHeaders = {
   'X-Content-Type-Options': 'nosniff',
   'Referrer-Policy': 'strict-origin-when-cross-origin',
   'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()',
@@ -53,6 +77,13 @@ const SECURITY_HEADERS = {
   'Cross-Origin-Resource-Policy': 'same-origin',
   'X-Frame-Options': 'DENY'
 };
+
+const SECURITY_HEADERS = { ...baseHeaders, 'Content-Security-Policy': CSP };
+
+const headersFor = (pathname) =>
+  pathname.startsWith('/admin')
+    ? { ...baseHeaders, 'Content-Security-Policy': ADMIN_CSP, 'X-Robots-Tag': 'noindex, nofollow' }
+    : SECURITY_HEADERS;
 
 const server = createServer(async (req, res) => {
   try {
@@ -81,7 +112,7 @@ const server = createServer(async (req, res) => {
     const body = await readFile(file);
     const type = TYPES[extname(file)] || 'application/octet-stream';
     res.writeHead(200, {
-      ...SECURITY_HEADERS,
+      ...headersFor(pathname),
       'Content-Type': type,
       'Cache-Control': 'no-store'
     }).end(body);

@@ -1,0 +1,30 @@
+{
+  "order": 3,
+  "id": "bp-fire",
+  "species": "ball-python",
+  "name": "Fire / Vanilla complex",
+  "note": "",
+  "combos": [
+    {
+      "alleles": [
+        "fire",
+        "fire"
+      ],
+      "name": "Black-Eyed Leucistic"
+    },
+    {
+      "alleles": [
+        "vanilla",
+        "vanilla"
+      ],
+      "name": "Super Vanilla"
+    },
+    {
+      "alleles": [
+        "fire",
+        "vanilla"
+      ],
+      "name": "Black-Eyed Leucistic"
+    }
+  ]
+}

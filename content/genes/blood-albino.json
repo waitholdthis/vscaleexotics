@@ -1,0 +1,18 @@
+{
+  "order": 78,
+  "id": "blood-albino",
+  "name": "Albino",
+  "aliases": [],
+  "species": "blood-python",
+  "locus": "blood-albino",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 5,
+  "mult": 2.6,
+  "year": null,
+  "originator": "",
+  "effect": "White ground with intense orange-red blotching and pink eyes.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

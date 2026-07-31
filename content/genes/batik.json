@@ -1,0 +1,18 @@
+{
+  "order": 80,
+  "id": "batik",
+  "name": "Batik",
+  "aliases": [],
+  "species": "blood-python",
+  "locus": "batik",
+  "inheritance": "incdom",
+  "superName": "Super Batik",
+  "rarity": 4,
+  "mult": 2,
+  "year": null,
+  "originator": "",
+  "effect": "Increases pattern connectivity into flowing bands along the dorsum.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

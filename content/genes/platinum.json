@@ -1,0 +1,18 @@
+{
+  "order": 54,
+  "id": "platinum",
+  "name": "Platinum",
+  "aliases": [],
+  "species": "reticulated-python",
+  "locus": "platinum",
+  "inheritance": "incdom",
+  "superName": "Titanium",
+  "rarity": 6,
+  "mult": 2.6,
+  "year": 2003,
+  "originator": "Bob Clark",
+  "effect": "Silvers the ground and reduces the reticulation. The super form, Titanium, is a nearly patternless silver-white animal.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

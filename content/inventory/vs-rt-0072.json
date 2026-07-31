@@ -1,0 +1,64 @@
+{
+  "order": 16,
+  "id": "vs-rt-0072",
+  "sku": "VS-RT-0072",
+  "species": "reticulated-python",
+  "quality": "typical",
+  "title": "Platinum het Anthrax",
+  "traits": [
+    {
+      "geneId": "platinum",
+      "zygosity": "het"
+    },
+    {
+      "geneId": "anthrax",
+      "zygosity": "het"
+    },
+    {
+      "geneId": "dwarf",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-07-02",
+  "weight": 1420,
+  "price": 3400,
+  "status": "available",
+  "tier": "foundation",
+  "featured": false,
+  "lineage": {
+    "sire": "Platinum 50% D",
+    "dam": "Anthrax 50% D",
+    "generation": "F1",
+    "dwarfPercent": 50
+  },
+  "weights": [
+    {
+      "date": "2025-09-01",
+      "grams": 190
+    },
+    {
+      "date": "2026-01-01",
+      "grams": 700
+    },
+    {
+      "date": "2026-05-01",
+      "grams": 1180
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 1420
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Medium",
+    "interval": 14,
+    "lastFed": "2026-07-25",
+    "consecutive": 16,
+    "refusals": 0
+  },
+  "story": "A deliberate foundation animal: visual Platinum for immediate impact, carrying Anthrax for the project behind it. Pair him back to an Anthrax female and the maths gets interesting quickly.",
+  "provenance": "In-house.",
+  "notes": "Anthrax confirmed by pedigree. Run this animal through the Gene Lab to see what he produces against your females."
+}

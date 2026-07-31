@@ -1,0 +1,64 @@
+{
+  "order": 10,
+  "id": "vs-bp-0219",
+  "sku": "VS-BP-0219",
+  "species": "ball-python",
+  "quality": "exceptional",
+  "title": "VPI Axanthic Clown",
+  "traits": [
+    {
+      "geneId": "axanthic",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "clown",
+      "zygosity": "homo"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-07-28",
+  "weight": 720,
+  "price": 7600,
+  "status": "available",
+  "tier": "flagship",
+  "featured": false,
+  "lineage": {
+    "sire": "VPI Axanthic het Clown",
+    "dam": "Clown het VPI Axanthic",
+    "generation": "F3",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-09-01",
+      "grams": 88
+    },
+    {
+      "date": "2025-12-01",
+      "grams": 296
+    },
+    {
+      "date": "2026-03-01",
+      "grams": 512
+    },
+    {
+      "date": "2026-06-01",
+      "grams": 654
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 720
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 10,
+    "lastFed": "2026-07-26",
+    "consecutive": 20,
+    "refusals": 0
+  },
+  "story": "A true greyscale animal. Axanthic removes red and yellow pigment entirely; Clown removes the pattern. What remains is a graphite-to-silver gradient with no colour information at all — the most severe reduction available in this species.",
+  "provenance": "VPI line, verified. In-house production, fourth generation.",
+  "notes": "VPI, MJ, TSK and Jolliff axanthic lines are not compatible with one another. This animal is pure VPI and is documented as such."
+}

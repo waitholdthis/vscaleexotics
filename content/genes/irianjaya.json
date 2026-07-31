@@ -1,0 +1,18 @@
+{
+  "order": 75,
+  "id": "irianjaya",
+  "name": "Irian Jaya",
+  "aliases": [],
+  "species": "carpet-python",
+  "locus": "carpet-locality",
+  "inheritance": "locality",
+  "superName": "",
+  "rarity": 2,
+  "mult": 1.2,
+  "year": null,
+  "originator": "",
+  "effect": "Compact locality, typically the smallest and most manageable carpet form.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

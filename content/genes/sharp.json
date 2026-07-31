@@ -1,0 +1,18 @@
+{
+  "order": 43,
+  "id": "sharp",
+  "name": "Sharp Albino",
+  "aliases": [],
+  "species": "boa-constrictor",
+  "locus": "boa-albino",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 4,
+  "mult": 2.4,
+  "year": 1993,
+  "originator": "Doug Sharp",
+  "effect": "A separate T-negative albino strain. Not compatible with Kahl — pairing the two produces normal-looking double hets.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

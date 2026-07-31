@@ -1,0 +1,18 @@
+{
+  "order": 76,
+  "id": "jungle",
+  "name": "Jungle",
+  "aliases": [],
+  "species": "carpet-python",
+  "locus": "carpet-locality",
+  "inheritance": "locality",
+  "superName": "",
+  "rarity": 3,
+  "mult": 1.5,
+  "year": null,
+  "originator": "",
+  "effect": "High-contrast black-and-gold locality; selectively bred lines are exceptionally bold.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

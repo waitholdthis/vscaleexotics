@@ -1,0 +1,20 @@
+{
+  "order": 8,
+  "id": "desertghost",
+  "name": "Desert Ghost",
+  "aliases": [
+    "DG"
+  ],
+  "species": "ball-python",
+  "locus": "desertghost",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 6,
+  "mult": 3.8,
+  "year": 2005,
+  "originator": "Ozzy Boids",
+  "effect": "Progressively brightens with age into deep gold and copper, with reduced black. Adults are dramatically superior to hatchlings — this gene must be bought on the parents.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

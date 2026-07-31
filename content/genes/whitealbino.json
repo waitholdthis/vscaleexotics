@@ -1,0 +1,18 @@
+{
+  "order": 52,
+  "id": "whitealbino",
+  "name": "White Albino",
+  "aliases": [],
+  "species": "reticulated-python",
+  "locus": "retic-albino",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 5,
+  "mult": 2.7,
+  "year": 2000,
+  "originator": "Multiple",
+  "effect": "The cleanest albino strain, approaching pure white between the pattern elements.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

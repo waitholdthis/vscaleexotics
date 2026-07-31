@@ -1,0 +1,37 @@
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Content edits arrive from the CMS as pull requests. This is what makes that
+# workflow meaningful: an impossible genotype or a stale generated file fails
+# here, on the branch, rather than on main.
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Compile and validate content
+        run: node tools/build-data.mjs
+
+      - name: Fail if generated data was not committed
+        run: |
+          if [ -n "$(git status --porcelain assets/js/data)" ]; then
+            echo "::error::assets/js/data is out of sync with content/."
+            echo "Run 'node tools/build-data.mjs' and commit the result."
+            git --no-pager diff --stat assets/js/data
+            exit 1
+          fi
+
+      - name: Static checks
+        run: node tools/check.mjs
+
+      - name: Runtime smoke test
+        run: node tools/smoke.mjs

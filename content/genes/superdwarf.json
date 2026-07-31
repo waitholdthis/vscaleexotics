@@ -1,0 +1,18 @@
+{
+  "order": 60,
+  "id": "superdwarf",
+  "name": "Super Dwarf",
+  "aliases": [],
+  "species": "reticulated-python",
+  "locus": "dwarf",
+  "inheritance": "polygenic",
+  "superName": "",
+  "rarity": 6,
+  "mult": 1.8,
+  "year": null,
+  "originator": "",
+  "effect": "Kalatoa and Selayer locality lines. High-percentage super dwarf animals mature at six to eight feet, making the species genuinely keepable.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

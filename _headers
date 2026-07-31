@@ -39,3 +39,13 @@
 
 /.well-known/security.txt
   Content-Type: text/plain; charset=utf-8
+
+# ── Admin panel ──────────────────────────────────────────────────────────────
+# Decap CMS is a third-party React app: it injects its own styles and talks to
+# DecapBridge and the GitHub API. This relaxation is scoped to /admin/ and
+# nowhere else — every other path above keeps default-src 'self' with no
+# external origins. Placed last so it overrides the /* rule.
+/admin/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://avatars.githubusercontent.com; font-src 'self' data:; connect-src 'self' https://auth.decapbridge.com https://gateway.decapbridge.com https://api.github.com; frame-ancestors 'none'; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: public, max-age=0, must-revalidate

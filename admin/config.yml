@@ -1,0 +1,415 @@
+# VScale Exotics — Decap CMS, authenticated via DecapBridge.
+#
+# ── BEFORE THIS WORKS ────────────────────────────────────────────────────────
+# 1. Create a site at https://decapbridge.com and connect this repository.
+# 2. Replace YOUR-SITE-ID below with the id DecapBridge gives you.
+# 3. Invite yourself as a user, then visit /admin/.
+# Nothing else in this file needs changing.
+#
+# ── HOW CONTENT REACHES THE SITE ─────────────────────────────────────────────
+# The CMS writes JSON into content/. It does NOT write the files the site runs
+# on. `node tools/build-data.mjs` compiles content/ into assets/js/data/*.js,
+# validating referential integrity on the way through, and the deploy runs it.
+# That indirection is what lets the site stay synchronous and dependency-free.
+
+backend:
+  name: git-gateway
+  repo: waitholdthis/vscaleexotics
+  branch: main
+  identity_url: https://auth.decapbridge.com/sites/YOUR-SITE-ID
+  gateway_url: https://gateway.decapbridge.com
+  commit_messages:
+    create: 'content: create {{collection}} “{{slug}}”'
+    update: 'content: update {{collection}} “{{slug}}”'
+    delete: 'content: delete {{collection}} “{{slug}}”'
+    uploadMedia: 'content: upload {{path}}'
+    deleteMedia: 'content: delete {{path}}'
+    openAuthoring: 'content: {{message}}'
+
+# Every change goes through a pull request rather than straight to main. A bad
+# edit then fails CI on a branch instead of breaking the live build.
+publish_mode: editorial_workflow
+
+site_url: https://vscaleexotics.com
+display_url: https://vscaleexotics.com
+logo_url: https://vscaleexotics.com/assets/img/icon-512.svg
+
+media_folder: assets/img/animals
+public_folder: /assets/img/animals
+
+locale: en
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: inventory
+    label: Livestock
+    label_singular: Animal
+    description: >-
+      Every animal held. The genetics you record here drive the listing title,
+      the valuation, the rarity index, the generated portrait and the Gene Lab —
+      so they are the one thing worth getting exactly right.
+    folder: content/inventory
+    extension: json
+    format: json
+    create: true
+    identifier_field: id
+    slug: '{{fields.id}}'
+    summary: '{{sku}} — {{title}} ({{status}})'
+    sortable_fields: [order, sku, title, status, weight, price]
+    view_groups:
+      - label: Status
+        field: status
+      - label: Species
+        field: species
+    fields:
+      - { label: Display order, name: order, widget: number, value_type: int, default: 999, hint: 'Lower sorts first. Only a tiebreak — the collection page has its own sorting.' }
+      - { label: ID, name: id, widget: string, pattern: ['^[a-z0-9-]{3,40}$', 'Lowercase letters, numbers and hyphens only'], hint: 'Permanent. This is the URL of the animal record — changing it breaks existing links.' }
+      - { label: SKU, name: sku, widget: string, hint: 'Must be unique. Shown on the listing and the invoice.' }
+      - label: Species
+        name: species
+        widget: relation
+        collection: species
+        value_field: id
+        search_fields: [common, scientific]
+        display_fields: [common]
+      - { label: Title, name: title, widget: string, hint: 'The morph name as you would write it on a price list, e.g. “Desert Ghost Clown”.' }
+
+      - label: Genetics
+        name: traits
+        widget: list
+        label_singular: Gene
+        summary: '{{fields.geneId}} ({{fields.zygosity}})'
+        required: false
+        hint: >-
+          One entry per gene. A visual recessive is two copies; a carrier is one.
+          Two DIFFERENT alleles of the same locus (Albino + Candy, Mojave +
+          Lesser) are each one copy — that is a compound heterozygote and it is
+          visual. The build will refuse anything genetically impossible.
+        fields:
+          - label: Gene
+            name: geneId
+            widget: relation
+            collection: genes
+            value_field: id
+            search_fields: [name, id]
+            display_fields: [name]
+          - label: Copies
+            name: zygosity
+            widget: select
+            default: het
+            options:
+              - { label: 'One copy (het / single)', value: het }
+              - { label: 'Two copies (visual recessive / super)', value: homo }
+
+      - label: Sex
+        name: sex
+        widget: select
+        options: [male, female, unsexed]
+      - { label: Hatched, name: hatched, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', picker_utc: true }
+      - { label: Weight (grams), name: weight, widget: number, value_type: int, min: 1, hint: 'Current weight. Drives life stage, prey sizing and the husbandry specification.' }
+      - { label: Price (USD), name: price, widget: number, value_type: int, required: false, hint: 'Leave empty for Price On Application.' }
+      - label: Status
+        name: status
+        widget: select
+        default: available
+        options:
+          - { label: Available, value: available }
+          - { label: Reserved, value: reserved }
+          - { label: Breeding hold, value: hold }
+          - { label: Sold, value: sold }
+      - label: Tier
+        name: tier
+        widget: select
+        default: collector
+        options: [flagship, collector, foundation]
+      - label: Expression quality
+        name: quality
+        widget: select
+        default: typical
+        hint: 'Feeds the valuation model. “Exceptional” is the top few percent of a clutch, not wishful thinking.'
+        options: [exceptional, strong, typical, modest]
+      - { label: Feature on the homepage, name: featured, widget: boolean, default: false, required: false }
+
+      - label: Photographs
+        name: images
+        widget: list
+        required: false
+        label_singular: Photograph
+        hint: >-
+          Optional. With none, the site generates a portrait from this animal's
+          genetics. Add real photographs and they replace it automatically.
+        field: { label: Image, name: src, widget: image, allow_multiple: false }
+
+      - label: Lineage
+        name: lineage
+        widget: object
+        fields:
+          - { label: Sire, name: sire, widget: string, required: false }
+          - { label: Dam, name: dam, widget: string, required: false }
+          - { label: Generation, name: generation, widget: string, required: false, hint: 'e.g. F3' }
+          - { label: Dwarf percentage, name: dwarfPercent, widget: number, value_type: int, required: false, min: 0, max: 100, hint: 'Reticulated pythons only. Computed from the pedigree, not estimated.' }
+
+      - label: Weight history
+        name: weights
+        widget: list
+        required: false
+        label_singular: Weighing
+        summary: '{{fields.date}} — {{fields.grams}} g'
+        hint: 'Powers the growth chart. Four or five points across the animal’s life is plenty.'
+        fields:
+          - { label: Date, name: date, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', picker_utc: true }
+          - { label: Grams, name: grams, widget: number, value_type: int, min: 1 }
+
+      - label: Feeding
+        name: feeding
+        widget: object
+        fields:
+          - { label: Prey, name: prey, widget: string, default: Rat }
+          - { label: Size, name: size, widget: string, default: Small }
+          - { label: Interval (days), name: interval, widget: number, value_type: int, min: 1, default: 10 }
+          - { label: Last fed, name: lastFed, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', picker_utc: true }
+          - { label: Consecutive feeds, name: consecutive, widget: number, value_type: int, min: 0, default: 0 }
+          - { label: Refusals, name: refusals, widget: number, value_type: int, min: 0, default: 0 }
+
+      - { label: The animal, name: story, widget: text, hint: 'The main description. Two or three paragraphs — what makes this animal worth the money.' }
+      - { label: Provenance, name: provenance, widget: text, hint: 'Where it came from and what documentation travels with it.' }
+      - { label: Keeper notes, name: notes, widget: text, required: false }
+
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: species
+    label: Species
+    description: >-
+      Reference data for each species. The husbandry figures here are computed
+      into every enclosure specification, feeding plan and care panel on the
+      site, so a wrong number propagates a long way.
+    folder: content/species
+    extension: json
+    format: json
+    create: true
+    identifier_field: id
+    slug: '{{fields.id}}'
+    summary: '{{common}} ({{scientific}})'
+    sortable_fields: [order, common, difficulty, basePrice]
+    fields:
+      - { label: Display order, name: order, widget: number, value_type: int, default: 99 }
+      - { label: ID, name: id, widget: string, pattern: ['^[a-z0-9-]{2,40}$', 'Lowercase letters, numbers and hyphens only'] }
+      - { label: Common name, name: common, widget: string }
+      - { label: Scientific name, name: scientific, widget: string }
+      - { label: Family, name: family, widget: string }
+      - { label: Origin, name: origin, widget: string }
+      - { label: Biome, name: biome, widget: string }
+      - { label: Adult length min (in), name: adultLengthMin, widget: number, value_type: int }
+      - { label: Adult length max (in), name: adultLengthMax, widget: number, value_type: int }
+      - { label: Adult weight min (g), name: adultWeightMin, widget: number, value_type: int }
+      - { label: Adult weight max (g), name: adultWeightMax, widget: number, value_type: int }
+      - { label: Maturity weight (g), name: maturityWeight, widget: number, value_type: int, hint: 'The weight at which this species is functionally adult. Life stage and prey sizing are measured against THIS, not against mean adult mass — getting it wrong badly misclassifies large species.' }
+      - { label: Lifespan min (yrs), name: lifespanMin, widget: number, value_type: int }
+      - { label: Lifespan max (yrs), name: lifespanMax, widget: number, value_type: int }
+      - { label: Difficulty (1–5), name: difficulty, widget: number, value_type: int, min: 1, max: 5 }
+      - { label: Temperament, name: temperament, widget: string }
+      - { label: Venomous, name: venomous, widget: boolean, default: false, required: false }
+      - { label: Venom note, name: venomNote, widget: string, required: false }
+      - { label: CITES, name: cites, widget: string, default: 'Appendix II' }
+      - { label: Base price (USD), name: basePrice, widget: number, value_type: int, hint: 'What a wild-type adult commands. The valuation model multiplies up from here.' }
+      - { label: Blurb, name: blurb, widget: text }
+      - label: Pattern grammar
+        name: pattern
+        widget: select
+        hint: 'Chooses how the generated portrait draws this species.'
+        options: [alien-head, reticulate, dorsal-stripe, saddle, blotch, banded, ocelli, lightning]
+      - label: Palette
+        name: palette
+        widget: object
+        hint: 'Base colours for the generated portrait. Genes transform these.'
+        fields:
+          - { label: Base, name: base, widget: color, enable_alpha: false }
+          - { label: Mid, name: mid, widget: color, enable_alpha: false }
+          - { label: High, name: high, widget: color, enable_alpha: false }
+          - { label: Dark, name: dark, widget: color, enable_alpha: false }
+      - label: Care
+        name: care
+        widget: object
+        collapsed: true
+        fields:
+          - { label: Enclosure length (in), name: enclosureLength, widget: number, value_type: int }
+          - { label: Enclosure width (in), name: enclosureWidth, widget: number, value_type: int }
+          - { label: Enclosure height (in), name: enclosureHeight, widget: number, value_type: int }
+          - { label: Warm side min (°F), name: warmSideMin, widget: number, value_type: int }
+          - { label: Warm side max (°F), name: warmSideMax, widget: number, value_type: int }
+          - { label: Cool side min (°F), name: coolSideMin, widget: number, value_type: int }
+          - { label: Cool side max (°F), name: coolSideMax, widget: number, value_type: int }
+          - { label: Ambient min (°F), name: ambientMin, widget: number, value_type: int }
+          - { label: Ambient max (°F), name: ambientMax, widget: number, value_type: int }
+          - { label: Humidity min (%), name: humidityMin, widget: number, value_type: int }
+          - { label: Humidity max (%), name: humidityMax, widget: number, value_type: int }
+          - { label: Shed humidity min (%), name: humiditySpikeMin, widget: number, value_type: int }
+          - { label: Shed humidity max (%), name: humiditySpikeMax, widget: number, value_type: int }
+          - { label: Substrate options, name: substrate, widget: list, field: { label: Substrate, name: item, widget: string } }
+          - { label: Lighting, name: lighting, widget: string }
+          - { label: Water, name: water, widget: string }
+          - { label: Hides, name: hides, widget: number, value_type: int, min: 0 }
+          - { label: Adult feeding, name: feedingAdult, widget: string }
+          - { label: Husbandry note, name: notes, widget: text }
+
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: genes
+    label: Genes
+    description: >-
+      The morph library. `locus` is the field that matters most: two genes
+      sharing a locus are alleles and cannot be inherited independently.
+    folder: content/genes
+    extension: json
+    format: json
+    create: true
+    identifier_field: id
+    slug: '{{fields.id}}'
+    summary: '{{name}} — {{species}} ({{inheritance}})'
+    sortable_fields: [order, name, species, inheritance, rarity]
+    view_groups:
+      - label: Species
+        field: species
+      - label: Inheritance
+        field: inheritance
+    fields:
+      - { label: Display order, name: order, widget: number, value_type: int, default: 999 }
+      - { label: ID, name: id, widget: string, pattern: ['^[a-z0-9-]{2,40}$', 'Lowercase letters, numbers and hyphens only'] }
+      - { label: Name, name: name, widget: string }
+      - { label: Aliases, name: aliases, widget: list, required: false, field: { label: Alias, name: item, widget: string } }
+      - label: Species
+        name: species
+        widget: relation
+        collection: species
+        value_field: id
+        search_fields: [common, scientific]
+        display_fields: [common]
+      - label: Locus
+        name: locus
+        widget: string
+        hint: >-
+          Genes that compete for the same slot share a locus id. If this gene is
+          allelic with others, use their locus id and add the combination names
+          in the Loci collection. If it is independent, invent a unique id
+          (usually just the gene id).
+      - label: Inheritance
+        name: inheritance
+        widget: select
+        options:
+          - { label: 'Recessive — one copy hidden, two copies visual', value: recessive }
+          - { label: 'Co-dominant — one copy visual, two copies a super form', value: incdom }
+          - { label: 'Dominant — one and two copies look the same', value: dominant }
+          - { label: 'Polygenic — line-bred, not Mendelian', value: polygenic }
+          - { label: 'Locality — geographic line', value: locality }
+      - { label: Super form name, name: superName, widget: string, required: false, hint: 'Co-dominant genes only. The name of the two-copy animal, e.g. “Blue-Eyed Leucistic”.' }
+      - { label: Rarity (1–10), name: rarity, widget: number, value_type: int, min: 1, max: 10 }
+      - { label: Value multiplier, name: mult, widget: number, value_type: float, min: 1, step: 0.05, hint: 'How much this gene multiplies a wild-type animal’s value. The model applies diminishing returns when genes are stacked.' }
+      - { label: Year proven, name: year, widget: number, value_type: int, required: false }
+      - { label: Originator, name: originator, widget: string, required: false }
+      - { label: Visual effect, name: effect, widget: text, hint: 'Also drives the generated portrait — keywords here (albino, axanthic, darkens, speckled, stripe, piebald) select the transformation applied.' }
+      - label: Lethality
+        name: lethality
+        widget: select
+        required: false
+        default: ''
+        options:
+          - { label: 'None', value: '' }
+          - { label: 'Super form not viable', value: super-lethal }
+          - { label: 'Super form viable but defective', value: super-defect }
+          - { label: 'Carries neurological wobble', value: wobble }
+      - { label: Lethality note, name: lethalityNote, widget: text, required: false }
+      - { label: We do not work with this gene, name: restricted, widget: boolean, default: false, required: false }
+
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: loci
+    label: Loci (allelic complexes)
+    description: >-
+      Only needed where two or more genes compete for the same slot. This is
+      what makes Mojave × Lesser resolve to a Blue-Eyed Leucistic instead of a
+      nonsense “Mojave Lesser”.
+    folder: content/loci
+    extension: json
+    format: json
+    create: true
+    identifier_field: id
+    slug: '{{fields.id}}'
+    summary: '{{name}} — {{species}}'
+    fields:
+      - { label: Display order, name: order, widget: number, value_type: int, default: 99 }
+      - { label: Locus ID, name: id, widget: string, pattern: ['^[a-z0-9-]{2,40}$', 'Lowercase letters, numbers and hyphens only'], hint: 'Must match the `locus` field on every gene belonging to it.' }
+      - label: Species
+        name: species
+        widget: relation
+        collection: species
+        value_field: id
+        search_fields: [common, scientific]
+        display_fields: [common]
+      - { label: Name, name: name, widget: string }
+      - { label: Note, name: note, widget: text, required: false, hint: 'Shown to buyers on the Gene Lab and the Codex.' }
+      - label: Combinations
+        name: combos
+        widget: list
+        required: false
+        label_singular: Combination
+        summary: '{{fields.name}}'
+        hint: >-
+          What you get when two specific alleles of this locus meet. Both must
+          be genes whose `locus` is this locus — the build enforces it.
+        fields:
+          - label: Alleles
+            name: alleles
+            widget: list
+            min: 2
+            max: 2
+            field:
+              label: Gene
+              name: gene
+              widget: relation
+              collection: genes
+              value_field: id
+              search_fields: [name, id]
+              display_fields: [name]
+          - { label: Resulting name, name: name, widget: string, hint: 'Use “Non-viable” if this pairing does not survive.' }
+
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: journal
+    label: Journal
+    folder: content/journal
+    extension: json
+    format: json
+    create: true
+    identifier_field: id
+    slug: '{{fields.id}}'
+    summary: '{{date}} — {{title}}'
+    sortable_fields: [order, date, title]
+    fields:
+      - { label: Display order, name: order, widget: number, value_type: int, default: 99 }
+      - { label: ID, name: id, widget: string, pattern: ['^[a-z0-9-]{3,60}$', 'Lowercase letters, numbers and hyphens only'] }
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', picker_utc: true }
+      - { label: Tag, name: tag, widget: string }
+      - { label: Read time (minutes), name: readMinutes, widget: number, value_type: int, min: 1 }
+      - { label: Excerpt, name: excerpt, widget: text }
+
+  # ══════════════════════════════════════════════════════════════════════════
+  - name: settings
+    label: Settings
+    files:
+      - name: site
+        label: Site details
+        file: content/settings/site.json
+        description: 'Contact details and identity. These appear in the footer, the structured data and every policy page.'
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: Legal name, name: legalName, widget: string }
+          - { label: Origin URL, name: origin, widget: string, pattern: ['^https://', 'Must start with https://'] }
+          - { label: Locality, name: locality, widget: string }
+          - { label: Region, name: region, widget: string }
+          - { label: Region code, name: regionCode, widget: string }
+          - { label: Country, name: country, widget: string }
+          - { label: Founded, name: founded, widget: number, value_type: int }
+          - { label: Email, name: email, widget: string }
+          - { label: Phone, name: phone, widget: string }
+          - { label: Hours, name: hours, widget: string }

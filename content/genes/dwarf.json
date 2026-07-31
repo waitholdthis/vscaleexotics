@@ -1,0 +1,18 @@
+{
+  "order": 59,
+  "id": "dwarf",
+  "name": "Dwarf",
+  "aliases": [],
+  "species": "reticulated-python",
+  "locus": "dwarf",
+  "inheritance": "polygenic",
+  "superName": "",
+  "rarity": 4,
+  "mult": 1.35,
+  "year": null,
+  "originator": "",
+  "effect": "Island locality size reduction. Percentage dwarf is tracked as a lineage figure rather than a Mendelian trait; higher percentages cap adult size lower.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

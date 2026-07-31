@@ -12,6 +12,7 @@ Disallow: /*?tier=
 Disallow: /*?status=
 Disallow: /*?price=
 Disallow: /*?sex=
+Disallow: /admin/
 Disallow: /compare.html
 Disallow: /vault.html
 

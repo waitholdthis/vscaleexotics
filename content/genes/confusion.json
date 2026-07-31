@@ -1,0 +1,18 @@
+{
+  "order": 36,
+  "id": "confusion",
+  "name": "Confusion",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "confusion",
+  "inheritance": "incdom",
+  "superName": "Super Confusion",
+  "rarity": 6,
+  "mult": 3,
+  "year": 2013,
+  "originator": "Prehistoric Pets",
+  "effect": "Pattern aberrancy that scrambles blotch boundaries. Extremely effective as a modifier in recessive combinations.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

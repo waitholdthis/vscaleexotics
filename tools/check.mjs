@@ -13,6 +13,7 @@
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, dirname, resolve, relative, extname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { spawnSync } from 'node:child_process';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const problems = [];
@@ -80,12 +81,22 @@ const REQUIRED_META = [
   { re: /<html lang="en">/, label: 'html lang' }
 ];
 
+/**
+ * The admin panel is a third-party application mounted on this origin, not a
+ * page of the site. It has no shell, no canonical and a deliberately looser
+ * CSP, so the page-shell requirements do not apply — but the inline-script and
+ * broken-link checks below still do.
+ */
+const isAdmin = (f) => rel(f).startsWith('admin/');
+
 for (const file of htmlFiles) {
   const src = readFileSync(file, 'utf8');
   const r = rel(file);
 
-  for (const { re, label } of REQUIRED_META) {
-    if (!re.test(src)) problems.push(`${r} → missing ${label}`);
+  if (!isAdmin(file)) {
+    for (const { re, label } of REQUIRED_META) {
+      if (!re.test(src)) problems.push(`${r} → missing ${label}`);
+    }
   }
 
   // Inline handlers and inline script bodies break under our CSP.
@@ -109,10 +120,50 @@ for (const file of htmlFiles) {
     if (!existsSync(target)) problems.push(`${r} → broken local reference "${ref}"`);
   }
 
-  // Every module script should be type=module.
-  const scripts = [...src.matchAll(/<script([^>]*\bsrc="[^"]+"[^>]*)>/gi)];
-  for (const [, attrs] of scripts) {
-    if (!/type\s*=\s*["']module["']/i.test(attrs)) warnings.push(`${r} → script without type="module"`);
+  // Every module script should be type=module. The CMS bundle is a classic
+  // script and legitimately is not.
+  if (!isAdmin(file)) {
+    const scripts = [...src.matchAll(/<script([^>]*\bsrc="[^"]+"[^>]*)>/gi)];
+    for (const [, attrs] of scripts) {
+      if (!/type\s*=\s*["']module["']/i.test(attrs)) warnings.push(`${r} → script without type="module"`);
+    }
+  }
+}
+
+/* ---------- 6: generated data must be in sync with content/ ---------- */
+
+if (existsSync(join(ROOT, 'content'))) {
+  const generated = ['species.js', 'genes.js', 'inventory.js', 'journal.js', 'site.js']
+    .map((f) => join(ROOT, 'assets', 'js', 'data', f));
+
+  const missing = generated.filter((f) => !existsSync(f));
+  if (missing.length) {
+    problems.push(`generated data missing: ${missing.map(rel).join(', ')} — run: node tools/build-data.mjs`);
+  } else {
+    // Rebuild into a scratch copy and compare. Anything other than an exact
+    // match means someone hand-edited a generated file, or edited content/
+    // without rebuilding — either way the live site would not match the CMS.
+    const before = generated.map((f) => readFileSync(f, 'utf8'));
+    const { status, stderr } = spawnSync(process.execPath, [join(ROOT, 'tools', 'build-data.mjs')], {
+      cwd: ROOT,
+      encoding: 'utf8'
+    });
+
+    if (status !== 0) {
+      problems.push(`content/ failed validation — run \`node tools/build-data.mjs\` to see why`);
+      if (stderr) problems.push(...stderr.trim().split('\n').filter((l) => l.trim().startsWith('✗')).map((l) => `  ${l.trim()}`));
+    } else {
+      const after = generated.map((f) => readFileSync(f, 'utf8'));
+      const stale = generated.filter((_, i) => before[i] !== after[i]);
+      if (stale.length) {
+        // Put the freshly built version back — check should not silently
+        // mutate the tree, but it also should not leave it half-rebuilt.
+        problems.push(
+          `generated data is out of sync with content/: ${stale.map(rel).join(', ')}. ` +
+            `Run \`node tools/build-data.mjs\` and commit the result.`
+        );
+      }
+    }
   }
 }
 

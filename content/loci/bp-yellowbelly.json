@@ -1,0 +1,79 @@
+{
+  "order": 4,
+  "id": "bp-yellowbelly",
+  "species": "ball-python",
+  "name": "Yellow Belly / Asphalt complex",
+  "note": "",
+  "combos": [
+    {
+      "alleles": [
+        "yellowbelly",
+        "yellowbelly"
+      ],
+      "name": "Ivory"
+    },
+    {
+      "alleles": [
+        "asphalt",
+        "asphalt"
+      ],
+      "name": "Super Asphalt"
+    },
+    {
+      "alleles": [
+        "gravel",
+        "gravel"
+      ],
+      "name": "Super Gravel"
+    },
+    {
+      "alleles": [
+        "specter",
+        "specter"
+      ],
+      "name": "Super Specter"
+    },
+    {
+      "alleles": [
+        "asphalt",
+        "yellowbelly"
+      ],
+      "name": "Ivory-type"
+    },
+    {
+      "alleles": [
+        "gravel",
+        "specter"
+      ],
+      "name": "Highway"
+    },
+    {
+      "alleles": [
+        "gravel",
+        "yellowbelly"
+      ],
+      "name": "Ivory-type"
+    },
+    {
+      "alleles": [
+        "specter",
+        "yellowbelly"
+      ],
+      "name": "Ivory-type"
+    },
+    {
+      "alleles": [
+        "asphalt",
+        "gravel"
+      ],
+      "name": "Freeway"
+    },
+    {
+      "alleles": [
+        "asphalt",
+        "specter"
+      ],
+      "name": "Motorway"
+    }
+  ]
+}

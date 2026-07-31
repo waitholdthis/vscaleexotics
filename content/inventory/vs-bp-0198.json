@@ -1,0 +1,68 @@
+{
+  "order": 7,
+  "id": "vs-bp-0198",
+  "sku": "VS-BP-0198",
+  "species": "ball-python",
+  "quality": "typical",
+  "title": "Super Enchi Ultramel het Clown",
+  "traits": [
+    {
+      "geneId": "enchi",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "ultramel",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "clown",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "female",
+  "hatched": "2025-06-21",
+  "weight": 960,
+  "price": 3100,
+  "status": "available",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Enchi Ultramel het Clown",
+    "dam": "Super Enchi het Ultramel het Clown",
+    "generation": "F3",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-08-01",
+      "grams": 92
+    },
+    {
+      "date": "2025-11-01",
+      "grams": 348
+    },
+    {
+      "date": "2026-02-01",
+      "grams": 610
+    },
+    {
+      "date": "2026-05-01",
+      "grams": 840
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 960
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Medium",
+    "interval": 12,
+    "lastFed": "2026-07-21",
+    "consecutive": 24,
+    "refusals": 0
+  },
+  "story": "Ultramel sits between Albino and wild-type — a partial melanin reduction that produces caramel and apricot rather than white and yellow. Super Enchi compresses the pattern into fine longitudinal bands. Carrying Clown, she is a complete project in one animal.",
+  "provenance": "In-house.",
+  "notes": "Clown is confirmed by pedigree, not by test breeding. Documentation supplied."
+}

@@ -1,0 +1,18 @@
+{
+  "order": 48,
+  "id": "boa-leopard",
+  "name": "Leopard",
+  "aliases": [],
+  "species": "boa-constrictor",
+  "locus": "boa-leopard",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 6,
+  "mult": 3.4,
+  "year": 2005,
+  "originator": "Multiple",
+  "effect": "Spotted pattern reduction with an unusual slate-blue cast in adults.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

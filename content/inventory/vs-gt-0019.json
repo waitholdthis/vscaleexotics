@@ -1,0 +1,60 @@
+{
+  "order": 17,
+  "id": "vs-gt-0019",
+  "sku": "VS-GT-0019",
+  "species": "green-tree-python",
+  "quality": "exceptional",
+  "title": "Sorong Blue Line",
+  "traits": [
+    {
+      "geneId": "sorong",
+      "zygosity": "het"
+    },
+    {
+      "geneId": "blueline",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2024-11-20",
+  "weight": 640,
+  "price": 16000,
+  "status": "available",
+  "tier": "flagship",
+  "featured": true,
+  "lineage": {
+    "sire": "Sorong high-blue",
+    "dam": "Sorong blue line",
+    "generation": "F4",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-02-01",
+      "grams": 92
+    },
+    {
+      "date": "2025-08-01",
+      "grams": 280
+    },
+    {
+      "date": "2026-02-01",
+      "grams": 500
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 640
+    }
+  ],
+  "feeding": {
+    "prey": "Mouse",
+    "size": "Adult",
+    "interval": 18,
+    "lastFed": "2026-07-17",
+    "consecutive": 22,
+    "refusals": 2
+  },
+  "story": "Four generations of selective blue intensification on a pure Sorong base. He completed his ontogenetic colour change at nine months and has been darkening toward blue continuously since — the flanks are already turning at twenty months, which is exceptionally early.",
+  "provenance": "In-house blue-line project established 2016. Photographic records of all four preceding generations transfer with the animal.",
+  "notes": "Blue expression is polygenic, not Mendelian. We represent this animal on its own phenotype and its parents' documented progression, never as a guarantee of offspring colour."
+}

@@ -1,0 +1,60 @@
+{
+  "order": 8,
+  "id": "vs-bp-0205",
+  "sku": "VS-BP-0205",
+  "species": "ball-python",
+  "quality": "strong",
+  "title": "Black Pastel Piebald",
+  "traits": [
+    {
+      "geneId": "blackpastel",
+      "zygosity": "het"
+    },
+    {
+      "geneId": "piebald",
+      "zygosity": "homo"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-09-25",
+  "weight": 520,
+  "price": 2200,
+  "status": "available",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Black Pastel het Pied",
+    "dam": "Pied",
+    "generation": "F2",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-11-01",
+      "grams": 80
+    },
+    {
+      "date": "2026-02-01",
+      "grams": 244
+    },
+    {
+      "date": "2026-05-01",
+      "grams": 412
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 520
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 10,
+    "lastFed": "2026-07-24",
+    "consecutive": 16,
+    "refusals": 0
+  },
+  "story": "Black Pastel drives the pigmented regions toward true black, which sets up the hardest edge against Piebald's white that this species can produce. Roughly sixty percent white on this animal, with the pattern islands rendered almost monochrome.",
+  "provenance": "In-house.",
+  "notes": "Heterozygous Black Pastel only — we do not produce or place the super form of this locus."
+}

@@ -1,0 +1,51 @@
+{
+  "order": 29,
+  "id": "vs-rb-0038",
+  "sku": "VS-RB-0038",
+  "species": "brazilian-rainbow-boa",
+  "quality": "typical",
+  "title": "Brazilian Rainbow Boa",
+  "traits": [],
+  "sex": "male",
+  "hatched": "2025-05-11",
+  "weight": 590,
+  "price": 1900,
+  "status": "available",
+  "tier": "foundation",
+  "featured": false,
+  "lineage": {
+    "sire": "High-red line",
+    "dam": "High-red line",
+    "generation": "F6",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-07-01",
+      "grams": 92
+    },
+    {
+      "date": "2025-11-01",
+      "grams": 280
+    },
+    {
+      "date": "2026-03-01",
+      "grams": 470
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 590
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 16,
+    "lastFed": "2026-07-25",
+    "consecutive": 17,
+    "refusals": 0
+  },
+  "story": "Clutchmate to VS-RB-0031 with equally strong red development and heavy black ocelli along the flanks.",
+  "provenance": "In-house high-red line.",
+  "notes": "Available as a pair with VS-RB-0031."
+}

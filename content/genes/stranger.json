@@ -1,0 +1,18 @@
+{
+  "order": 11,
+  "id": "stranger",
+  "name": "Stranger",
+  "aliases": [],
+  "species": "ball-python",
+  "locus": "stranger",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 10,
+  "mult": 42,
+  "year": 2016,
+  "originator": "Private line",
+  "effect": "Extreme pattern aberrancy with lavender wash. Only a handful of proven producers exist outside the originating collection.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

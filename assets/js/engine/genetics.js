@@ -51,11 +51,21 @@ export function buildParent(traits, label = 'Parent') {
       const { gene, zygosity } = entries[0];
       genotype.set(locusId, zygosity === 'homo' ? [gene.id, gene.id] : [gene.id, WILD]);
     } else if (entries.length === 2) {
-      if (entries.some((e) => e.zygosity === 'homo')) {
+      const homo = entries.filter((e) => e.zygosity === 'homo');
+      if (homo.length) {
+        // Both homozygous is four alleles at a two-slot locus; one homozygous
+        // plus one heterozygous is three. Either way it is impossible, and the
+        // message has to cope with both shapes — reading the "other" entry
+        // unconditionally crashes when there is no heterozygous one.
+        const names = entries.map((e) => e.gene.name);
         throw new GeneticsError(
-          `${label}: cannot be homozygous for ${entries.find((e) => e.zygosity === 'homo').gene.name} ` +
-            `and also carry ${entries.find((e) => e.zygosity !== 'homo').gene.name}. ` +
-            `Both are alleles of the ${locusName} — an animal has only two slots there.`
+          homo.length === 2
+            ? `${label}: cannot be homozygous for both ${names[0]} and ${names[1]}. ` +
+              `They are alleles of the ${locusName}, so that would need four slots where an animal has two. ` +
+              `An animal showing both is a compound heterozygote — set each to a single copy.`
+            : `${label}: cannot be homozygous for ${homo[0].gene.name} and also carry ` +
+              `${entries.find((e) => e.zygosity !== 'homo').gene.name}. ` +
+              `Both are alleles of the ${locusName} — an animal has only two slots there.`
         );
       }
       genotype.set(locusId, [entries[0].gene.id, entries[1].gene.id]);
@@ -413,19 +423,29 @@ function collectPairingWarnings(a, b, nonViable) {
  * Helpers for the UI
  * ------------------------------------------------------------------ */
 
+/**
+ * Resolves per locus rather than per trait, using the same logic the cross
+ * uses. Reasoning trait-by-trait mislabels compound heterozygotes — an animal
+ * carrying one Albino allele and one Candy allele is a visual Candino, not
+ * "het Albino, het Candy".
+ */
 export function describeParent(parent) {
   if (!parent.traits.length) return 'Normal';
-  const visual = [];
+
+  const visible = [];
   const het = [];
-  for (const t of parent.traits) {
-    const g = GENES_BY_ID[t.geneId];
-    if (!g) continue;
-    if (g.inheritance === 'recessive' && t.zygosity === 'het') het.push(g.name);
-    else if (g.inheritance === 'incdom' && t.zygosity === 'homo') visual.push(g.superName || `Super ${g.name}`);
-    else visual.push(g.name);
+
+  for (const [locusId, pair] of parent.genotype) {
+    const r = resolveLocus(locusId, pair);
+    if (r.visible && r.visible !== 'Non-viable') visible.push({ name: r.visible, order: r.order });
+    if (r.het) het.push(r.het);
   }
+  for (const g of parent.lineTraits) visible.push({ name: g.name, order: 4 });
+
+  visible.sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));
+
   const parts = [];
-  if (visual.length) parts.push(visual.join(' '));
+  if (visible.length) parts.push(visible.map((v) => v.name).join(' '));
   if (het.length) parts.push(`het ${het.join(', het ')}`);
   return parts.join(' — ') || 'Normal';
 }

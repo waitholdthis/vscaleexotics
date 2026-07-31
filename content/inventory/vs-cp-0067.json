@@ -1,0 +1,60 @@
+{
+  "order": 30,
+  "id": "vs-cp-0067",
+  "sku": "VS-CP-0067",
+  "species": "carpet-python",
+  "quality": "strong",
+  "title": "Super Zebra Jungle",
+  "traits": [
+    {
+      "geneId": "zebra-c",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "jungle",
+      "zygosity": "het"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-06-27",
+  "weight": 780,
+  "price": 3600,
+  "status": "available",
+  "tier": "collector",
+  "featured": false,
+  "lineage": {
+    "sire": "Zebra Jungle",
+    "dam": "Zebra Jungle",
+    "generation": "F2",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-08-01",
+      "grams": 88
+    },
+    {
+      "date": "2025-12-01",
+      "grams": 340
+    },
+    {
+      "date": "2026-04-01",
+      "grams": 620
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 780
+    }
+  ],
+  "feeding": {
+    "prey": "Rat",
+    "size": "Small",
+    "interval": 12,
+    "lastFed": "2026-07-24",
+    "consecutive": 20,
+    "refusals": 0
+  },
+  "story": "Super Zebra converts the carpet's banding into clean longitudinal striping running the full body length. On a high-contrast Jungle base the effect is close to graphic design.",
+  "provenance": "In-house.",
+  "notes": "No Jaguar anywhere in this pedigree. We do not work with that locus."
+}

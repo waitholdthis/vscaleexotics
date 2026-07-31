@@ -69,11 +69,30 @@ export function rarityMeter(traits) {
  * @param {object} animal
  * @param {{layout?:'grid'|'list', priority?:boolean}} opts
  */
+/**
+ * A real photograph if the CMS has one, otherwise a portrait generated from
+ * the animal's genetics. Uploading a photograph in the CMS is all it takes to
+ * switch — nothing else has to change.
+ */
+export function animalMedia(animal, species, opts = {}) {
+  if (Array.isArray(animal.images) && animal.images.length) {
+    return h('img', {
+      src: animal.images[0],
+      alt: `${animal.title} — ${species.common}, ${animal.sku}`,
+      loading: opts.priority ? 'eager' : 'lazy',
+      decoding: 'async',
+      width: String(opts.width || 520),
+      height: String(opts.height || 390)
+    });
+  }
+  return makeAnimalCanvas(animal, species, GENES_BY_ID, opts);
+}
+
 export function animalCard(animal, opts = {}) {
   const sp = SPECIES_BY_ID[animal.species];
   if (!sp) return h('div');
 
-  const canvas = makeAnimalCanvas(animal, sp, GENES_BY_ID, {
+  const canvas = animalMedia(animal, sp, {
     width: opts.layout === 'list' ? 360 : 520,
     height: opts.layout === 'list' ? 270 : 390,
     detail: 'card'

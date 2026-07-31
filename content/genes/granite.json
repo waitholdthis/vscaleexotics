@@ -1,0 +1,18 @@
+{
+  "order": 74,
+  "id": "granite",
+  "name": "Granite",
+  "aliases": [],
+  "species": "carpet-python",
+  "locus": "granite",
+  "inheritance": "incdom",
+  "superName": "Super Granite",
+  "rarity": 4,
+  "mult": 2,
+  "year": null,
+  "originator": "",
+  "effect": "Fine speckled pattern break producing a stone-like texture.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}

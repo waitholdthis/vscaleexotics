@@ -1,0 +1,60 @@
+{
+  "order": 37,
+  "id": "vs-hg-0120",
+  "sku": "VS-HG-0120",
+  "species": "western-hognose",
+  "quality": "strong",
+  "title": "Super Arctic Albino",
+  "traits": [
+    {
+      "geneId": "arctic",
+      "zygosity": "homo"
+    },
+    {
+      "geneId": "hog-albino",
+      "zygosity": "homo"
+    }
+  ],
+  "sex": "male",
+  "hatched": "2025-09-16",
+  "weight": 92,
+  "price": 1600,
+  "status": "available",
+  "tier": "foundation",
+  "featured": false,
+  "lineage": {
+    "sire": "Arctic het Albino",
+    "dam": "Albino het Arctic",
+    "generation": "F2",
+    "dwarfPercent": null
+  },
+  "weights": [
+    {
+      "date": "2025-10-15",
+      "grams": 18
+    },
+    {
+      "date": "2026-01-15",
+      "grams": 44
+    },
+    {
+      "date": "2026-04-15",
+      "grams": 72
+    },
+    {
+      "date": "2026-07-20",
+      "grams": 92
+    }
+  ],
+  "feeding": {
+    "prey": "Mouse",
+    "size": "Fuzzy",
+    "interval": 7,
+    "lastFed": "2026-07-28",
+    "consecutive": 28,
+    "refusals": 1
+  },
+  "story": "Super Arctic drives contrast to its extreme, then Albino removes the melanin that contrast was built from — the result is a high-definition animal rendered entirely in cream, apricot and white.",
+  "provenance": "In-house.",
+  "notes": "Rear-fanged with a mild secretion that is medically insignificant to humans. Still a snake, still handled with respect."
+}

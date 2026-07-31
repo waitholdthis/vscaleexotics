@@ -1,0 +1,18 @@
+{
+  "order": 85,
+  "id": "lavender",
+  "name": "Lavender",
+  "aliases": [],
+  "species": "western-hognose",
+  "locus": "lavender",
+  "inheritance": "recessive",
+  "superName": "",
+  "rarity": 6,
+  "mult": 4.2,
+  "year": null,
+  "originator": "",
+  "effect": "Soft lilac-grey ground with pink undertones. One of the most valuable hognose recessives.",
+  "lethality": "",
+  "lethalityNote": "",
+  "restricted": false
+}
