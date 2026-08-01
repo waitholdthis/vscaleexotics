@@ -764,14 +764,42 @@ export function initShell() {
 }
 
 /**
- * Registered only over HTTPS or on localhost — a service worker on an insecure
- * origin is both refused by the browser and a bad idea. Failure is silent
- * because offline support is an enhancement, not a requirement.
+ * Service worker registration — production origins only.
+ *
+ * Deliberately NOT registered on localhost. The worker serves CSS and JS
+ * cache-first, which is correct in production but makes local development
+ * actively misleading: an edit appears to do nothing because the browser is
+ * still holding the copy it cached on first visit. That cost real debugging
+ * time once already.
+ *
+ * On localhost it does the opposite — tears down any worker and cache left
+ * over from a previous visit, so a stale one cannot keep haunting the session.
+ * Verify offline behaviour on a deployed preview, not here.
+ *
+ * Failure is silent throughout: offline support is an enhancement, not a
+ * requirement.
  */
 function registerServiceWorker() {
-  if (!('serviceWorker' in navigator)) return;
-  const secure = location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname);
-  if (!secure) return;
+  // Truthiness, not `in`: some environments define the property and leave it
+  // undefined, and `'serviceWorker' in navigator` is true for those.
+  if (!navigator.serviceWorker) return;
+
+  const isLocal = ['localhost', '127.0.0.1', '[::1]', ''].includes(location.hostname);
+
+  if (isLocal) {
+    navigator.serviceWorker.getRegistrations?.()
+      .then((regs) => {
+        if (!regs.length) return;
+        console.info('[V-Scale] Unregistering the service worker on localhost so cached assets cannot mask your edits.');
+        return Promise.all(regs.map((r) => r.unregister()));
+      })
+      .then(() => (window.caches ? caches.keys() : []))
+      .then((keys) => Promise.all((keys || []).map((k) => caches.delete(k))))
+      .catch(() => undefined);
+    return;
+  }
+
+  if (location.protocol !== 'https:') return;
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(() => undefined);
   });

@@ -154,10 +154,24 @@ const ICONS = {
   ]
 };
 
-export function icon(name, cls = '') {
+/**
+ * @param {string} name  key from ICONS
+ * @param {string} [cls] class attribute
+ * @param {number} [size] px, sets the intrinsic size
+ *
+ * An SVG with only a viewBox has NO intrinsic dimensions: if no CSS rule
+ * happens to match it, the browser lays it out at the container's full width
+ * and scales the height to the aspect ratio. A 24×24 glyph then renders as a
+ * 500px square. Setting width/height attributes gives every icon a sane
+ * default that CSS can still override, so a missing rule degrades to a
+ * slightly wrong size rather than a blown-out layout.
+ */
+export function icon(name, cls = '', size = 20) {
   const d = ICONS[name];
   const el = document.createElementNS(SVG_NS, 'svg');
   el.setAttribute('viewBox', '0 0 24 24');
+  el.setAttribute('width', String(size));
+  el.setAttribute('height', String(size));
   el.setAttribute('fill', 'none');
   el.setAttribute('stroke', 'currentColor');
   el.setAttribute('stroke-width', '1.5');
