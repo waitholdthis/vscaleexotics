@@ -1,4 +1,4 @@
-# VScale Exotics — Apache configuration.
+# V-Scale Exotics — Apache configuration.
 # Mirrors _headers, vercel.json, nginx.conf and tools/serve.mjs.
 
 <IfModule mod_headers.c>

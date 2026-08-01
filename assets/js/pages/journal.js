@@ -46,7 +46,7 @@ if (host) {
   ld.textContent = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Blog',
-    name: 'VScale Exotics Journal',
+    name: 'V-Scale Exotics Journal',
     url: `${SITE.origin}/journal.html`,
     publisher: { '@type': 'Organization', name: SITE.legalName },
     blogPost: JOURNAL.map((j) => ({

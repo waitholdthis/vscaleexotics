@@ -52,7 +52,7 @@ function buildPage(a) {
   const enclosure = enclosureSpec(a.species, a.weight);
   const feeding = feedingPlan(a.species, a.weight);
 
-  document.title = `${a.title} — ${sp.common} ${a.sku} | VScale Exotics`;
+  document.title = `${a.title} — ${sp.common} ${a.sku} | V-Scale Exotics`;
   setMeta('description', `${a.title}. ${sp.common} (${sp.scientific}), ${a.sex}, ${weight(a.weight)}, hatched ${date(a.hatched)}. ${a.story.slice(0, 110)}…`);
   injectProductSchema(a, sp);
 

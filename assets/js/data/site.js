@@ -8,9 +8,9 @@
  */
 
 export const SITE = {
-  name: 'VScale Exotics',
+  name: 'V-Scale Exotics',
   tagline: 'Rare Serpents — Private Acquisition',
-  legalName: 'VScale Exotics LLC',
+  legalName: 'V-Scale Exotics LLC',
   origin: 'https://vscaleexotics.com',
   locality: 'Pittsboro',
   region: 'North Carolina',

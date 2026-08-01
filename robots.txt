@@ -1,4 +1,4 @@
-# VScale Exotics
+# V-Scale Exotics
 # We want the collection and the tools indexed. Nothing here is private,
 # but there is no value in crawling parameterised filter permutations.
 

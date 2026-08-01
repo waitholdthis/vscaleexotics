@@ -22,34 +22,39 @@ const currentPage = () => document.body.dataset.page || '';
  * Brand mark — a stylised scale/serpent glyph, drawn inline.
  * ================================================================== */
 
+/**
+ * The mark, on its bone panel.
+ *
+ * The supplied logo is black-and-olive artwork drawn for a white field. Keying
+ * the white out deletes the V; recolouring the darks bleaches the snake. So it
+ * keeps its own artwork and sits on a bone panel instead — the treatment a
+ * pressed seal gets, and bone is already in the palette.
+ */
 function brandMark() {
-  const ns = 'http://www.w3.org/2000/svg';
-  const s = document.createElementNS(ns, 'svg');
-  s.setAttribute('viewBox', '0 0 40 40');
-  s.setAttribute('class', 'brand__mark');
-  s.setAttribute('aria-hidden', 'true');
-  s.setAttribute('fill', 'none');
+  return h('span', { class: 'brand__mark' }, h('img', {
+    src: '/assets/img/brand-mark.png',
+    alt: '',
+    width: '200',
+    height: '190',
+    decoding: 'async'
+  }));
+}
 
-  const ring = document.createElementNS(ns, 'circle');
-  ring.setAttribute('cx', '20'); ring.setAttribute('cy', '20'); ring.setAttribute('r', '18.25');
-  ring.setAttribute('stroke', 'currentColor'); ring.setAttribute('stroke-width', '1'); ring.setAttribute('opacity', '.35');
-  s.appendChild(ring);
-
-  // Three nested scale arcs — the "V" of VScale read as a scale row.
-  for (const [i, d] of [
-    'M9 26c4.5 0 7.5-3.2 11-3.2S27.5 26 31 26',
-    'M11 20.5c3.6 0 6.2-3.1 9-3.1s5.4 3.1 9 3.1',
-    'M13.5 15c2.6 0 4.6-3 6.5-3s3.9 3 6.5 3'
-  ].entries()) {
-    const p = document.createElementNS(ns, 'path');
-    p.setAttribute('d', d);
-    p.setAttribute('stroke', 'currentColor');
-    p.setAttribute('stroke-width', '1.4');
-    p.setAttribute('stroke-linecap', 'round');
-    p.setAttribute('opacity', String(1 - i * 0.22));
-    s.appendChild(p);
-  }
-  return s;
+/**
+ * The wordmark, set as live type — sharper than upscaling a 150px raster and
+ * it inherits the site's own serif.
+ *
+ * Note the hyphen is U+2011 (non-breaking), not a plain hyphen-minus, so the
+ * name can never wrap as "V-" / "Scale". It will not match a grep for
+ * "V-Scale"; body copy elsewhere uses the ordinary hyphen.
+ */
+function brandWord() {
+  return h(
+    'span',
+    { class: 'brand__text' },
+    h('span', { class: 'brand__name', text: 'V‑Scale' }),
+    h('span', { class: 'brand__sub', text: 'Exotics' })
+  );
 }
 
 /* ================================================================== *
@@ -106,12 +111,7 @@ function buildHeader() {
         'a',
         { class: 'brand', href: '/', 'aria-label': `${SITE.name} — home` },
         brandMark(),
-        h(
-          'span',
-          { class: 'brand__text' },
-          h('span', { class: 'brand__name', text: 'VScale' }),
-          h('span', { class: 'brand__sub', text: 'Exotics' })
-        )
+        brandWord()
       ),
       nav,
       h(
@@ -534,7 +534,7 @@ function buildFooter() {
         h(
           'div',
           { class: 'site-footer__brand' },
-          h('div', { class: 'brand' }, brandMark(), h('span', { class: 'brand__text' }, h('span', { class: 'brand__name', text: 'VScale' }), h('span', { class: 'brand__sub', text: 'Exotics' }))),
+          h('div', { class: 'brand brand--footer' }, brandMark(), brandWord()),
           h('p', { class: 'text-muted', style: { 'margin-top': '1.25rem', 'max-width': '26rem', 'font-size': 'var(--t-sm)' },
             text: 'A private acquisition house for rare serpents, operating from Chatham County, North Carolina since 2009. Viewing strictly by appointment.' }),
           h('p', { class: 'mono text-muted', style: { 'margin-top': '1rem', 'font-size': 'var(--t-xs)' } },

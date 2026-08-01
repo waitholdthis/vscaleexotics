@@ -72,15 +72,16 @@ function page(spec) {
 <meta name="theme-color" content="#07080a">
 
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="VScale Exotics">
-<meta property="og:title" content="${escAttr(plain(spec.h1))} — VScale Exotics">
+<meta property="og:site_name" content="V-Scale Exotics">
+<meta property="og:title" content="${escAttr(plain(spec.h1))} — V-Scale Exotics">
 <meta property="og:description" content="${escAttr(spec.ogDescription || spec.description)}">
 <meta property="og:url" content="${url}">
 <meta property="og:image" content="${ORIGIN}/assets/img/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="manifest" href="/manifest.webmanifest">
-<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="/assets/img/icon-192.png">
 <link rel="stylesheet" href="/assets/css/core.css">
 <link rel="stylesheet" href="/assets/css/components.css">
 <link rel="stylesheet" href="/assets/css/pages.css">
@@ -147,7 +148,7 @@ const PAGES = [
   /* ---------------- Tools index ---------------- */
   {
     path: '/tools.html', page: 'tools', script: '/assets/js/pages/tools.js',
-    title: 'Breeder Tools — Genetics, Husbandry, Shipping | VScale Exotics',
+    title: 'Breeder Tools — Genetics, Husbandry, Shipping | V-Scale Exotics',
     description: 'Nine free tools for serious keepers and breeders: a locus-aware genetics calculator, morph codex, valuation index, incubation planner, husbandry architect, feeding calculator, shipping window checker, legality lookup and quarantine protocol.',
     h1: 'The Instruments', eyebrow: 'Free, no account, nothing stored',
     lede: 'Built for our own breeding operation over seventeen years, then opened up. Every calculation runs entirely in your browser — nothing you enter is transmitted anywhere, and there is nothing to sign up for.',
@@ -159,7 +160,7 @@ const PAGES = [
   {
     path: '/tools/gene-lab.html', page: 'gene-lab', script: '/assets/js/pages/gene-lab.js',
     crumbs: [{ name: 'Tools', item: `${ORIGIN}/tools.html` }],
-    title: 'Gene Lab — Locus-Aware Morph Calculator | VScale Exotics',
+    title: 'Gene Lab — Locus-Aware Morph Calculator | V-Scale Exotics',
     description: 'A multi-locus punnett calculator that models allelic complexes correctly. Mojave by Lesser gives a Blue-Eyed Leucistic, not a Mojave Lesser. Handles non-viable genotypes, separates genotype from visual outcome, and shows where 66% possible het actually comes from.',
     h1: 'Gene Lab', eyebrow: 'Multi-locus punnett engine',
     lede: 'Most public morph calculators treat every gene as independent. Several of the most valuable ball python traits are not — they are alleles competing for one locus, and getting that wrong produces animals that cannot exist. This one models loci.',
@@ -168,7 +169,7 @@ const PAGES = [
   {
     path: '/tools/codex.html', page: 'codex', script: '/assets/js/pages/codex.js',
     crumbs: [{ name: 'Tools', item: `${ORIGIN}/tools.html` }],
-    title: 'Morph Codex — Snake Gene Encyclopedia | VScale Exotics',
+    title: 'Morph Codex — Snake Gene Encyclopedia | V-Scale Exotics',
     description: 'Every gene we work with, indexed by species and inheritance mode: what it does visually, who produced it and when, how rare it is, which locus it belongs to, and which other genes it is allelic with.',
     h1: 'Morph Codex', eyebrow: 'Gene reference',
     lede: 'Every gene we work with, with the inheritance mode, the originating breeder, the year it was proven, and — critically — which locus each one occupies.',
@@ -180,7 +181,7 @@ const PAGES = [
   {
     path: '/tools/valuation.html', page: 'valuation', script: '/assets/js/pages/valuation.js',
     crumbs: [{ name: 'Tools', item: `${ORIGIN}/tools.html` }],
-    title: 'Valuation Index — Snake Morph Price Estimator | VScale Exotics',
+    title: 'Valuation Index — Snake Morph Price Estimator | V-Scale Exotics',
     description: 'Estimate the market value of any snake morph combination. Models diminishing returns on gene stacking, sex premium, maturity and expression quality, and reports a confidence band and liquidity assessment rather than a single misleading figure.',
     h1: 'Valuation Index', eyebrow: 'Market estimate, with its working shown',
     lede: 'Multiply every gene multiplier together and you will overvalue a five-gene animal by an order of magnitude. The market does not pay linearly for stacking. This model applies a decaying weight to each successive gene, which tracks observed pricing far more closely.',
@@ -189,7 +190,7 @@ const PAGES = [
   {
     path: '/tools/clutch.html', page: 'clutch', script: '/assets/js/pages/clutch.js',
     crumbs: [{ name: 'Tools', item: `${ORIGIN}/tools.html` }],
-    title: 'Clutch Planner — Incubation & Gestation Timeline | VScale Exotics',
+    title: 'Clutch Planner — Incubation & Gestation Timeline | V-Scale Exotics',
     description: 'Temperature-dependent incubation timelines for oviparous species and gestation windows for live-bearers, with candling dates, the pip window, cutting guidance, first shed and first feed.',
     h1: 'Clutch Planner', eyebrow: 'Incubation & gestation',
     lede: 'Incubation duration is a function of temperature, and a single degree of drift over the back half will move your hatch date by three days. Enter the lay date and your incubator setpoint and this maps the whole cycle.',
@@ -198,7 +199,7 @@ const PAGES = [
   {
     path: '/tools/husbandry.html', page: 'husbandry', script: '/assets/js/pages/husbandry.js',
     crumbs: [{ name: 'Tools', item: `${ORIGIN}/tools.html` }],
-    title: 'Husbandry Architect — Enclosure Specification | VScale Exotics',
+    title: 'Husbandry Architect — Enclosure Specification | V-Scale Exotics',
     description: 'Generate a complete enclosure specification and build checklist for any species at any life stage: dimensions, thermal gradient, humidity targets, substrate, furniture and the equipment list, sized to the individual animal rather than a generic care sheet.',
     h1: 'Husbandry Architect', eyebrow: 'Enclosure specification',
     lede: 'A care sheet tells you what an adult needs. This computes what your animal needs at its current mass, which is a different and more useful question — under-furnished space is the most common cause of feeding refusal we see.',
@@ -207,7 +208,7 @@ const PAGES = [
   {
     path: '/tools/feeding.html', page: 'feeding', script: '/assets/js/pages/feeding.js',
     crumbs: [{ name: 'Tools', item: `${ORIGIN}/tools.html` }],
-    title: 'Feeding & Growth Planner — Prey Sizing Calculator | VScale Exotics',
+    title: 'Feeding & Growth Planner — Prey Sizing Calculator | V-Scale Exotics',
     description: 'Calculate correct prey size and feeding interval from your animal\'s actual mass and species, with an annual consumption forecast and a projected growth curve. Heavy-bodied species take proportionally smaller meals than a flat percentage suggests.',
     h1: 'Feeding &amp; Growth', eyebrow: 'Prey sizing & schedule',
     lede: 'Prey width should never exceed the widest point of the animal. Weight is only a guide to which item to reach for — and the right percentage of body mass is not the same for a hognose as it is for an emerald tree boa.',
@@ -216,7 +217,7 @@ const PAGES = [
   {
     path: '/tools/shipping.html', page: 'shipping', script: '/assets/js/pages/shipping.js',
     crumbs: [{ name: 'Tools', item: `${ORIGIN}/tools.html` }],
-    title: 'Ship Window — Safe Reptile Shipping Dates | VScale Exotics',
+    title: 'Ship Window — Safe Reptile Shipping Dates | V-Scale Exotics',
     description: 'Check whether a given date and destination fall inside the safe temperature band for shipping live reptiles, with carrier rules, required heat or cold packs, live arrival guarantee conditions and the next viable despatch dates.',
     h1: 'Ship Window', eyebrow: 'Safe despatch assessment',
     lede: 'Live reptiles move on FedEx Priority Overnight, Monday to Wednesday, inside a defined temperature band. This checks a destination and date against regional climatological normals so you can plan months out — the final call is always made against the actual forecast on the morning of despatch.',
@@ -225,7 +226,7 @@ const PAGES = [
   {
     path: '/tools/legality.html', page: 'legality', script: '/assets/js/pages/legality.js',
     crumbs: [{ name: 'Tools', item: `${ORIGIN}/tools.html` }],
-    title: 'Legality Check — Snake Ownership Laws by State | VScale Exotics',
+    title: 'Legality Check — Snake Ownership Laws by State | V-Scale Exotics',
     description: 'Look up federal, state and international restrictions on keeping the species we place: Lacey Act injurious listings, CITES, state permit regimes and country-level import rules. A research aid, not legal advice.',
     h1: 'Legality Check', eyebrow: 'Federal, state & international',
     lede: 'Reptile law operates at three levels simultaneously, and the municipal layer is the one that catches people out. This covers the first two properly and flags the third. Confirm locally before you order — we will ask you to attest that you have.',
@@ -234,7 +235,7 @@ const PAGES = [
   {
     path: '/tools/quarantine.html', page: 'quarantine', script: '/assets/js/pages/quarantine.js',
     crumbs: [{ name: 'Tools', item: `${ORIGIN}/tools.html` }],
-    title: 'Quarantine Protocol — 90-Day Intake Checklist | VScale Exotics',
+    title: 'Quarantine Protocol — 90-Day Intake Checklist | V-Scale Exotics',
     description: 'The ninety-day quarantine protocol we use for every intake, as an interactive checklist with dates computed from your arrival day. Progress is saved in your browser.',
     h1: 'Quarantine Protocol', eyebrow: '90-day intake',
     lede: 'Snake mites complete a life cycle in under three weeks, but eggs sitting in a substrate crack outlast most keepers\' patience. Ninety days is not caution, it is arithmetic. Enter your arrival date and this dates every step.',
@@ -244,7 +245,7 @@ const PAGES = [
   /* ---------------- House pages ---------------- */
   {
     path: '/provenance.html', page: 'provenance', script: '/assets/js/pages/provenance.js',
-    title: 'Provenance — How We Breed and What We Refuse | VScale Exotics',
+    title: 'Provenance — How We Breed and What We Refuse | V-Scale Exotics',
     description: 'Seventeen years of unbroken breeding records from Chatham County, North Carolina. How the facility runs, how lineage is documented, why we hold thirty-nine animals rather than three thousand, and the genetics we will not work with at any price.',
     h1: 'Provenance', eyebrow: 'Est. 2009',
     lede: 'A collection is only as good as its records. Ours go back to 2009 without a gap, and everything on this page is something we will show you rather than assert.',
@@ -401,8 +402,8 @@ const PAGES = [
   },
   {
     path: '/acquire.html', page: 'acquire', script: '/assets/js/pages/acquire.js',
-    title: 'How to Acquire — Buying Process, Payment, Shipping | VScale Exotics',
-    description: 'How buying from VScale Exotics works, start to finish: enquiry, conversation, reservation and deposit, payment plans, pre-flight checks, despatch and aftercare. Including what we ask of you and why we decline sales.',
+    title: 'How to Acquire — Buying Process, Payment, Shipping | V-Scale Exotics',
+    description: 'How buying from V-Scale Exotics works, start to finish: enquiry, conversation, reservation and deposit, payment plans, pre-flight checks, despatch and aftercare. Including what we ask of you and why we decline sales.',
     h1: 'How Acquisition Works', eyebrow: 'Start to finish',
     lede: 'There is no cart button on this site. Every animal is placed after a conversation, which sounds like friction and is actually the reason our live arrival record is what it is.',
     body: `  <section class="section">
@@ -500,7 +501,7 @@ const PAGES = [
   },
   {
     path: '/concierge.html', page: 'concierge', script: '/assets/js/pages/concierge.js',
-    title: 'Private Concierge — Tell Us What You Are Looking For | VScale Exotics',
+    title: 'Private Concierge — Tell Us What You Are Looking For | V-Scale Exotics',
     description: 'Most of what we place never reaches the public listings. Describe the animal you want — species, genetics, sex, timeframe — and we will tell you honestly whether we can find it, what it will cost and how long it will take.',
     h1: 'Private Concierge', eyebrow: 'Sourcing & enquiries',
     lede: 'Most of what we place is never listed. Tell us what you are actually looking for and we will tell you honestly whether we can find it, what it will cost, and how long it will take — including when the answer is that we cannot.',
@@ -515,7 +516,7 @@ const PAGES = [
   },
   {
     path: '/journal.html', page: 'journal', script: '/assets/js/pages/journal.js',
-    title: 'Journal — Notes from the Collection Room | VScale Exotics',
+    title: 'Journal — Notes from the Collection Room | V-Scale Exotics',
     description: 'Writing on snake genetics, husbandry and the ethics of the trade: why locus matters more than gene, why dwarf percentage is a claim rather than a measurement, the wobble question answered plainly, and why ninety days of quarantine is arithmetic rather than caution.',
     h1: 'Journal', eyebrow: 'Notes from the collection room',
     lede: 'Longer pieces on genetics, husbandry and the parts of this trade that do not get written about honestly very often.',
@@ -527,7 +528,7 @@ const PAGES = [
   },
   {
     path: '/vault.html', page: 'vault', script: '/assets/js/pages/vault.js',
-    title: 'Your Vault — Saved Animals | VScale Exotics',
+    title: 'Your Vault — Saved Animals | V-Scale Exotics',
     description: 'Animals you have saved, held in your browser and nowhere else. Review them side by side, check their combined value, and send the list to us as a single enquiry.',
     h1: 'Your Vault', eyebrow: 'Saved to this device',
     lede: 'Everything you have saved, stored in your browser and nowhere else. We cannot see this list until you choose to send it to us.',
@@ -539,7 +540,7 @@ const PAGES = [
   },
   {
     path: '/compare.html', page: 'compare', script: '/assets/js/pages/compare.js',
-    title: 'Compare Animals | VScale Exotics',
+    title: 'Compare Animals | V-Scale Exotics',
     description: 'Compare up to four animals side by side: genetics, weight, age, price, rarity index, husbandry requirements and species difficulty.',
     h1: 'Comparison', eyebrow: 'Side by side',
     lede: 'Up to four animals, every field aligned. Useful mostly for deciding between two you already like.',
@@ -553,7 +554,7 @@ const PAGES = [
   /* ---------------- Policies ---------------- */
   {
     path: '/legal/health-guarantee.html', page: 'health-guarantee', script: '/assets/js/pages/doc.js',
-    crumbs: [], title: 'Health Guarantee | VScale Exotics',
+    crumbs: [], title: 'Health Guarantee | V-Scale Exotics',
     description: 'Our health guarantee: what is covered, for how long, what voids it, and what we do when something goes wrong. Written plainly, without the escape clauses that make most reptile guarantees worthless.',
     h1: 'Health Guarantee', eyebrow: 'Policy',
     lede: 'Most reptile health guarantees are written to be unenforceable. This one is written to be used.',
@@ -561,7 +562,7 @@ const PAGES = [
   },
   {
     path: '/legal/shipping-policy.html', page: 'shipping-policy', script: '/assets/js/pages/doc.js',
-    crumbs: [], title: 'Shipping & Live Arrival Guarantee | VScale Exotics',
+    crumbs: [], title: 'Shipping & Live Arrival Guarantee | V-Scale Exotics',
     description: 'How we ship live animals: carrier and service, permitted despatch days, temperature limits, heat and cold packs, weather holds, international export, and the exact conditions of the live arrival guarantee.',
     h1: 'Shipping &amp; Live Arrival', eyebrow: 'Policy',
     lede: 'A live arrival guarantee is a refund, not a resurrection. Everything here exists to make sure it is never invoked.',
@@ -569,15 +570,15 @@ const PAGES = [
   },
   {
     path: '/legal/terms.html', page: 'terms', script: '/assets/js/pages/doc.js',
-    crumbs: [], title: 'Terms of Sale | VScale Exotics',
-    description: 'Terms of sale for VScale Exotics: reservation and deposit terms, payment, title transfer, cancellation, buyer eligibility, export responsibilities and dispute resolution.',
+    crumbs: [], title: 'Terms of Sale | V-Scale Exotics',
+    description: 'Terms of sale for V-Scale Exotics: reservation and deposit terms, payment, title transfer, cancellation, buyer eligibility, export responsibilities and dispute resolution.',
     h1: 'Terms of Sale', eyebrow: 'Policy',
     lede: 'The commercial terms on which we place an animal.',
     body: simpleBody('      <div class="doc" data-doc="terms"></div>')
   },
   {
     path: '/legal/privacy.html', page: 'privacy', script: '/assets/js/pages/doc.js',
-    crumbs: [], title: 'Privacy | VScale Exotics',
+    crumbs: [], title: 'Privacy | V-Scale Exotics',
     description: 'What this site stores, what it does not, and why there are no third-party scripts, no analytics, no cookies and no trackers anywhere on it.',
     h1: 'Privacy', eyebrow: 'Policy',
     lede: 'This site sets no cookies, loads no third-party code, and runs no analytics. That is not a marketing position — it is the whole policy, and the rest of this page explains the consequences.',

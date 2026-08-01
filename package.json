@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "VScale Exotics — rare serpent acquisition house. Static site, zero runtime dependencies.",
+  "description": "V-Scale Exotics — rare serpent acquisition house. Static site, zero runtime dependencies.",
   "scripts": {
     "dev": "node tools/serve.mjs",
     "data": "node tools/build-data.mjs",

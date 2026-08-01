@@ -42,7 +42,7 @@
         handler: ({ entry }) => {
           const collection = entry && entry.get ? entry.get('collection') : '';
           console.info(
-            `[VScale] Saved${collection ? ` to ${collection}` : ''}. ` +
+            `[V-Scale] Saved${collection ? ` to ${collection}` : ''}. ` +
               'This writes JSON to content/. The live site updates when the deploy runs ' +
               'tools/build-data.mjs, which validates the genetics first and fails the build ' +
               'rather than publishing something impossible.'

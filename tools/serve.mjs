@@ -158,6 +158,6 @@ const server = createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`VScale Exotics — http://localhost:${PORT}`);
+  console.log(`V-Scale Exotics — http://localhost:${PORT}`);
   console.log('Serving with production security headers.');
 });

@@ -71,7 +71,7 @@ export const LOCI = [
     id: 'bp-spider',
     species: 'ball-python',
     name: 'Spider / Champagne / Woma complex',
-    note: 'All three alleles carry neurological "wobble" to varying degrees and no homozygous form has ever been produced viably. VScale does not breed or place animals from this locus.',
+    note: 'All three alleles carry neurological "wobble" to varying degrees and no homozygous form has ever been produced viably. V-Scale does not breed or place animals from this locus.',
     combos: {
       'champagne|champagne': 'Non-viable',
       'champagne|hgw': 'Champagne Woma',
@@ -667,7 +667,7 @@ export const GENES = [
     originator: 'NERD',
     effect: 'Thin, web-like dorsal pattern with wide clean flanks.',
     lethality: 'wobble',
-    lethalityNote: 'Every Spider carries a neurological syndrome ranging from mild head tilt to severe corkscrewing. No homozygous animal has ever been produced. VScale does not breed, buy or place animals from this locus.',
+    lethalityNote: 'Every Spider carries a neurological syndrome ranging from mild head tilt to severe corkscrewing. No homozygous animal has ever been produced. V-Scale does not breed, buy or place animals from this locus.',
     restricted: true
   },
   {

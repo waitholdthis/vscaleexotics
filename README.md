@@ -1,4 +1,4 @@
-# VScale Exotics
+# V-Scale Exotics
 
 A private acquisition house for rare captive-bred serpents — Chatham County, North Carolina.
 
@@ -200,4 +200,4 @@ one locus, a gene attached to the wrong species, a combination spanning two loci
 
 ## Licence
 
-Proprietary. All content and code © VScale Exotics LLC.
+Proprietary. All content and code © V-Scale Exotics LLC.

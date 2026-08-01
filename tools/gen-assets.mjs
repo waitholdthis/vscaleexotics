@@ -6,7 +6,8 @@
  * image library to produce one 1200×630 card would undercut that.
  */
 
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { deflateSync } from 'node:zlib';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,34 +16,8 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const IMG = join(ROOT, 'assets', 'img');
 mkdirSync(IMG, { recursive: true });
 
-/* ------------------------------------------------------------------ *
- * Favicon
- * ------------------------------------------------------------------ */
-
-const favicon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <rect width="40" height="40" rx="7" fill="#07080a"/>
-  <circle cx="20" cy="20" r="15.5" fill="none" stroke="#c6a15b" stroke-width="1" opacity=".35"/>
-  <g fill="none" stroke="#c6a15b" stroke-width="1.9" stroke-linecap="round">
-    <path d="M9 26c4.5 0 7.5-3.2 11-3.2S27.5 26 31 26"/>
-    <path d="M11 20.5c3.6 0 6.2-3.1 9-3.1s5.4 3.1 9 3.1" opacity=".78"/>
-    <path d="M13.5 15c2.6 0 4.6-3 6.5-3s3.9 3 6.5 3" opacity=".56"/>
-  </g>
-</svg>
-`;
-writeFileSync(join(IMG, 'favicon.svg'), favicon, 'utf8');
-
-/* Maskable PWA icon — same mark with the safe-zone padding PWA requires. */
-const maskable = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" fill="#07080a"/>
-  <circle cx="256" cy="256" r="150" fill="none" stroke="#c6a15b" stroke-width="10" opacity=".35"/>
-  <g fill="none" stroke="#c6a15b" stroke-width="19" stroke-linecap="round">
-    <path d="M115 333c58 0 96-41 141-41s83 41 141 41"/>
-    <path d="M141 263c46 0 79-40 115-40s69 40 115 40" opacity=".78"/>
-    <path d="M173 192c33 0 59-38 83-38s50 38 83 38" opacity=".56"/>
-  </g>
-</svg>
-`;
-writeFileSync(join(IMG, 'icon-512.svg'), maskable, 'utf8');
+/* The favicon and PWA icons are built from the real logo by tools/gen-brand.mjs.
+   The placeholder glyph that used to live here has been retired. */
 
 /* ------------------------------------------------------------------ *
  * Minimal PNG encoder (truecolour, 8-bit, no alpha)
@@ -205,6 +180,58 @@ for (let y = 0; y < H; y++) {
   }
 }
 
+/* ------------------------------------------------------------------ *
+ * Brand badge, stamped into the card so a shared link carries the mark.
+ * Reads the extracted mark produced by tools/gen-brand.mjs, which is why
+ * that runs first in the build.
+ * ------------------------------------------------------------------ */
+
+const MARK = join(IMG, 'brand-mark.png');
+if (existsSync(MARK)) {
+  const mw = 200, mh = 190;                 // as emitted by gen-brand.mjs
+  const mark = execFileSync(
+    'ffmpeg',
+    ['-hide_banner', '-loglevel', 'error', '-i', MARK, '-f', 'rawvideo', '-pix_fmt', 'rgba', 'pipe:1'],
+    { maxBuffer: 1 << 26 }
+  );
+
+  const BONE = [236, 231, 221];
+  const scale = 0.86;                        // mark size inside the panel
+  const panelW = Math.round(mw * 1.32 * scale);
+  const panelH = Math.round(mh * 1.32 * scale);
+  const panelX = Math.round((W - panelW) / 2);
+  const panelY = Math.round(H * 0.30);
+  const radius = 8;
+
+  // Bone panel with soft rounded corners.
+  for (let y = 0; y < panelH; y++) {
+    for (let x = 0; x < panelW; x++) {
+      const inX = Math.min(x, panelW - 1 - x);
+      const inY = Math.min(y, panelH - 1 - y);
+      if (inX < radius && inY < radius && Math.hypot(radius - inX, radius - inY) > radius) continue;
+      const o = ((panelY + y) * W + (panelX + x)) * 3;
+      px[o] = BONE[0]; px[o + 1] = BONE[1]; px[o + 2] = BONE[2];
+    }
+  }
+
+  // Mark, centred on the panel.
+  const dw = Math.round(mw * scale), dh = Math.round(mh * scale);
+  const dx = panelX + Math.round((panelW - dw) / 2);
+  const dy = panelY + Math.round((panelH - dh) / 2);
+  for (let y = 0; y < dh; y++) {
+    for (let x = 0; x < dw; x++) {
+      const sx = Math.floor((x / dw) * mw), sy = Math.floor((y / dh) * mh);
+      const si = (sy * mw + sx) * 4;
+      const a = mark[si + 3] / 255;
+      if (a <= 0.01) continue;
+      const o = ((dy + y) * W + (dx + x)) * 3;
+      px[o] = Math.round(mark[si] * a + px[o] * (1 - a));
+      px[o + 1] = Math.round(mark[si + 1] * a + px[o + 1] * (1 - a));
+      px[o + 2] = Math.round(mark[si + 2] * a + px[o + 2] * (1 - a));
+    }
+  }
+}
+
 writeFileSync(join(IMG, 'og-default.png'), encodePNG(W, H, px));
 
-console.log('wrote assets/img/favicon.svg, icon-512.svg, og-default.png');
+console.log('wrote assets/img/og-default.png');

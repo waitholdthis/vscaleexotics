@@ -399,7 +399,7 @@ function collectPairingWarnings(a, b, nonViable) {
   if (wobble.length) {
     out.push({
       level: 'critical',
-      text: `This pairing involves ${wobble.join(' and ')}. Every animal carrying these genes has a neurological syndrome. VScale Exotics does not breed, purchase or place them, and this result is shown for reference only.`
+      text: `This pairing involves ${wobble.join(' and ')}. Every animal carrying these genes has a neurological syndrome. V-Scale Exotics does not breed, purchase or place them, and this result is shown for reference only.`
     });
   }
   const defect = [...new Set(all.filter((g) => g.lethality === 'super-defect').map((g) => g.name))];
