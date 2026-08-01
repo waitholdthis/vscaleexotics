@@ -56,7 +56,22 @@ for (const file of jsFiles) {
   }
 }
 
-/* Actually load every module that has no DOM dependency, to catch real errors. */
+/**
+ * Parse every file. This used to be claimed but not done: only the modules
+ * under data/ and engine/ were ever loaded, so a syntax error anywhere else —
+ * including in the build tools themselves — got through. `--check` compiles
+ * without evaluating, which is the only way to cover files that need a DOM or
+ * that start a server on import.
+ */
+for (const file of jsFiles) {
+  const { status, stderr } = spawnSync(process.execPath, ['--check', file], { encoding: 'utf8' });
+  if (status !== 0) {
+    const line = (stderr || '').split('\n').find((l) => /Error/.test(l)) || 'syntax error';
+    problems.push(`${rel(file)} → does not parse: ${line.trim()}`);
+  }
+}
+
+/* Then load every module that has no DOM dependency, to catch real errors. */
 const domFree = jsFiles.filter((f) => /\/(data|engine)\//.test(rel(f)));
 for (const file of domFree) {
   try {
@@ -138,7 +153,125 @@ for (const file of htmlFiles) {
   }
 }
 
-/* ---------- 6: generated data must be in sync with content/ ---------- */
+/* ---------- 6: the CSP must be identical in all six places it lives ---------- */
+
+/**
+ * The policy is hand-copied into five server configs and every page's meta tag.
+ * Nothing made them agree, and they had already drifted (one host was sending a
+ * Cross-Origin-Embedder-Policy the other four were not). A policy that differs
+ * by host is a policy nobody can reason about, so it gets compared here.
+ *
+ * Meta and header are not expected to be identical: a meta-delivered CSP is
+ * required to ignore these directives, so they are stripped before comparing.
+ */
+const META_INVALID = /^(frame-ancestors|report-uri|report-to|sandbox)\b/;
+const normCsp = (s) =>
+  s.replace(/\s+/g, ' ').trim().replace(/;$/, '').split(';').map((d) => d.trim()).filter(Boolean).join('; ');
+const metaEquivalent = (headerCsp) =>
+  normCsp(headerCsp).split('; ').filter((d) => !META_INVALID.test(d)).join('; ');
+
+/** @returns {[site: string, admin: string]} in source order. */
+function extractCsp(file, re, transform = (m) => m[1]) {
+  const src = readFileSync(join(ROOT, file), 'utf8');
+  const found = [...src.matchAll(re)].map((m) => normCsp(transform(m)));
+  if (found.length !== 2) {
+    problems.push(`${file} → expected 2 CSP declarations (site + /admin/), found ${found.length}`);
+    return null;
+  }
+  return found;
+}
+
+const sources = {
+  '_headers': extractCsp('_headers', /^\s*Content-Security-Policy:\s*(.+)$/gm),
+  'nginx.conf': extractCsp('nginx.conf', /add_header Content-Security-Policy\s+"([^"]+)"/g),
+  '.htaccess': extractCsp('.htaccess', /Header always set Content-Security-Policy\s+"([^"]+)"/g),
+  'vercel.json': (() => {
+    const cfg = JSON.parse(readFileSync(join(ROOT, 'vercel.json'), 'utf8'));
+    const found = cfg.headers
+      .flatMap((b) => b.headers.filter((kv) => kv.key === 'Content-Security-Policy'))
+      .map((kv) => normCsp(kv.value));
+    if (found.length !== 2) problems.push(`vercel.json → expected 2 CSP declarations, found ${found.length}`);
+    return found.length === 2 ? found : null;
+  })(),
+  'tools/serve.mjs': extractCsp(
+    'tools/serve.mjs',
+    /const (?:ADMIN_)?CSP = \[([\s\S]*?)\]\.join/g,
+    // Rebuild the array literal from its string entries rather than eval'ing it.
+    (m) => [...m[1].matchAll(/(['"])((?:(?!\1).)*)\1/g)].map((s) => s[2]).join('; ')
+  )
+};
+
+const canonical = sources['_headers'];
+if (canonical) {
+  for (const [name, got] of Object.entries(sources)) {
+    if (!got) continue;
+    for (const [i, label] of [[0, 'site'], [1, '/admin/']]) {
+      if (got[i] === canonical[i]) continue;
+      const a = new Set(canonical[i].split('; '));
+      const b = new Set(got[i].split('; '));
+      const missing = [...a].filter((d) => !b.has(d));
+      const extra = [...b].filter((d) => !a.has(d));
+      problems.push(
+        `${name} → ${label} CSP differs from _headers` +
+          (missing.length ? `; missing [${missing.join(', ')}]` : '') +
+          (extra.length ? `; unexpected [${extra.join(', ')}]` : '')
+      );
+    }
+  }
+
+  const expectSite = metaEquivalent(canonical[0]);
+  const expectAdmin = metaEquivalent(canonical[1]);
+  for (const file of htmlFiles) {
+    const m = readFileSync(file, 'utf8').match(/http-equiv="Content-Security-Policy"\s+content="([^"]+)"/i);
+    if (!m) continue; // absence is already reported by REQUIRED_META
+    const want = isAdmin(file) ? expectAdmin : expectSite;
+    const got = normCsp(m[1]);
+    if (got !== want) {
+      const a = new Set(want.split('; '));
+      const b = new Set(got.split('; '));
+      const missing = [...a].filter((d) => !b.has(d));
+      const extra = [...b].filter((d) => !a.has(d));
+      problems.push(
+        `${rel(file)} → meta CSP does not match the header policy` +
+          (missing.length ? `; missing [${missing.join(', ')}]` : '') +
+          (extra.length ? `; unexpected [${extra.join(', ')}]` : '')
+      );
+    }
+  }
+}
+
+/* ---------- 7: no JS path that CSP would silently discard ---------- */
+
+/**
+ * The mirror of the inline-style check above, for code rather than markup.
+ *
+ * `h({ style: {…} })` works under a style-src without 'unsafe-inline' only
+ * because it calls setProperty() per declaration; CSP does not police the CSSOM
+ * setters. Assigning a declaration STRING — setAttribute('style', …) or
+ * .cssText — is parsed as an inline style and dropped, silently, across every
+ * call site at once. innerHTML and friends are here for the same reason the
+ * site has no innerHTML path at all: the guarantee is only worth having if
+ * something enforces it.
+ */
+const FORBIDDEN_SINKS = [
+  [/\.cssText\b/, "assigning .cssText is parsed as an inline style and dropped by our CSP; use el.style.setProperty()"],
+  [/setAttribute\(\s*['"]style['"]/, "setAttribute('style', …) is dropped by our CSP; use el.style.setProperty()"],
+  [/\.innerHTML\b|\.outerHTML\b|insertAdjacentHTML\(/, 'HTML sink; build nodes with h() from core/dom.js'],
+  [/\bdocument\.write\b/, 'document.write is blocked and unsafe; build nodes with h()'],
+  [/\beval\(|new Function\(/, "eval/Function are blocked by script-src without 'unsafe-eval'"]
+];
+
+// Comments legitimately name these sinks when explaining why they are absent.
+const stripComments = (s) => s.replace(/\/\*[\s\S]*?\*\//g, '').replace(/^\s*\/\/.*$/gm, '');
+
+for (const file of jsFiles.filter((f) => rel(f).startsWith('assets/js/'))) {
+  const src = stripComments(readFileSync(file, 'utf8'));
+  for (const [re, why] of FORBIDDEN_SINKS) {
+    if (re.test(src)) problems.push(`${rel(file)} → ${why}`);
+  }
+}
+
+/* ---------- 8: generated data must be in sync with content/ ---------- */
 
 if (existsSync(join(ROOT, 'content'))) {
   const generated = ['species.js', 'genes.js', 'inventory.js', 'journal.js', 'site.js']

@@ -17,10 +17,16 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DRY = process.argv.includes('--dry');
 const ORIGIN = 'https://vscaleexotics.com';
 
+/**
+ * Must stay identical to the header policy in _headers minus `frame-ancestors`
+ * and `report-uri`, which a meta-delivered CSP is required to ignore.
+ * tools/check.mjs enforces that; do not edit this without editing all five
+ * server configs.
+ */
 const CSP =
-  "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; " +
+  "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'none'; " +
   "connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'none'; " +
-  "manifest-src 'self'; upgrade-insecure-requests";
+  "manifest-src 'self'; worker-src 'self'; media-src 'self'; upgrade-insecure-requests";
 
 /** Escape a value destined for a double-quoted HTML attribute. */
 const escAttr = (s) =>

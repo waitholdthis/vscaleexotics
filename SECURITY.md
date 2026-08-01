@@ -42,7 +42,7 @@ default-src 'self';
 script-src 'self';
 style-src 'self';
 img-src 'self' data:;
-font-src 'self';
+font-src 'none';
 connect-src 'self';
 object-src 'none';
 base-uri 'none';
@@ -51,10 +51,28 @@ frame-ancestors 'none';
 frame-src 'none';
 manifest-src 'self';
 worker-src 'self';
-upgrade-insecure-requests
+media-src 'self';
+upgrade-insecure-requests;
+report-uri /api/csp-report
 ```
 
+This policy lives in six places: `_headers`, `vercel.json`, `nginx.conf`, `.htaccess`,
+`tools/serve.mjs`, and a `<meta>` on every page. `tools/check.mjs` fails the build if any of them
+disagree — they had already drifted once. Page metas are compared after dropping `frame-ancestors`
+and `report-uri`, which a meta-delivered CSP is required to ignore.
+
 Notes:
+
+- `font-src 'none'` because the site has no `@font-face` at all; all three families are system font
+  stacks. Nothing to allow, so nothing is allowed.
+- `report-uri` is honoured by `tools/serve.mjs` in development, which prints violations to the
+  console. **Production still needs this endpoint** — until it exists the reports POST to a 404 and
+  are lost, which is the state that let sixty dropped inline styles ship unnoticed.
+- Trusted Types were considered and deliberately **not** adopted.
+  `require-trusted-types-for 'script'` would enforce the no-`innerHTML` rule that `core/dom.js`
+  already follows structurally, but `ServiceWorkerContainer.register()` is a `TrustedScriptURL`
+  sink — adding the directive without a policy would break the service worker in Chromium. The rule
+  is enforced by `tools/check.mjs` instead.
 
 - `img-src` permits `data:` for two small inline SVGs in the stylesheet (the film-grain turbulence
   and the select-control chevron). No raster data URIs are used.

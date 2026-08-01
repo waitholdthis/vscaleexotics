@@ -58,8 +58,17 @@ function applyProps(el, props, isSvg = false) {
       continue;
     }
     if (key === 'style' && typeof value === 'object') {
-      // Custom properties only — no arbitrary declaration strings, which keeps
-      // this compatible with a style-src that forbids unsafe-inline.
+      // setProperty(), one declaration at a time — NOT a declaration string.
+      //
+      // This distinction is load-bearing and easy to lose. Our style-src has no
+      // 'unsafe-inline', which blocks a style ATTRIBUTE whenever the browser
+      // parses one: in markup, and via setAttribute('style', …) or .cssText.
+      // CSP does not reach the CSSOM property setters, so this path works.
+      //
+      // Around 180 call sites depend on that. "Simplifying" this to
+      // setAttribute or cssText would silently drop every one of them, exactly
+      // as the CSP dropped the inline styles that used to be in the HTML.
+      // tools/check.mjs fails the build on either, so the invariant is tested.
       for (const [k, v] of Object.entries(value)) el.style.setProperty(k, String(v));
       continue;
     }

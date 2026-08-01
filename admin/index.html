@@ -34,7 +34,23 @@
   upgrade-insecure-requests">
 </head>
 <body>
-<script src="https://unpkg.com/decap-cms@3.8.4/dist/decap-cms.js"></script>
+<!--
+  `script-src https://unpkg.com` allows ANY script from unpkg, so the pinned
+  version in the URL is a convention, not a control — unpkg serves whatever npm
+  holds for that tag. This page can commit to the repository, so a tampered or
+  re-published bundle would be a write-access compromise.
+
+  The integrity hash is the real pin: the browser refuses the script unless the
+  bytes match. `crossorigin="anonymous"` is required for SRI on a cross-origin
+  script, and works here because unpkg sends `Access-Control-Allow-Origin: *`.
+
+  Recompute when bumping the version, and read the diff before you do:
+    curl -sL https://unpkg.com/decap-cms@<v>/dist/decap-cms.js \
+      | openssl dgst -sha384 -binary | openssl base64 -A
+-->
+<script src="https://unpkg.com/decap-cms@3.8.4/dist/decap-cms.js"
+        integrity="sha384-JNjmpWfdPuQ3I7ac38W0teoHcVxx7YdfDVpcgehfGqcu6ZBt26m/nmmBM2FzuO41"
+        crossorigin="anonymous"></script>
 <script src="/admin/preview.js" type="module"></script>
 </body>
 </html>

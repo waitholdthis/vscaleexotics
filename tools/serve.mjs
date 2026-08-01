@@ -37,7 +37,7 @@ const CSP = [
   "script-src 'self'",
   "style-src 'self'",
   "img-src 'self' data:",
-  "font-src 'self'",
+  "font-src 'none'",
   "connect-src 'self'",
   "object-src 'none'",
   "base-uri 'none'",
@@ -47,7 +47,8 @@ const CSP = [
   "manifest-src 'self'",
   "worker-src 'self'",
   "media-src 'self'",
-  'upgrade-insecure-requests'
+  'upgrade-insecure-requests',
+  'report-uri /api/csp-report'
 ].join('; ');
 
 /**
@@ -91,11 +92,50 @@ const headersFor = (pathname) =>
     ? { ...baseHeaders, 'Content-Security-Policy': ADMIN_CSP, 'X-Robots-Tag': 'noindex, nofollow' }
     : SECURITY_HEADERS;
 
+/**
+ * Sink for `report-uri /api/csp-report`.
+ *
+ * A blocked resource is not an error in the page — no exception, no failed
+ * request, usually nothing anyone scrolls back far enough in the console to
+ * see. Sixty inline styles were dropped on every page for weeks before anyone
+ * noticed, and only then because a screenshot looked wrong.
+ *
+ * tools/check.mjs catches the violations that are visible in the source. This
+ * catches the ones that are not: anything a script constructs at runtime.
+ * Production needs the same endpoint — see the /api/enquiry note in README.
+ */
+function handleCspReport(req, res) {
+  let raw = '';
+  req.on('data', (c) => { raw += c; if (raw.length > 64_000) req.destroy(); });
+  req.on('end', () => {
+    try {
+      const r = JSON.parse(raw)['csp-report'] || {};
+      console.error(
+        `\n  CSP VIOLATION  ${r['violated-directive'] || '?'}` +
+          `\n    blocked : ${r['blocked-uri'] || '?'}` +
+          `\n    on page : ${r['document-uri'] || '?'}` +
+          (r['source-file'] ? `\n    source  : ${r['source-file']}:${r['line-number'] ?? '?'}` : '') +
+          (r['script-sample'] ? `\n    sample  : ${String(r['script-sample']).slice(0, 120)}` : '') +
+          '\n'
+      );
+    } catch {
+      console.error('  CSP VIOLATION (unparseable report)');
+    }
+    res.writeHead(204).end();
+  });
+}
+
 const server = createServer(async (req, res) => {
   try {
     const url = new URL(req.url, `http://localhost:${PORT}`);
     let pathname = decodeURIComponent(url.pathname);
     if (pathname.endsWith('/')) pathname += 'index.html';
+
+    if (pathname === '/api/csp-report') {
+      if (req.method !== 'POST') { res.writeHead(405, SECURITY_HEADERS).end(); return; }
+      handleCspReport(req, res);
+      return;
+    }
 
     // Path traversal guard: resolve, then confirm the result is inside ROOT.
     const target = normalize(join(ROOT, pathname));
