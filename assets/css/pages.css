@@ -707,6 +707,11 @@
 .project-stage::before { content: '0' counter(project-stage); display: block; margin-bottom: var(--s-3); color: var(--brass); font: var(--t-xs)/1 var(--font-mono); }
 .project-stage h3 { font-size: var(--t-md); }
 .project-stage p { margin-top: var(--s-3); color: var(--muted); font-size: var(--t-sm); line-height: 1.7; }
+.project-actions { margin-top: var(--s-6); padding-top: var(--s-5); border-top: 1px solid var(--line-soft); }
+@media (max-width: 32rem) {
+  .project-actions { align-items: stretch; }
+  .project-actions .btn { width: 100%; }
+}
 
 /* --------------------------------------------------------------------------
    Static-page composition
