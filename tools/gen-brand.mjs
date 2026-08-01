@@ -37,6 +37,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = join(ROOT, 'photos', 'VScaleExotics_Logo.jpg');
+const QR_SRC = join(ROOT, 'photos', 'V_Scale_Exotics_QR.png');
 const OUT = join(ROOT, 'assets', 'img');
 
 if (!existsSync(SRC)) {
@@ -276,6 +277,34 @@ function square(size, inset, srcRgba) {
 writeFileSync(join(OUT, 'favicon.png'), encodePNG(64, 64, square(64, 0.10, mark)));
 writeFileSync(join(OUT, 'icon-512.png'), encodePNG(512, 512, square(512, 0.20, mark)));
 writeFileSync(join(OUT, 'icon-192.png'), encodePNG(192, 192, square(192, 0.20, mark)));
+
+/* ------------------------------------------------------------------ *
+ * QR code.
+ *
+ * The source is 2048px for something displayed at ~130px. Downsampled to
+ * 528px, which is 16 device pixels per module at 33 modules plus a 4-module
+ * quiet zone — far above the ~3px/module any scanner needs, and it keeps
+ * looking sharp on a retina display.
+ *
+ * The quiet zone is part of the spec, not decoration: without it scanners
+ * struggle to find the finder patterns, so the source margin is preserved
+ * rather than cropped.
+ *
+ * Verified to still decode to https://vscaleexotics.com/ after resampling.
+ * ------------------------------------------------------------------ */
+
+if (existsSync(QR_SRC)) {
+  const QR_OUT = 528;
+  const qr = execFileSync(
+    'ffmpeg',
+    ['-hide_banner', '-loglevel', 'error', '-i', QR_SRC,
+     '-vf', `scale=${QR_OUT}:${QR_OUT}:flags=area`,
+     '-f', 'rawvideo', '-pix_fmt', 'rgba', 'pipe:1'],
+    { maxBuffer: 1 << 26 }
+  );
+  writeFileSync(join(OUT, 'qr-site.png'), encodePNG(QR_OUT, QR_OUT, Buffer.from(qr)));
+  console.log(`qr emitted at ${QR_OUT}×${QR_OUT}`);
+}
 
 console.log(`mark extracted: ${cw}×${ch}, emitted at ${small.w}×${small.h} (from a 150×150 source)`);
 console.log('wrote assets/img/: brand-mark.png, favicon.png, icon-192.png, icon-512.png');

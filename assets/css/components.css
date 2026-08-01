@@ -892,3 +892,37 @@ kbd {
   border-color: color-mix(in srgb, var(--brass) 50%, transparent);
   background: color-mix(in srgb, var(--brass) 7%, transparent);
 }
+
+/* --------------------------------------------------------------------------
+   QR — desktop-to-phone handoff
+   -------------------------------------------------------------------------- */
+
+/* Hidden on small screens by default: a code you scan with the phone you are
+   already holding is useless, and the vertical space is worth more. */
+.qr-block { display: none; }
+
+@media (min-width: 48rem) {
+  .qr-block {
+    display: flex;
+    align-items: center;
+    gap: var(--s-5);
+    padding-block: var(--s-6);
+    border-top: 1px solid var(--line-soft);
+  }
+}
+
+.qr-block__code {
+  flex: none;
+  width: 7.5rem;
+  height: 7.5rem;
+  padding: .5rem;
+  background: var(--bone);
+  border-radius: var(--radius);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--brass) 22%, transparent);
+  /* The code is pure black-and-white geometry — never let a browser soften it. */
+  image-rendering: crisp-edges;
+}
+
+.qr-block__text { max-width: 34rem; display: flex; flex-direction: column; gap: .5rem; }
+.qr-block__text p { font-size: var(--t-sm); }
+.qr-block__text .mono { font-size: var(--t-xs); letter-spacing: .08em; }

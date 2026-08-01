@@ -568,6 +568,7 @@ function buildFooter() {
         ]),
         col('Policies', LEGAL_NAV.map((l) => ({ label: l.label, href: l.href })))
       ),
+      qrBlock(),
       h(
         'div',
         { class: 'site-footer__bar' },
@@ -579,6 +580,47 @@ function buildFooter() {
           buildPrefControl('units', 'Units', [['imperial', 'in / lb / °F'], ['metric', 'cm / kg / °C']])
         )
       )
+    )
+  );
+}
+
+/**
+ * "Take it with you" — a QR to the site, for moving from desktop to phone.
+ *
+ * Hidden below 48rem in CSS. Offering someone already holding a phone a code
+ * to scan with that same phone is nonsense, and vertical space on a small
+ * screen is worth more than a decorative square. This exists for exactly one
+ * job: getting a visitor off a desktop and onto the device they will actually
+ * message us from.
+ *
+ * Not a link. It points at the page you are already on, so making it clickable
+ * would be a no-op dressed up as an affordance.
+ */
+function qrBlock() {
+  return h(
+    'div',
+    { class: 'qr-block' },
+    h('img', {
+      class: 'qr-block__code',
+      src: '/assets/img/qr-site.png',
+      alt: `QR code linking to ${SITE.origin.replace(/^https?:\/\//, '')}`,
+      width: '528',
+      height: '528',
+      loading: 'lazy',
+      decoding: 'async'
+    }),
+    h(
+      'div',
+      { class: 'qr-block__text' },
+      h('p', { class: 'eyebrow', text: 'Continue on your phone' }),
+      h('p', {
+        class: 'text-dim',
+        text:
+          'Scan to carry the collection and the tools with you. The Gene Lab, the husbandry ' +
+          'calculators and the quarantine checklist all work offline once the page has loaded — ' +
+          'useful in a facility with no signal.'
+      }),
+      h('p', { class: 'mono text-muted', text: SITE.origin.replace(/^https?:\/\//, '').replace(/\/$/, '') })
     )
   );
 }
