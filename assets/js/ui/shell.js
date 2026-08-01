@@ -553,6 +553,7 @@ function buildFooter() {
         ),
         col('Collection', [
           { label: 'All Available', href: '/collection.html' },
+          { label: 'Sulawesi Retic Project', href: '/sulawesi-retics.html' },
           { label: 'Flagship Animals', href: '/collection.html?tier=flagship' },
           { label: 'Ball Pythons', href: '/collection.html?species=ball-python' },
           { label: 'Reticulated Pythons', href: '/collection.html?species=reticulated-python' },

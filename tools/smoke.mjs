@@ -243,6 +243,7 @@ const PAGE_HOOKS = {
   'vault.js': ['[data-vault-root]'],
   'compare.js': ['[data-compare-root]'],
   'provenance.js': [],
+  'sulawesi-retics.js': [],
   'acquire.js': ['[data-acquire-payment]', '[data-acquire-faq]'],
   'doc.js': ['[data-doc]'],
   'basic.js': []

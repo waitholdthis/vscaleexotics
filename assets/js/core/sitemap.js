@@ -19,6 +19,7 @@ export const NAV = [
     primary: true,
     summary: 'Every animal currently available, with full genetics and records.',
     children: [
+      { id: 'sulawesi-retics', label: 'Sulawesi Retic Project', href: '/sulawesi-retics.html', blurb: 'Meet the founding pair and follow the future locality project.' },
       { id: 'collection-ball', label: 'Ball Pythons', href: '/collection.html?species=ball-python' },
       { id: 'collection-retic', label: 'Reticulated Pythons', href: '/collection.html?species=reticulated-python' },
       { id: 'collection-gtp', label: 'Green Tree Pythons', href: '/collection.html?species=green-tree-python' },

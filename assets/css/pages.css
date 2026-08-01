@@ -682,6 +682,32 @@
   .doc h2 { scroll-margin-top: calc(var(--header-h) + var(--s-4)); }
 }
 
+/* Sulawesi locality project */
+.project-intro { display: grid; gap: var(--s-6); align-items: start; }
+@media (min-width: 62rem) { .project-intro { grid-template-columns: minmax(0, 1.3fr) minmax(18rem, .7fr); gap: var(--s-8); } }
+.project-note { padding: var(--s-5); border: 1px solid color-mix(in srgb, var(--brass) 35%, transparent); background: var(--surface); }
+.project-note p { color: var(--muted); font-size: var(--t-sm); line-height: 1.7; }
+.founder-grid { display: grid; gap: var(--s-6); }
+@media (min-width: 48rem) { .founder-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.founder-card { overflow: hidden; border: 1px solid var(--line-soft); background: var(--ink); }
+.founder-card__media { position: relative; aspect-ratio: 4 / 3; background: var(--slate); overflow: hidden; }
+.founder-card__media canvas { width: 100%; height: 100%; object-fit: cover; }
+.founder-card__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,8,10,.72), transparent 55%); pointer-events: none; }
+.founder-card__body { padding: clamp(var(--s-5), 4vw, var(--s-7)); }
+.founder-card__sex { color: var(--brass); font-size: var(--t-xs); letter-spacing: .18em; text-transform: uppercase; }
+.founder-card h2 { margin-top: var(--s-2); font-size: var(--t-xl); }
+.founder-card p { margin-top: var(--s-4); color: var(--muted); font-size: var(--t-sm); line-height: 1.7; }
+.founder-card dl { margin-top: var(--s-5); display: grid; grid-template-columns: minmax(7rem, 38%) 1fr; border-top: 1px solid var(--line-soft); }
+.founder-card dt, .founder-card dd { padding: .7rem 0; border-bottom: 1px solid var(--line-soft); font-size: var(--t-xs); }
+.founder-card dt { color: var(--muted-2); text-transform: uppercase; letter-spacing: .1em; }
+.founder-card dd { color: var(--bone-dim); }
+.project-timeline { display: grid; gap: var(--s-5); counter-reset: project-stage; }
+@media (min-width: 48rem) { .project-timeline { grid-template-columns: repeat(3, 1fr); } }
+.project-stage { counter-increment: project-stage; padding-top: var(--s-5); border-top: 1px solid var(--line); }
+.project-stage::before { content: '0' counter(project-stage); display: block; margin-bottom: var(--s-3); color: var(--brass); font: var(--t-xs)/1 var(--font-mono); }
+.project-stage h3 { font-size: var(--t-md); }
+.project-stage p { margin-top: var(--s-3); color: var(--muted); font-size: var(--t-sm); line-height: 1.7; }
+
 /* --------------------------------------------------------------------------
    Static-page composition
    
