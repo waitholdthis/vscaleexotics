@@ -1,8 +1,8 @@
 /**
  * Hero video renditions.
  *
- * Source: videos/Snake_Hero_Video.mp4 — 1280×720, 24fps, 10.0s, 12.3 Mbps,
- * with an AAC audio track. That is roughly thirty times the bitrate a muted
+ * Source: videos/<SOURCE_CLIP> — 1280×720, 24fps, 10.0s, ~12.5 Mbps, with an
+ * AAC audio track. That is roughly thirty times the bitrate a muted
  * background loop needs, and the audio is dead weight because autoplay
  * requires muting anyway.
  *
@@ -30,11 +30,17 @@ import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const SRC = join(ROOT, 'videos', 'Snake_Hero_Video.mp4');
+/** Swap this to change the hero footage, then re-run `npm run build:video`. */
+const SOURCE_CLIP = 'V_Scale_Hero_New.mp4';
+const SRC = join(ROOT, 'videos', SOURCE_CLIP);
 const OUT = join(ROOT, 'assets', 'video');
 
-/** Seconds. The strike begins at ~8.0s; 7.8 leaves clean headroom. */
-const TRIM_TO = 7.8;
+/**
+ * Seconds. Checked frame by frame against the current clip: the mouth is still
+ * closed at 7.45s and opening by 7.6s, so 7.4 leaves clean headroom.
+ * RE-CHECK THIS WHEN THE SOURCE CHANGES — it is specific to the footage.
+ */
+const TRIM_TO = 7.4;
 
 /** Frame used for the poster. Zero so poster → first video frame is seamless. */
 const POSTER_AT = 0.05;
@@ -126,7 +132,7 @@ ff(['-ss', String(POSTER_AT), '-i', SRC, '-frames:v', '1', '-q:v', '5', '-vf', '
 
 /* ---- Report ---- */
 const srcMb = mb(SRC);
-console.log('\nsource        ', srcMb.padStart(7), 'MB  (1280×720, 10.0s, 12.3 Mbps, +audio)');
+console.log(`\nsource         ${srcMb.padStart(7)} MB  ${SOURCE_CLIP} (with audio)`);
 for (const [label, p] of [
   ['hero.mp4     ', mp4], ['hero.webm    ', webm],
   ['hero-sm.mp4  ', mp4Small], ['hero-sm.webm ', webmSmall],

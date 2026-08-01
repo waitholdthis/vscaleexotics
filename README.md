@@ -95,25 +95,27 @@ The engine therefore:
 
 ### The hero film
 
-`videos/Snake_Hero_Video.mp4` is the source clip. `tools/gen-video.mjs` produces the served
-renditions in `assets/video/`, and makes two editorial decisions worth knowing about:
+`videos/V_Scale_Hero_New.mp4` is the source clip — set `SOURCE_CLIP` in `tools/gen-video.mjs` to
+swap it. That script produces the served renditions in `assets/video/`, and makes two editorial
+decisions worth knowing about:
 
-- **Trimmed at 7.8s.** The source ends with the animal striking at the camera, mouth open. That is
+- **Trimmed at 7.4s.** The source ends with the animal striking at the camera, mouth open. That is
   the visual language of a reptile shock video and it contradicts the rest of the site, which is
   deliberately calm and describes these animals as display animals handled with respect. It would
   also jar on every loop. To ship the full clip, set `TRIM_TO = null` and re-run.
+  **`TRIM_TO` is specific to the footage** — check the strike frame by frame when swapping clips.
 - **Audio stripped.** Muted is a hard requirement for autoplay, so the track is removed rather than
   shipped and ignored.
 
-The source is 12.3 Mbps — roughly thirty times what a muted background loop needs. The primary
-rendition is 88.5% smaller:
+The source is ~12.5 Mbps — roughly thirty times what a muted background loop needs. The primary
+rendition is 88.7% smaller:
 
 | | size |
 | --- | --- |
-| source | 14.88 MB |
-| hero.webm / hero.mp4 | 1.41 / 1.72 MB |
-| hero-sm.webm / hero-sm.mp4 | 0.78 / 0.86 MB |
-| poster | 0.09 MB |
+| source | 14.89 MB |
+| hero.webm / hero.mp4 | 1.51 / 1.68 MB |
+| hero-sm.webm / hero-sm.mp4 | 0.86 / 0.88 MB |
+| poster | 0.10 MB |
 
 Playback is deliberately conservative: no autoplay under `prefers-reduced-motion`, no download on
 Save-Data or 2g/3g (poster only), paused when offscreen or on a hidden tab, half-resolution on
