@@ -654,12 +654,17 @@
    -------------------------------------------------------------------------- */
 
 .doc { max-width: 46rem; }
-.doc h2 { font-size: var(--t-lg); margin-top: var(--s-7); padding-top: var(--s-5); border-top: 1px solid var(--line-soft); }
+.doc > * + * { margin-top: var(--s-5); }
+.doc h2 { font-size: var(--t-lg); margin-top: var(--s-8); margin-bottom: var(--s-4); padding-top: var(--s-5); border-top: 1px solid var(--line-soft); }
 .doc h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
-.doc h3 { font-size: var(--t-md); margin-top: var(--s-5); }
+.doc h3 { font-size: var(--t-md); margin-top: var(--s-6); margin-bottom: var(--s-3); }
 .doc p, .doc li { color: var(--bone-dim); font-size: var(--t-sm); line-height: 1.75; }
-.doc p + p, .doc ul, .doc ol { margin-top: var(--s-4); }
-.doc ul, .doc ol { padding-left: 1.25rem; display: flex; flex-direction: column; gap: .5rem; }
+.doc p + p { margin-top: var(--s-4); }
+.doc ul, .doc ol { padding-left: 1.35rem; display: flex; flex-direction: column; gap: var(--s-3); }
+.doc li::marker { color: var(--muted-2); }
+.doc li strong { color: var(--bone); }
+/* Panel-style headings keep their own tighter rhythm inside a .doc column. */
+.doc .block-heading { margin-top: var(--s-7); margin-bottom: var(--s-5); }
 .doc__meta { font-size: var(--t-xs); color: var(--muted-2); font-family: var(--font-mono); }
 
 /* Education hub */
@@ -671,9 +676,11 @@
 .education-nav ol { padding-left: 1.15rem; display: grid; gap: .15rem; }
 .education-nav a { display: flex; align-items: center; min-height: 2.75rem; color: var(--muted); font-size: var(--t-xs); line-height: 1.4; }
 .education-nav a:hover { color: var(--brass); }
-.care-alert { margin: var(--s-5) 0; padding: var(--s-5); border-left: 2px solid var(--brass); background: var(--surface); }
+.care-alert { margin: var(--s-6) 0; padding: var(--s-5); border-left: 2px solid var(--brass); background: var(--surface); }
+.care-alert:first-child { margin-top: 0; }
 .care-alert strong { color: var(--bone); }
-.care-table { margin-top: var(--s-4); min-width: 34rem; }
+.care-alert, .care-alert p { color: var(--bone-dim); font-size: var(--t-sm); line-height: 1.75; }
+.care-table { min-width: 34rem; }
 .care-table th { text-align: left; }
 @media (max-width: 40rem) {
   .education-layout { gap: var(--s-6); }
