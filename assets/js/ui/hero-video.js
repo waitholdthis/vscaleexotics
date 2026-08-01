@@ -22,18 +22,25 @@
 
 import { prefersReducedMotion } from '../core/dom.js';
 
-const SOURCES = {
+/**
+ * Renditions are named by `tools/gen-video.mjs`, so a clip name is all this
+ * needs: 'hero' → /assets/video/hero.webm, hero-sm.mp4, hero-poster.jpg, etc.
+ */
+const sourcesFor = (name) => ({
   large: [
-    { src: '/assets/video/hero.webm', type: 'video/webm' },
-    { src: '/assets/video/hero.mp4', type: 'video/mp4' }
+    { src: `/assets/video/${name}.webm`, type: 'video/webm' },
+    { src: `/assets/video/${name}.mp4`, type: 'video/mp4' }
   ],
   small: [
-    { src: '/assets/video/hero-sm.webm', type: 'video/webm' },
-    { src: '/assets/video/hero-sm.mp4', type: 'video/mp4' }
+    { src: `/assets/video/${name}-sm.webm`, type: 'video/webm' },
+    { src: `/assets/video/${name}-sm.mp4`, type: 'video/mp4' }
   ]
-};
+});
 
-const POSTER = { large: '/assets/video/hero-poster.jpg', small: '/assets/video/hero-poster-sm.jpg' };
+const postersFor = (name) => ({
+  large: `/assets/video/${name}-poster.jpg`,
+  small: `/assets/video/${name}-poster-sm.jpg`
+});
 
 /** Metered connection, or slow enough that 1.7 MB is rude. */
 function connectionIsConstrained() {
@@ -45,10 +52,14 @@ function connectionIsConstrained() {
 
 /**
  * @param {HTMLElement} stage  the hero stage element
+ * @param {string} [name]      rendition name, e.g. 'hero' or 'sulawesi'
  * @returns {{ok: boolean, video?: HTMLVideoElement}}
  */
-export function initHeroVideo(stage) {
+export function initHeroVideo(stage, name = 'hero') {
   if (!stage) return { ok: false };
+
+  const SOURCES = sourcesFor(name);
+  const POSTER = postersFor(name);
 
   const reduced = prefersReducedMotion();
   const small = window.matchMedia('(max-width: 820px)').matches;

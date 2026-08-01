@@ -276,6 +276,57 @@
 .page-head h1 { margin-top: var(--s-4); max-width: 22ch; }
 .page-head .lede { margin-top: var(--s-5); }
 
+/* An interior header carrying film behind it. Taller than a plain page head,
+   because footage needs room to read as footage rather than as a texture. */
+.page-head--film {
+  padding-top: calc(var(--header-h) + clamp(4rem, 13vh, 7.5rem));
+  padding-bottom: clamp(3rem, 8vh, 5.5rem);
+  isolation: isolate;
+}
+/* The brass wash is there to give a flat header some light. Over footage that
+   already has volumetric light in it, it only muddies the grade. */
+.page-head--film::before { display: none; }
+
+.page-head__film {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  /* Paints before any script runs, and it is the same file the <video> uses as
+     its poster, so it costs one request whether or not the film ever loads. */
+  background-image: url('/assets/video/sulawesi-poster.jpg');
+  background-size: cover;
+  background-position: center 62%;
+  background-repeat: no-repeat;
+  background-color: var(--ink);
+}
+@media (max-width: 820px) {
+  .page-head__film { background-image: url('/assets/video/sulawesi-poster-sm.jpg'); }
+}
+/* The animal lies along the lower third of this clip, unlike the home hero. */
+.page-head__film .hero-video { object-position: center 62%; }
+
+/* Scrim. Heavier at the bottom, where the lede sits over the brightest part
+   of the frame. */
+.page-head--film::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to top, var(--obsidian) 3%, rgba(7,8,10,.7) 42%, rgba(7,8,10,.34) 100%),
+    radial-gradient(78% 72% at 10% 86%, rgba(7,8,10,.8), transparent 68%);
+  pointer-events: none;
+}
+
+.page-head__caption {
+  position: relative;
+  margin-top: var(--s-6);
+  font-size: var(--t-xs);
+  font-family: var(--font-mono);
+  letter-spacing: .06em;
+  color: var(--muted-2);
+}
+
 .breadcrumb { display: flex; gap: .5rem; align-items: center; font-size: var(--t-xs); color: var(--muted-2); letter-spacing: .1em; text-transform: uppercase; }
 .breadcrumb a { color: var(--muted); }
 .breadcrumb a:hover { color: var(--brass); }
