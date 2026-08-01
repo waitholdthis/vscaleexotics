@@ -179,7 +179,16 @@ function buildDrawer() {
         { class: 'drawer__group' },
         h('p', { class: 'drawer__heading', text: 'Contact' }),
         h('a', { class: 'drawer__link', href: '/concierge.html', text: 'Private Concierge' }),
-        h('a', { class: 'drawer__link', href: `mailto:${SITE.email}`, text: SITE.email })
+        h('a', { class: 'drawer__link', href: `mailto:${SITE.email}`, text: SITE.email }),
+        SITE.instagram
+          ? h('a', {
+              class: 'drawer__link',
+              href: SITE.instagram,
+              target: '_blank',
+              rel: 'noopener noreferrer me',
+              text: SITE.instagramHandle || 'Instagram'
+            })
+          : null
       )
     )
   );
@@ -539,7 +548,8 @@ function buildFooter() {
             text: 'A private acquisition house for rare serpents, operating from Chatham County, North Carolina since 2009. Viewing strictly by appointment.' }),
           h('p', { class: 'mono text-muted', style: { 'margin-top': '1rem', 'font-size': 'var(--t-xs)' } },
             h('a', { class: 'link', href: `mailto:${SITE.email}`, text: SITE.email })),
-          h('p', { class: 'mono text-muted', style: { 'font-size': 'var(--t-xs)' }, text: SITE.hours })
+          h('p', { class: 'mono text-muted', style: { 'font-size': 'var(--t-xs)' }, text: SITE.hours }),
+          socialLinks()
         ),
         col('Collection', [
           { label: 'All Available', href: '/collection.html' },
@@ -569,6 +579,34 @@ function buildFooter() {
           buildPrefControl('units', 'Units', [['imperial', 'in / lb / °F'], ['metric', 'cm / kg / °C']])
         )
       )
+    )
+  );
+}
+
+/**
+ * Social links.
+ *
+ * `rel="noopener noreferrer"` is not optional on a target=_blank external link:
+ * without noopener the destination gets a handle on this window via
+ * `window.opener` and can navigate it elsewhere. h() does not add it
+ * automatically, so it is set explicitly here.
+ */
+function socialLinks() {
+  if (!SITE.instagram) return null;
+  return h(
+    'div',
+    { class: 'social', style: { 'margin-top': '1.5rem' } },
+    h(
+      'a',
+      {
+        class: 'social__link',
+        href: SITE.instagram,
+        target: '_blank',
+        rel: 'noopener noreferrer me',
+        'aria-label': `${SITE.name} on Instagram${SITE.instagramHandle ? `, ${SITE.instagramHandle}` : ''} (opens in a new tab)`
+      },
+      icon('instagram'),
+      h('span', { text: SITE.instagramHandle || 'Instagram' })
     )
   );
 }

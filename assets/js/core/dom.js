@@ -145,7 +145,13 @@ const ICONS = {
   minus: 'M5 12h14',
   globe: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20ZM2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z',
   clock: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20ZM12 6v6l4 2',
-  download: 'M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3'
+  download: 'M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3',
+  // Multi-path glyphs are declared as an array.
+  instagram: [
+    'M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z',
+    'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z',
+    'M17.5 6.5h.01'
+  ]
 };
 
 export function icon(name, cls = '') {
@@ -160,9 +166,9 @@ export function icon(name, cls = '') {
   el.setAttribute('aria-hidden', 'true');
   el.setAttribute('focusable', 'false');
   if (cls) el.setAttribute('class', cls);
-  if (d) {
+  for (const segment of Array.isArray(d) ? d : d ? [d] : []) {
     const p = document.createElementNS(SVG_NS, 'path');
-    p.setAttribute('d', d);
+    p.setAttribute('d', segment);
     el.appendChild(p);
   }
   return el;

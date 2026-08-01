@@ -405,6 +405,17 @@ if (asideHost) {
       h('p', { style: { 'margin-top': '1rem' } }, h('a', { class: 'link', href: `mailto:${SITE.email}`, text: SITE.email })),
       h('p', { class: 'text-muted', style: { 'font-size': 'var(--t-sm)', 'margin-top': '.5rem' }, text: SITE.hours }),
       h('p', { class: 'text-muted', style: { 'font-size': 'var(--t-sm)' }, text: `${SITE.locality}, ${SITE.region}` }),
+      SITE.instagram
+        ? h('p', { style: { 'margin-top': '.75rem' } },
+            h('a', {
+              class: 'link',
+              href: SITE.instagram,
+              target: '_blank',
+              rel: 'noopener noreferrer me',
+              text: SITE.instagramHandle || 'Instagram'
+            }),
+            h('span', { class: 'text-muted', style: { 'font-size': 'var(--t-sm)' }, text: ' — recent animals and facility notes' }))
+        : null,
       h('hr', { style: { border: '0', 'border-top': '1px solid var(--line-soft)', margin: '1.5rem 0' } }),
       h('p', { class: 'eyebrow eyebrow--muted', text: 'What happens next' }),
       h(

@@ -19,5 +19,7 @@ export const SITE = {
   founded: 2009,
   email: 'office@vscaleexotics.com',
   phone: '+1-919-555-0142',
-  hours: 'By appointment only, Monday to Friday'
+  hours: 'By appointment only, Monday to Friday',
+  instagram: 'https://www.instagram.com/vscaleexotics/',
+  instagramHandle: '@vscaleexotics'
 };

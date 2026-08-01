@@ -413,3 +413,5 @@ collections:
           - { label: Email, name: email, widget: string }
           - { label: Phone, name: phone, widget: string }
           - { label: Hours, name: hours, widget: string }
+          - { label: Instagram URL, name: instagram, widget: string, required: false, pattern: ['^https://(www\.)?instagram\.com/', 'Must be a full https://instagram.com/ URL'] }
+          - { label: Instagram handle, name: instagramHandle, widget: string, required: false, hint: 'Shown as the link text, e.g. @vscaleexotics' }

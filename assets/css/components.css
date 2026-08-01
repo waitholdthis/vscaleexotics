@@ -864,3 +864,31 @@ kbd {
   border-radius: var(--radius);
 }
 @keyframes shimmer { to { background-position: -200% 0; } }
+
+/* --------------------------------------------------------------------------
+   Social
+   -------------------------------------------------------------------------- */
+
+.social { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+
+.social__link {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .45rem .8rem .45rem .6rem;
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  letter-spacing: .04em;
+  color: var(--muted);
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  transition: color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              background-color var(--dur-fast) var(--ease-out);
+}
+.social__link svg { width: 1rem; height: 1rem; flex: none; }
+.social__link:hover {
+  color: var(--bone);
+  border-color: color-mix(in srgb, var(--brass) 50%, transparent);
+  background: color-mix(in srgb, var(--brass) 7%, transparent);
+}
