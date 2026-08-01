@@ -45,6 +45,13 @@ export const NAV = [
     ]
   },
   {
+    id: 'education',
+    label: 'Education',
+    href: '/education.html',
+    primary: true,
+    summary: 'Practical, evidence-led snake biology, husbandry, health and safety.'
+  },
+  {
     id: 'provenance',
     label: 'Provenance',
     href: '/provenance.html',

@@ -662,6 +662,26 @@
 .doc ul, .doc ol { padding-left: 1.25rem; display: flex; flex-direction: column; gap: .5rem; }
 .doc__meta { font-size: var(--t-xs); color: var(--muted-2); font-family: var(--font-mono); }
 
+/* Education hub */
+.education-layout { display: grid; gap: var(--s-7); align-items: start; min-width: 0; }
+@media (min-width: 64rem) { .education-layout { grid-template-columns: 16rem minmax(0, 46rem); } }
+.education-nav { padding: var(--s-5); border: 1px solid var(--line-soft); background: var(--surface); }
+@media (min-width: 64rem) { .education-nav { position: sticky; top: calc(var(--header-h) + var(--s-4)); } }
+.education-nav h2 { font-size: var(--t-sm); margin-bottom: var(--s-4); }
+.education-nav ol { padding-left: 1.15rem; display: grid; gap: .15rem; }
+.education-nav a { display: flex; align-items: center; min-height: 2.75rem; color: var(--muted); font-size: var(--t-xs); line-height: 1.4; }
+.education-nav a:hover { color: var(--brass); }
+.care-alert { margin: var(--s-5) 0; padding: var(--s-5); border-left: 2px solid var(--brass); background: var(--surface); }
+.care-alert strong { color: var(--bone); }
+.care-table { margin-top: var(--s-4); min-width: 34rem; }
+.care-table th { text-align: left; }
+@media (max-width: 40rem) {
+  .education-layout { gap: var(--s-6); }
+  .education-nav { padding: var(--s-4); }
+  .care-alert { padding: var(--s-4); }
+  .doc h2 { scroll-margin-top: calc(var(--header-h) + var(--s-4)); }
+}
+
 /* --------------------------------------------------------------------------
    Static-page composition
    

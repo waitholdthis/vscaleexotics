@@ -561,6 +561,7 @@ function buildFooter() {
         col('Tools', tools.slice(0, 6).map((t) => ({ label: t.label, href: t.href }))),
         col('House', [
           { label: 'Provenance', href: '/provenance.html' },
+          { label: 'Education', href: '/education.html' },
           { label: 'How to Acquire', href: '/acquire.html' },
           { label: 'Private Concierge', href: '/concierge.html' },
           { label: 'Journal', href: '/journal.html' },

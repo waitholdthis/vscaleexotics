@@ -80,6 +80,16 @@
 .icon-btn:hover { color: var(--bone); background: var(--slate-2); border-color: var(--line); }
 .icon-btn svg { width: 1.15rem; height: 1.15rem; }
 
+@media (pointer: coarse) {
+  .icon-btn { width: 2.75rem; height: 2.75rem; }
+  .nav__link, .drawer__link { min-height: 2.75rem; }
+}
+
+@media (max-width: 24rem) {
+  .brand__sub { display: none; }
+  .btn { max-width: 100%; white-space: normal; text-align: center; }
+}
+
 .icon-btn[data-count]::after {
   content: attr(data-count);
   position: absolute;
