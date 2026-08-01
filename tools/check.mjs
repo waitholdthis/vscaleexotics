@@ -103,6 +103,14 @@ for (const file of htmlFiles) {
   const onAttr = src.match(/\s on[a-z]+\s*=\s*"/gi);
   if (onAttr) problems.push(`${r} → ${onAttr.length} inline event handler attribute(s); CSP forbids these`);
 
+  // Inline style ATTRIBUTES are governed by style-src, which has no
+  // unsafe-inline — so browsers drop them silently, with no console error most
+  // people would notice. Sixty of them shipped once and left several pages
+  // rendering left-aligned and condensed. Use a class.
+  for (const [, decl] of src.matchAll(/\sstyle="([^"]*)"/gi)) {
+    problems.push(`${r} → inline style="${decl}" is dropped by our CSP; use a class`);
+  }
+
   const inlineScript = [...src.matchAll(/<script(?![^>]*\bsrc=)([^>]*)>([\s\S]*?)<\/script>/gi)];
   for (const [, attrs, body] of inlineScript) {
     if (/type\s*=\s*["']application\/ld\+json["']/i.test(attrs)) {

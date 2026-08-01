@@ -105,7 +105,7 @@ ${crumbHtml}
           <li><span aria-current="page">${spec.h1}</span></li>
         </ol>
       </nav>
-      ${spec.eyebrow ? `<p class="eyebrow" style="margin-top:1.25rem">${spec.eyebrow}</p>` : ''}
+      ${spec.eyebrow ? `<p class="eyebrow">${spec.eyebrow}</p>` : ''}
       <h1>${spec.h1}</h1>
       <p class="lede">${spec.lede}</p>
     </div>
@@ -153,7 +153,7 @@ const PAGES = [
     h1: 'The Instruments', eyebrow: 'Free, no account, nothing stored',
     lede: 'Built for our own breeding operation over seventeen years, then opened up. Every calculation runs entirely in your browser — nothing you enter is transmitted anywhere, and there is nothing to sign up for.',
     body: simpleBody(`      <div class="grid grid--3" data-tools-grid data-reveal-group></div>
-      <div style="margin-top:5rem" data-tools-detail></div>`)
+      <div class="mt-2xl" data-tools-detail></div>`)
   },
 
   /* ---------------- Gene Lab ---------------- */
@@ -254,7 +254,7 @@ const PAGES = [
       <div class="split">
         <div class="prose" data-reveal>
           <p class="eyebrow">The premise</p>
-          <h2 style="margin:.75rem 0 1.5rem;font-size:var(--t-xl)">Thirty-nine animals, not three thousand</h2>
+          <h2 class="block-heading block-heading--xl">Thirty-nine animals, not three thousand</h2>
           <p>
             The economics of this trade push in one direction: hold more animals, produce more clutches,
             move volume. We went the other way in 2013 and have never regretted it. A collection you can
@@ -272,7 +272,7 @@ const PAGES = [
             because the buyer wants an animal as an asset rather than as a life.
           </p>
         </div>
-        <div class="feature__media" data-reveal="scale" style="aspect-ratio:4/5">
+        <div class="feature__media feature__media--tall" data-reveal="scale">
           <canvas data-feature-canvas="vs-bp-0158" aria-hidden="true"></canvas>
         </div>
       </div>
@@ -346,7 +346,7 @@ const PAGES = [
     <div class="shell">
       <div class="panel panel--brass" data-reveal>
         <p class="eyebrow">Position</p>
-        <h2 style="margin:.75rem 0 1.5rem;font-size:var(--t-xl)">What we will not work with</h2>
+        <h2 class="block-heading block-heading--xl">What we will not work with</h2>
         <div class="split">
           <div class="prose">
             <p>
@@ -383,16 +383,16 @@ const PAGES = [
   </section>
 
   <section class="section">
-    <div class="shell shell--narrow" style="text-align:center">
+    <div class="shell shell--narrow cta">
       <div data-reveal>
         <p class="eyebrow">Visiting</p>
-        <h2 style="margin-top:1rem">The room is open, by appointment</h2>
-        <p class="lede" style="margin:1.5rem auto 0">
+        <h2 class="mt-sm">The room is open, by appointment</h2>
+        <p class="lede">
           Anyone spending five figures on an animal should see where it was produced. We schedule visits
           on weekday afternoons, we will show you the records for any animal in the building, and there is
           no expectation that you buy anything.
         </p>
-        <div class="cluster" style="justify-content:center;margin-top:2.5rem">
+        <div class="cluster">
           <a class="btn btn--primary btn--lg" href="/concierge.html">Request a visit</a>
           <a class="btn btn--lg" href="/collection.html">See what is here</a>
         </div>
@@ -408,7 +408,7 @@ const PAGES = [
     lede: 'There is no cart button on this site. Every animal is placed after a conversation, which sounds like friction and is actually the reason our live arrival record is what it is.',
     body: `  <section class="section">
     <div class="shell">
-      <div class="steps" data-reveal-group style="max-width:60rem">
+      <div class="steps measure-wide" data-reveal-group>
         <div class="step">
           <h3>You tell us what you want</h3>
           <p>
@@ -487,12 +487,12 @@ const PAGES = [
       <div class="split">
         <div>
           <p class="eyebrow">Payment</p>
-          <h2 style="margin:.75rem 0 1.5rem;font-size:var(--t-lg)">What we accept</h2>
+          <h2 class="block-heading">What we accept</h2>
           <div class="specs" data-acquire-payment></div>
         </div>
         <div>
           <p class="eyebrow">Honest answers</p>
-          <h2 style="margin:.75rem 0 1.5rem;font-size:var(--t-lg)">Questions we get asked</h2>
+          <h2 class="block-heading">Questions we get asked</h2>
           <div class="accordion" data-acquire-faq></div>
         </div>
       </div>

@@ -661,3 +661,63 @@
 .doc p + p, .doc ul, .doc ol { margin-top: var(--s-4); }
 .doc ul, .doc ol { padding-left: 1.25rem; display: flex; flex-direction: column; gap: .5rem; }
 .doc__meta { font-size: var(--t-xs); color: var(--muted-2); font-family: var(--font-mono); }
+
+/* --------------------------------------------------------------------------
+   Static-page composition
+   
+   These rules replace inline style attributes. They are not a stylistic
+   preference: our CSP sets `style-src 'self'` with no `unsafe-inline`, and
+   `style-src` governs inline style ATTRIBUTES as well as <style> elements.
+   Every `style="..."` in the HTML was being blocked and dropped by the
+   browser, which is why these blocks rendered left-aligned and condensed.
+   tools/check.mjs now fails the build if one reappears.
+   -------------------------------------------------------------------------- */
+
+/* Page-head eyebrow sits between the breadcrumb and the h1. */
+.page-head .eyebrow { margin-top: var(--s-5); }
+
+/* Closing call-to-action: centred, with room to breathe. */
+.cta { text-align: center; }
+.cta h2 { margin-top: var(--s-4); }
+.cta .lede { margin-top: var(--s-5); margin-inline: auto; }
+.cta .cluster { justify-content: center; margin-top: var(--s-7); }
+
+/* A heading introducing a block inside a panel or split column. */
+.block-heading {
+  margin: var(--s-3) 0 var(--s-5);
+  font-size: var(--t-lg);
+}
+.block-heading--xl { font-size: var(--t-xl); }
+
+/* Sparse pages (404, offline) that centre a short message in the viewport. */
+.page-centered {
+  padding-top: calc(var(--header-h) + clamp(4rem, 12vh, 6rem));
+  min-height: 70vh;
+  text-align: center;
+}
+.page-centered h1 { margin-top: var(--s-4); }
+.page-centered .lede { margin: var(--s-5) auto 0; }
+.page-centered .cluster { justify-content: center; margin-top: var(--s-7); }
+.page-centered__note { margin-top: var(--s-7); font-size: var(--t-sm); }
+
+/* Deferred-content placeholder, before a page module renders. */
+.page-loading { padding-top: calc(var(--header-h) + var(--s-8)); }
+
+/* Portrait-orientation feature media. */
+.feature__media--tall { aspect-ratio: 4 / 5; }
+
+/* --------------------------------------------------------------------------
+   Spacing utilities — deliberately few, on the site's own scale
+   -------------------------------------------------------------------------- */
+
+.mt-xs  { margin-top: var(--s-3); }
+.mt-sm  { margin-top: var(--s-4); }
+.mt-md  { margin-top: var(--s-5); }
+.mt-lg  { margin-top: var(--s-6); }
+.mt-xl  { margin-top: var(--s-7); }
+.mt-2xl { margin-top: var(--s-9); }
+.m-0    { margin: 0; }
+.w-auto { width: auto; }
+.measure-wide { max-width: 60rem; }
+.text-sm { font-size: var(--t-sm); }
+.text-lg { font-size: var(--t-lg); }
