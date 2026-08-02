@@ -349,6 +349,12 @@ body::after {
   to { opacity: 0; visibility: hidden; }
 }
 
+/* Already opened this session (see core/boot.js). Not a faster fade — no
+   paint at all, because a fade-out on every internal link is the flicker the
+   splash exists to avoid. */
+:root[data-boot="skip"] body::before,
+:root[data-boot="skip"] body::after { display: none; }
+
 /* Script reached the end of the shell build: stop the pulse and hand over.
    Replacing the animation list rather than adding to it is what ends the
    infinite pulse. */

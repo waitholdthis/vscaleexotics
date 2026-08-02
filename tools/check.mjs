@@ -143,11 +143,13 @@ for (const file of htmlFiles) {
     if (!existsSync(target)) problems.push(`${r} → broken local reference "${ref}"`);
   }
 
-  // Every module script should be type=module. The CMS bundle is a classic
-  // script and legitimately is not.
+  // Every module script should be type=module. Two are legitimately classic:
+  // the CMS bundle, and the boot gate, which has to run before the body paints
+  // and so cannot be deferred the way a module always is.
   if (!isAdmin(file)) {
     const scripts = [...src.matchAll(/<script([^>]*\bsrc="[^"]+"[^>]*)>/gi)];
     for (const [, attrs] of scripts) {
+      if (/\bsrc="[^"]*\/core\/boot\.js"/.test(attrs)) continue;
       if (!/type\s*=\s*["']module["']/i.test(attrs)) warnings.push(`${r} → script without type="module"`);
     }
   }
