@@ -763,6 +763,29 @@ export function initShell() {
   });
 
   registerServiceWorker();
+  clearBootSplash();
+}
+
+/**
+ * Boot splash hand-off.
+ *
+ * The splash itself is CSS on body's pseudo-elements (see core.css) so that it
+ * paints with the stylesheet rather than waiting for this module. All that is
+ * left here is telling it the chrome is up.
+ *
+ * The floor matters: on a warm cache the shell builds in tens of milliseconds,
+ * and a mark that appears and vanishes inside a single frame is a flicker, not
+ * an introduction. Holding it to ~900ms from navigation start makes it read as
+ * deliberate. The CSS clears itself on a timer regardless, so nothing here is
+ * load-bearing — if this never runs the page still opens.
+ */
+const BOOT_FLOOR_MS = 900;
+
+function clearBootSplash() {
+  const done = () => document.documentElement.setAttribute('data-booted', '');
+  const remaining = BOOT_FLOOR_MS - performance.now();
+  if (remaining <= 0) done();
+  else setTimeout(done, remaining);
 }
 
 /**

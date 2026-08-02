@@ -290,6 +290,81 @@ a { color: inherit; text-decoration: none; }
    Surface treatments — the "cinematic" layer
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   Boot splash
+
+   The chrome is rendered from JS, so between first paint and initShell() the
+   page is real content with no header or footer around it. This covers that
+   with the seal, breathing, instead of letting the furniture snap into place.
+
+   Built from body's own pseudo-elements: no markup on twenty-eight pages, and
+   it paints with the render-blocking stylesheet. A splash injected by script
+   would arrive after the moment it exists to cover.
+
+   The pulse is a 1.6s fade — roughly 0.6Hz, well under the three-per-second
+   threshold in WCAG 2.3.1. A logo that actually strobes is a photosensitivity
+   hazard, so this reads as a slow breath rather than a flash.
+
+   Both layers clear themselves on a delay whether or not script ever runs, so
+   a module error can never leave the site behind a black curtain.
+   -------------------------------------------------------------------------- */
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  z-index: 200;
+  /* Never intercept input — the content underneath is already real. */
+  pointer-events: none;
+}
+
+body::before {
+  inset: 0;
+  background: var(--obsidian);
+  animation: boot-clear .55s var(--ease-out) 2.2s forwards;
+}
+
+/* The artwork was drawn for a white field, so it gets the same bone panel it
+   wears in the header. */
+body::after {
+  top: 50%;
+  left: 50%;
+  z-index: 201;
+  width: 4.25rem;
+  height: 4.25rem;
+  margin: -2.125rem 0 0 -2.125rem;
+  background: var(--bone) url('/assets/img/brand-mark.png') center / 78% no-repeat;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--brass) 40%, transparent),
+              0 6px 28px -10px rgba(0, 0, 0, .9);
+  animation: boot-pulse 1.6s var(--ease-in-out) infinite,
+             boot-clear .55s var(--ease-out) 2.2s forwards;
+}
+
+@keyframes boot-pulse {
+  0%, 100% { opacity: .38; transform: scale(.97); }
+  50%      { opacity: 1;   transform: scale(1); }
+}
+@keyframes boot-clear {
+  to { opacity: 0; visibility: hidden; }
+}
+
+/* Script reached the end of the shell build: stop the pulse and hand over.
+   Replacing the animation list rather than adding to it is what ends the
+   infinite pulse. */
+:root[data-booted] body::before,
+:root[data-booted] body::after {
+  animation: boot-clear .45s var(--ease-out) forwards;
+}
+
+/* A pulsing mark is motion. Hold it still, show it briefly, move on. */
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  body::after { animation: boot-clear .3s linear .6s forwards; }
+  :root[data-booted] body::before,
+  :root[data-booted] body::after { animation: boot-clear .3s linear forwards; }
+}
+
 /* Film grain. A tiny inline SVG turbulence, tiled — no image request, and it
    sits above everything to unify the palette the way a print emulsion would. */
 .grain {
@@ -385,6 +460,7 @@ a { color: inherit; text-decoration: none; }
    ========================================================================== */
 
 @media (forced-colors: active) {
+  body::before, body::after { display: none; }
   .grain, .vignette, .glow { display: none; }
   .card, .panel, .field { border: 1px solid CanvasText; }
   .btn { border: 1px solid ButtonText; }
@@ -397,6 +473,7 @@ a { color: inherit; text-decoration: none; }
 @media print {
   :root { --obsidian: #fff; --bone: #000; }
   body { background: #fff; color: #000; }
+  body::before, body::after { display: none !important; }
   .grain, .vignette, .glow, .site-header, .site-footer,
   .compare-tray, .cmdk, .hero-canvas, [data-no-print] { display: none !important; }
   [data-reveal], [data-reveal-group] > * { opacity: 1 !important; transform: none !important; }
