@@ -18,7 +18,7 @@
  * version means a returning visitor keeps the stylesheet they first
  * downloaded, forever, and never sees another deploy.
  */
-const VERSION = 'bb1888fc7f9d';
+const VERSION = 'f77493b3961c';
 const STATIC_CACHE = `vscale-static-${VERSION}`;
 const PAGE_CACHE = `vscale-pages-${VERSION}`;
 
