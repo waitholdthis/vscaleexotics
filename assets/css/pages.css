@@ -765,6 +765,18 @@
 .project-stage::before { content: '0' counter(project-stage); display: block; margin-bottom: var(--s-3); color: var(--brass); font: var(--t-xs)/1 var(--font-mono); }
 .project-stage h3 { font-size: var(--t-md); }
 .project-stage p { margin-top: var(--s-3); color: var(--muted); font-size: var(--t-sm); line-height: 1.7; }
+/* The locality argument. Two columns, not four — these are paragraphs to be
+   read, not feature bullets to be scanned. */
+.locality-grid { display: grid; gap: var(--s-6) var(--s-7); }
+@media (min-width: 48rem) { .locality-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.locality-point { padding-top: var(--s-5); border-top: 1px solid var(--line); }
+.locality-point h3 { font-size: var(--t-md); }
+.locality-point p { margin-top: var(--s-3); color: var(--muted); font-size: var(--t-sm); line-height: 1.7; }
+
+.project-note--flow { margin-top: var(--s-7); max-width: 46rem; }
+.project-note--flow p + p { margin-top: var(--s-4); }
+.project-note--flow strong { color: var(--bone); }
+
 .project-actions { margin-top: var(--s-6); padding-top: var(--s-5); border-top: 1px solid var(--line-soft); }
 @media (max-width: 32rem) {
   .project-actions { align-items: stretch; }
