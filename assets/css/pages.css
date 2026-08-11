@@ -842,3 +842,220 @@
 .measure-wide { max-width: 60rem; }
 .text-sm { font-size: var(--t-sm); }
 .text-lg { font-size: var(--t-lg); }
+
+
+/* Reptile & Snake Keeper Academy */
+.page-head--academy {
+  position: relative;
+  overflow: hidden;
+}
+.page-head--academy::after {
+  content: "";
+  position: absolute;
+  inset: auto -12% -35% 35%;
+  height: 18rem;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 30% 35%, color-mix(in srgb, var(--brass) 26%, transparent), transparent 34%),
+    linear-gradient(115deg, transparent 0 22%, color-mix(in srgb, var(--line) 65%, transparent) 22% 23%, transparent 23% 40%, color-mix(in srgb, var(--venom) 18%, transparent) 40% 41%, transparent 41%);
+  opacity: .7;
+  transform: rotate(-4deg);
+}
+.academy-hero-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-top: var(--s-6);
+}
+.academy-hero-grid span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: .5rem .8rem;
+  color: var(--bone-dim);
+  background: color-mix(in srgb, var(--panel) 72%, transparent);
+  box-shadow: var(--shadow-soft);
+}
+.academy-tool .tool-output { min-width: 0; }
+.academy-dashboard {
+  display: grid;
+  gap: var(--s-6);
+  margin-bottom: var(--s-8);
+}
+.academy-score {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--s-5);
+  align-items: center;
+}
+.academy-score__ring {
+  --score: 50%;
+  width: clamp(5rem, 11vw, 7rem);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: conic-gradient(var(--brass) var(--score), color-mix(in srgb, var(--line) 72%, transparent) 0);
+  box-shadow: 0 0 0 1px var(--line), 0 1.2rem 3rem rgba(0,0,0,.28);
+}
+.academy-score__ring::before {
+  content: "";
+  grid-area: 1 / 1;
+  width: 78%;
+  aspect-ratio: 1;
+  border-radius: inherit;
+  background: var(--panel-strong);
+}
+.academy-score__ring span {
+  position: relative;
+  grid-area: 1 / 1;
+  color: var(--bone);
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.45rem);
+}
+.academy-score__ring--critical { background: conic-gradient(var(--danger) var(--score), color-mix(in srgb, var(--line) 72%, transparent) 0); }
+.academy-score__ring--caution { background: conic-gradient(var(--amber) var(--score), color-mix(in srgb, var(--line) 72%, transparent) 0); }
+.academy-section {
+  margin-top: var(--s-8);
+}
+.academy-plan {
+  display: grid;
+  gap: var(--s-4);
+}
+@media (min-width: 48rem) {
+  .academy-plan { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.plan-card,
+.mini-card {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--panel) 94%, transparent), color-mix(in srgb, var(--panel-strong) 84%, transparent));
+}
+.plan-card__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.3rem;
+  min-height: 2.3rem;
+  margin-bottom: var(--s-3);
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+}
+.plan-card h3,
+.mini-card h3 { margin-bottom: var(--s-2); }
+.plan-card p,
+.mini-card p { color: var(--bone-dim); line-height: 1.7; }
+.academy-lessons details {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  background: color-mix(in srgb, var(--panel) 88%, transparent);
+  overflow: hidden;
+}
+.academy-lessons details + details { margin-top: var(--s-3); }
+.academy-lessons summary {
+  cursor: pointer;
+  padding: var(--s-4) var(--s-5);
+  color: var(--bone);
+  font-weight: 700;
+}
+.academy-lessons details[open] summary {
+  border-bottom: 1px solid var(--line-soft);
+  color: var(--brass);
+}
+.academy-lessons .accordion__body { padding: var(--s-5); }
+.academy-checklist {
+  display: grid;
+  gap: var(--s-3);
+}
+.academy-path,
+.academy-cockpit {
+  display: grid;
+  gap: var(--s-4);
+}
+@media (min-width: 50rem) {
+  .academy-path,
+  .academy-cockpit { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.path-tile,
+.cockpit-card,
+.quiz-card {
+  position: relative;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--panel) 96%, transparent), color-mix(in srgb, var(--ink) 60%, transparent)),
+    radial-gradient(circle at 12% 0%, color-mix(in srgb, var(--brass) 12%, transparent), transparent 32%);
+  box-shadow: var(--shadow-soft);
+}
+.path-tile span,
+.cockpit-card span {
+  display: inline-flex;
+  margin-bottom: var(--s-3);
+  color: var(--brass);
+  font-family: var(--font-mono);
+  font-size: var(--t-xs);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.path-tile h3 { margin-bottom: var(--s-2); }
+.path-tile p,
+.cockpit-card p { color: var(--bone-dim); line-height: 1.7; }
+.academy-cockpit { grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr)); }
+.academy-quiz {
+  display: grid;
+  gap: var(--s-3);
+}
+.quiz-card summary {
+  cursor: pointer;
+  color: var(--bone);
+  font-weight: 700;
+}
+.quiz-card p {
+  margin-top: var(--s-3);
+  color: var(--bone-dim);
+  line-height: 1.7;
+}
+.scroll-x {
+  overflow-x: auto;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  background: color-mix(in srgb, var(--panel) 74%, transparent);
+}
+.care-table {
+  min-width: 46rem;
+  margin: 0;
+}
+.care-table th,
+.care-table td {
+  vertical-align: top;
+}
+.specs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: var(--s-3);
+}
+.spec {
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-md);
+  padding: var(--s-4);
+  background: color-mix(in srgb, var(--panel) 82%, transparent);
+}
+.spec__k {
+  display: block;
+  margin-bottom: .35rem;
+  color: var(--bone-dim);
+  font-size: var(--t-xs);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.spec__v {
+  color: var(--bone);
+  line-height: 1.55;
+}
+@media (max-width: 38rem) {
+  .academy-score { grid-template-columns: 1fr; }
+}

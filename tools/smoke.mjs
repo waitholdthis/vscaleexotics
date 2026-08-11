@@ -235,6 +235,7 @@ const PAGE_HOOKS = {
   'clutch.js': ['[data-tool-controls]', '[data-tool-output]'],
   'husbandry.js': ['[data-tool-controls]', '[data-tool-output]'],
   'feeding.js': ['[data-tool-controls]', '[data-tool-output]'],
+  'snake-care.js': ['[data-tool-controls]', '[data-tool-output]'],
   'shipping.js': ['[data-tool-controls]', '[data-tool-output]'],
   'legality.js': ['[data-tool-controls]', '[data-tool-output]'],
   'quarantine.js': ['[data-tool-controls]', '[data-tool-output]'],

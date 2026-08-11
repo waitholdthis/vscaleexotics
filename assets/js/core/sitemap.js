@@ -38,7 +38,7 @@ export const NAV = [
     label: 'Tools',
     href: '/tools.html',
     primary: true,
-    summary: 'Nine instruments for planning, valuing and keeping a collection.',
+    summary: 'Ten instruments for planning, valuing and keeping a collection.',
     children: [
       { id: 'gene-lab', label: 'Gene Lab', href: '/tools/gene-lab.html', icon: 'dna', blurb: 'Multi-locus punnett with true allelic complexes.' },
       { id: 'codex', label: 'Morph Codex', href: '/tools/codex.html', icon: 'book', blurb: 'Every gene we work with, indexed and explained.' },
@@ -46,6 +46,7 @@ export const NAV = [
       { id: 'clutch', label: 'Clutch Planner', href: '/tools/clutch.html', icon: 'calendar', blurb: 'Incubation and gestation timelines.' },
       { id: 'husbandry', label: 'Husbandry Architect', href: '/tools/husbandry.html', icon: 'home', blurb: 'Enclosure specification and build list.' },
       { id: 'feeding', label: 'Feeding & Growth', href: '/tools/feeding.html', icon: 'thermometer', blurb: 'Prey sizing, intervals and growth curve.' },
+      { id: 'snake-care', label: 'Reptile & Snake Keeper Academy', href: '/tools/snake-care.html', icon: 'book', blurb: 'Interactive reptile and snake safety, handling, feeding, UVB, habitat and behavior education.' },
       { id: 'shipping', label: 'Ship Window', href: '/tools/shipping.html', icon: 'truck', blurb: 'Safe despatch dates for any destination.' },
       { id: 'legality', label: 'Legality Check', href: '/tools/legality.html', icon: 'shield', blurb: 'Federal, state and international rules.' },
       { id: 'quarantine', label: 'Quarantine Protocol', href: '/tools/quarantine.html', icon: 'check', blurb: 'The 90-day intake checklist.' }
