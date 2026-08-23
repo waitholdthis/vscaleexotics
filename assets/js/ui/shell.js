@@ -549,6 +549,7 @@ function buildFooter() {
           h('p', { class: 'mono text-muted', style: { 'margin-top': '1rem', 'font-size': 'var(--t-xs)' } },
             h('a', { class: 'link', href: `mailto:${SITE.email}`, text: SITE.email })),
           h('p', { class: 'mono text-muted', style: { 'font-size': 'var(--t-xs)' }, text: SITE.hours }),
+          usarkLine(),
           socialLinks()
         ),
         col('Collection', [
@@ -624,6 +625,30 @@ function qrBlock() {
       }),
       h('p', { class: 'mono text-muted', text: SITE.origin.replace(/^https?:\/\//, '').replace(/\/$/, '') })
     )
+  );
+}
+
+/**
+ * USARK support line.
+ *
+ * A standing affiliation belongs in the chrome; the pledge itself is a term of
+ * sale and is set out properly on /acquire.html. This is the one-line version
+ * that follows the visitor around, and it links out rather than restating the
+ * terms in six point type.
+ */
+function usarkLine() {
+  return h(
+    'p',
+    { class: 'mono text-muted', style: { 'margin-top': '.75rem', 'font-size': 'var(--t-xs)' } },
+    'Supporting ',
+    h('a', {
+      class: 'link',
+      href: 'https://usark.org/',
+      target: '_blank',
+      rel: 'noopener noreferrer',
+      text: 'USARK'
+    }),
+    ' — $50 from every animal placed.'
   );
 }
 
