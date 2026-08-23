@@ -749,7 +749,10 @@
 @media (min-width: 48rem) { .founder-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .founder-card { overflow: hidden; border: 1px solid var(--line-soft); background: var(--ink); }
 .founder-card__media { position: relative; aspect-ratio: 4 / 3; background: var(--slate); overflow: hidden; }
-.founder-card__media canvas { width: 100%; height: 100%; object-fit: cover; }
+.founder-card__media canvas,
+.founder-card__photo { width: 100%; height: 100%; object-fit: cover; }
+/* Knox is a portrait frame in a 4/3 slot. Favour the upper body over the tail. */
+.founder-card__photo { object-position: 50% 40%; }
 .founder-card__media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,8,10,.72), transparent 55%); pointer-events: none; }
 .founder-card__body { padding: clamp(var(--s-5), 4vw, var(--s-7)); }
 .founder-card__sex { color: var(--brass); font-size: var(--t-xs); letter-spacing: .18em; text-transform: uppercase; }
