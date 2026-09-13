@@ -9,6 +9,14 @@
 
 export const JOURNAL = [
   {
+    id: 'animal-should-move-before-money',
+    title: 'The animal should move before the money does',
+    date: '2026-09-13',
+    tag: 'Documentation',
+    readMinutes: 6,
+    excerpt: 'A listing photograph can prove that an animal existed for one fraction of a second. It cannot show how the animal carries its weight, moves through a space or responds to a keeper. That is why uncut video belongs beside the pedigree — and why it should arrive before a deposit is discussed.'
+  },
+  {
     id: 'reading-desert-ghost',
     title: 'Why you cannot buy a Desert Ghost on the hatchling',
     date: '2026-06-18',
