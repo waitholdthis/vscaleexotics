@@ -762,6 +762,40 @@
 .founder-card dt, .founder-card dd { padding: .7rem 0; border-bottom: 1px solid var(--line-soft); font-size: var(--t-xs); }
 .founder-card dt { color: var(--muted-2); text-transform: uppercase; letter-spacing: .1em; }
 .founder-card dd { color: var(--bone-dim); }
+.founder-films { border-block: 1px solid var(--line-soft); background: var(--surface); }
+.founder-film-grid { display: grid; gap: var(--s-6); }
+@media (min-width: 48rem) { .founder-film-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.founder-film-card { overflow: hidden; border: 1px solid var(--line); background: var(--ink); }
+.founder-film-card__media { aspect-ratio: 16 / 9; background: var(--slate); overflow: hidden; }
+.founder-film-video,
+.founder-film-placeholder,
+.founder-film-placeholder img { width: 100%; height: 100%; }
+.founder-film-video { object-fit: contain; background: #000; }
+.founder-film-placeholder { position: relative; }
+.founder-film-placeholder img { object-fit: cover; object-position: 50% 40%; filter: saturate(.72) brightness(.66); }
+.founder-film-placeholder::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(7,8,10,.1), rgba(7,8,10,.68)); }
+.founder-film-placeholder__status {
+  position: absolute;
+  z-index: 1;
+  left: var(--s-4);
+  bottom: var(--s-4);
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: .55rem .8rem;
+  border: 1px solid rgba(241,234,216,.28);
+  background: rgba(7,8,10,.82);
+  color: var(--bone-dim);
+  font: var(--t-xs)/1 var(--font-mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.founder-film-placeholder__status::before { content: ''; width: .42rem; height: .42rem; margin-right: .55rem; border-radius: 50%; background: var(--brass); }
+.founder-film-card__body { padding: var(--s-5); }
+.founder-film-card__label { color: var(--brass); font-size: var(--t-xs); letter-spacing: .13em; text-transform: uppercase; }
+.founder-film-card h3 { margin-top: var(--s-2); font-size: var(--t-md); }
+.founder-film-card__body > p:last-child { margin-top: var(--s-3); color: var(--muted); font-size: var(--t-sm); line-height: 1.7; }
+.founder-films__note { margin-top: var(--s-5); color: var(--muted-2); font-size: var(--t-xs); }
 .project-timeline { display: grid; gap: var(--s-5); counter-reset: project-stage; }
 @media (min-width: 48rem) { .project-timeline { grid-template-columns: repeat(3, 1fr); } }
 .project-stage { counter-increment: project-stage; padding-top: var(--s-5); border-top: 1px solid var(--line); }

@@ -362,7 +362,9 @@ const PAGE_HOOKS = {
   'sulawesi-retics.js': [
     { sel: '[data-film]', dataset: { film: 'sulawesi' }, expect: 'video' },
     { sel: '[data-sulawesi-founder]', dataset: { sulawesiFounder: 'male' }, expect: 'img[src]' },
-    { sel: '[data-sulawesi-founder]', dataset: { sulawesiFounder: 'female' }, expect: 'img[src]' }
+    { sel: '[data-sulawesi-founder]', dataset: { sulawesiFounder: 'female' }, expect: 'img[src]' },
+    { sel: '[data-sulawesi-video]', dataset: { sulawesiVideo: 'male' }, expect: '.founder-film-placeholder' },
+    { sel: '[data-sulawesi-video]', dataset: { sulawesiVideo: 'female' }, expect: '.founder-film-placeholder' }
   ],
   'acquire.js': ['[data-acquire-payment]', '[data-acquire-faq]'],
   'doc.js': [{ sel: '[data-doc]', dataset: { doc: 'privacy' } }],
